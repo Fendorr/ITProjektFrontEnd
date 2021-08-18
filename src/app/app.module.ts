@@ -1,22 +1,30 @@
+//* Modules and other Imports
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ProjectService } from 'src/api/generated/controllers/Project';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { APIInterceptor } from './Interceptor/api-interceptor';
+
+//* Component Imports
+import { AppComponent } from './app.component';
 import { ExampleComponent } from './example/example.component';
 
+//* Angular Material Imports
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
-  declarations: [
+  declarations: [ //? Wenn man hier einen Componentnamen reinschreibt, passiert der Import meist von selbst.
     AppComponent,
-    ExampleComponent
+    ExampleComponent,
   ],
-  imports: [
+  imports: [ //? Die Angular Materials gehören hier hin!
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
   ],
   providers: [
     {
