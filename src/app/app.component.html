@@ -1,9 +1,29 @@
-<div class="container">
-  <h2 class="text-center">{{title}}</h2>
-  <app-example></app-example>
-  <hr>
-  <button mat-raised-button color="primary">Badussy.</button>
-  <button mat-raised-button color="accent">Rainer</button>
-  <button mat-raised-button color="warn">Weber</button>
-  <button mat-raised-button disabled>stinkt.</button>
-</div>
+<mat-sidenav-container hasBackdrop="false">
+  <mat-sidenav [(opened)]="opened">
+    <button mat-flat-button (click)="opened=!opened">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <hr>
+    <nav>
+      <ul>
+        <li><a routerLinkActive="active" [routerLink]="['/projects']">Projekte finden</a></li> <!-- /projects -->
+        <li><a routerLinkActive="active" [routerLink]="['/project']">Mein Projekt</a></li>  <!-- /project?project_id=...-->
+        <li><a routerLinkActive="active" [routerLink]="['']">Mein Profil ("HOME")</a></li> <!-- /user/profile -->
+        <li><a routerLinkActive="active" [routerLink]="['']">Einstellungen (TBI)</a></li> <!-- /user/settings-->
+      </ul>
+    </nav>
+    <hr>
+    <button mat-raised-button color="primary" (click)="logoutUser()">
+      {{ userName }} ausloggen
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <button id="menu_button" mat-mini-fab color="primary" (click)="opened=!opened">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
