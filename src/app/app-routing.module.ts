@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NewProjectComponent } from './project/new-project/new-project.component';
 import { ProjectComponent } from './project/project.component';
-import { StartprojectComponent } from './project/startproject/startproject.component';
+import { StartprojectComponent } from './project/start-project/start-project.component';
 import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { TestComponent } from './test/test.component';
 

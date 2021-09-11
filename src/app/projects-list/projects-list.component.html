@@ -1,4 +1,20 @@
 <div class="container">
-    <p>Ich wäre gerne eine Liste mit GAAAAAAAAAAAAAAAAAAAAAANZ vielen Projekten</p>
+    <h1>Offene Projekte</h1>
+    <p>
+        Hier findest Du eine Liste aller offenen Projekte.
+        Mit einem Klick auf das Herz-Symbol kannst du ein Projekt
+        favorisieren. Außerdem kannst du dich direkt für ein Projekt
+        bewerben. Wenn du mehr Information zu einem Projekt suchst,
+        klicke einfach auf die Kachel des Projektes!
+    </p>
+    <hr>
+    <br>
+
+    <ul class="list-group">
+        <app-projects-list-item
+            *ngFor="let project of projects; let i = index"
+            [project]="project"
+        ></app-projects-list-item>
+    </ul>
 
 </div>

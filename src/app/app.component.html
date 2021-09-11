@@ -6,10 +6,10 @@
     <hr>
     <nav>
       <ul>
-        <li><a routerLinkActive="active" [routerLink]="['/projects']">Projekte finden</a></li> <!-- /projects -->
-        <li><a routerLinkActive="active" [routerLink]="['/project']">Mein Projekt</a></li>  <!-- /project?project_id=...-->
-        <li><a routerLinkActive="active" [routerLink]="['']">Mein Profil ("HOME")</a></li> <!-- /user/profile -->
-        <li><a routerLinkActive="active" [routerLink]="['']">Einstellungen (TBI)</a></li> <!-- /user/settings-->
+        <li routerLinkActive="active" [routerLink]="['/projects']"><a>Projekte finden</a></li> <!-- /projects -->
+        <li routerLinkActive="active" [routerLink]="['/project']"><a>Mein Projekt</a></li>  <!-- /project?project_id=...-->
+        <li routerLinkActive="active" [routerLink]="['']"><a>Mein Profil ("HOME")</a></li> <!-- /user/profile -->
+        <li routerLinkActive="active" [routerLink]="['']"><a>Einstellungen (TBI)</a></li> <!-- /user/settings-->
       </ul>
     </nav>
     <hr>
@@ -19,9 +19,11 @@
   </mat-sidenav>
   <mat-sidenav-content>
 
-    <button id="menu_button" mat-mini-fab color="primary" (click)="opened=!opened">
-      <mat-icon>menu</mat-icon>
-    </button>
+    <div class="spacer">
+      <button id="menu_button" mat-mini-fab color="primary" (click)="opened=!opened">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
 
     <router-outlet></router-outlet>
 
