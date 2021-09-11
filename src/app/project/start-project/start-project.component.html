@@ -1,0 +1,19 @@
+
+<div class="container">
+    <h1>Noch hast du kein aktives Projekt</h1>
+    <p>
+        Sobald du ein eigenes Projekt erstellst oder einem Projekt beigetreten bist
+        findest du es hier. Leider bist du bisher kein Teil eines Projekts. Du hast
+        nun zwei Möglichkeiten fortzufahren. Fang doch gleich an! 
+    </p>
+    <h2>Du kannst jetzt:</h2>
+    <div class="flex-container">
+        <div [routerLink]="['/project/new']" class="show-div primary">
+            <h3>Ein neues Projekt erstellen</h3>
+        </div>
+        <div [routerLink]="['/projects']" class="show-div accent">
+            <h3>Einem bestehenden Projekt beitreten</h3>
+        </div>
+    </div>
+    <br>
+</div>

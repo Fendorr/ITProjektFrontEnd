@@ -14,9 +14,11 @@ import { ExampleComponent } from './example/example.component';
 import { ProjectComponent } from './project/project.component';
 import { NewProjectComponent } from './project/new-project/new-project.component';
 import { TestComponent } from './test/test.component';
-import { StartprojectComponent } from './project/startproject/startproject.component';
+import { StartprojectComponent } from './project/start-project/start-project.component';
 import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { MaterialModule } from './material.module';
+import { ProjectsListItemComponent } from './projects-list/projects-list-item/projects-list-item.component';
+import { ProjectListService } from './projects-list/projectlist.service';
 
 @NgModule({
   declarations: [ //? Wenn man hier einen Componentnamen reinschreibt, passiert der Import meist von selbst.
@@ -27,8 +29,9 @@ import { MaterialModule } from './material.module';
     TestComponent,
     StartprojectComponent,
     ProjectsListComponent,
+    ProjectsListItemComponent,
   ],
-  imports: [ //? Die Angular Materials gehören hier hin!
+  imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -42,7 +45,8 @@ import { MaterialModule } from './material.module';
     useClass: APIInterceptor,
     multi: true,
     },
-    ProjectService
+    ProjectService,
+    ProjectListService
 ],
 
   bootstrap: [AppComponent]

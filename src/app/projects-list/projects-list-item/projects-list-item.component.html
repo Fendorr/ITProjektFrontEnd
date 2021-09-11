@@ -1,0 +1,21 @@
+<mat-card>
+    <div class="item-header">
+        <div>
+            <mat-card-title>{{ project.title }}</mat-card-title>
+            <mat-card-subtitle>{{ project.subtitle }}</mat-card-subtitle>
+        </div>
+        <img mat-card-avatar src={{imgPath}}>
+    </div>
+    <mat-chip-list aria-label="Fish selection">
+        <mat-chip
+            *ngFor="let tag of project.tags"
+        >{{ tag }}</mat-chip>
+    </mat-chip-list>
+    <mat-card-content>{{ project.description.slice(0, 120)+"..." }}</mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button color="primary">Jetzt Bewerben</button>
+        <button mat-icon-button color="warn" aria-label="Like this project">
+            <mat-icon>favorite</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>
