@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { LandingComponent } from './landing/landing.component';
+import { LoginComponent } from './landing/login/login.component';
+import { RegisterComponent } from './landing/register/register.component';
 import { NewProjectComponent } from './project/new-project/new-project.component';
 import { ProjectComponent } from './project/project.component';
 import { StartprojectComponent } from './project/start-project/start-project.component';
 import { ProjectsListComponent } from './projects-list/projects-list.component';
-import { TestComponent } from './test/test.component';
 
 
 //TODO Kenne bisher nur das Routing über eigene "...routing.ts"-files sollte aber identisch sein, daher:
@@ -30,7 +32,9 @@ import { TestComponent } from './test/test.component';
 // ];
 
 const routes: Routes = [
-  { path: '', component: TestComponent},
+  { path: '', component: LandingComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
   { path: 'projects', component: ProjectsListComponent},
   { path: 'project', component: ProjectComponent,
     children: [

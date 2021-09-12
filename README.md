@@ -19,3 +19,5 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 deploy new api-docs.json in src/api
 Run 'npm run generate'
+
+ 

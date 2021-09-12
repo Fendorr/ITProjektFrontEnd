@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectService } from 'src/api/generated/controllers/Project';
+import { ProjectDTO } from 'src/api/generated/defs/ProjectDTO';
 
-import { Project } from './project.model';
-import { ProjectListService } from './projectlist.service';
+
+
 @Component({
   selector: 'app-projects-list',
   templateUrl: './projects-list.component.html',
-  styles: [
-  ]
+  styleUrls: ['./project-list.component.scss']
 })
 export class ProjectsListComponent implements OnInit {
 
-  projects: Project[];
+  projects: ProjectDTO[];
 
-  constructor(private projectListService: ProjectListService) { }
+  constructor(private ProjectService: ProjectService) { }
 
   ngOnInit(): void {
-    this.projects = this.projectListService.getProjects();
-    console.log(this.projects);
+    this.ProjectService.getAllProjectsUsingGET().subscribe(response => this.projects = response);
   }
 
 }

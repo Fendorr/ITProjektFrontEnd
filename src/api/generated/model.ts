@@ -10,3 +10,4 @@
  */
 
 export * from './defs/ProjectDTO';
+export * from './defs/UserDTO';
