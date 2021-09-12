@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-
-import { Project } from '../project.model';
-import { ProjectListService } from '../projectlist.service';
+import { ProjectService } from 'src/api/generated/controllers/Project';
+import { ProjectDTO } from 'src/api/generated/defs/ProjectDTO';
 
 @Component({
   selector: 'app-projects-list-item',
@@ -47,16 +46,16 @@ import { ProjectListService } from '../projectlist.service';
   `]
 })
 export class ProjectsListItemComponent implements OnInit {
-  @Input() project: Project;
+  @Input() project: ProjectDTO;
 
   imgPath: string;
   randomInt: number;
 
-  constructor(private projectListService: ProjectListService) { }
+  constructor(private ProjectService: ProjectService) { }
 
   ngOnInit(): void {
     //? Der ImgPath erstellt einen RandomAvatar für das Projekt -> Später random durch proj_id ersetzen.
-    this.imgPath = 'https://avatars.dicebear.com/api/bottts/' + this.project.projectId + '.svg'
+    this.imgPath = 'https://avatars.dicebear.com/api/bottts/' + this.project.id + '.svg'
   }
 
 }

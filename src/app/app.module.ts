@@ -13,12 +13,14 @@ import { AppComponent } from './app.component';
 import { ExampleComponent } from './example/example.component';
 import { ProjectComponent } from './project/project.component';
 import { NewProjectComponent } from './project/new-project/new-project.component';
-import { TestComponent } from './test/test.component';
 import { StartprojectComponent } from './project/start-project/start-project.component';
 import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { MaterialModule } from './material.module';
 import { ProjectsListItemComponent } from './projects-list/projects-list-item/projects-list-item.component';
-import { ProjectListService } from './projects-list/projectlist.service';
+import { LandingComponent } from './landing/landing.component';
+import { LoginComponent } from './landing/login/login.component';
+import { RegisterComponent } from './landing/register/register.component';
+import { UserService } from 'src/api/generated/controllers/User';
 
 @NgModule({
   declarations: [ //? Wenn man hier einen Componentnamen reinschreibt, passiert der Import meist von selbst.
@@ -26,10 +28,12 @@ import { ProjectListService } from './projects-list/projectlist.service';
     ExampleComponent,
     ProjectComponent,
     NewProjectComponent,
-    TestComponent,
     StartprojectComponent,
     ProjectsListComponent,
     ProjectsListItemComponent,
+    LandingComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,7 @@ import { ProjectListService } from './projects-list/projectlist.service';
     multi: true,
     },
     ProjectService,
-    ProjectListService
+    UserService,
 ],
 
   bootstrap: [AppComponent]
