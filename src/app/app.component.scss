@@ -7,6 +7,12 @@ $accent: #FF4081;
     display: block;
 }
 
+mat-toolbar {
+    span {
+        margin-left: 80px;
+    }
+}
+
 mat-sidenav-container {
     height: 100%;
 }

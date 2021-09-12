@@ -31,6 +31,15 @@ import { ProjectDTO } from 'src/api/generated/defs/ProjectDTO';
       padding: 0;
       display: flex;
       justify-content: space-between;
+
+      div {
+        display: flex;
+        flex-direction: row;
+        
+        h3 {
+          margin-left: 10px;
+        }
+      }
     }
 
     .mat-card-avatar {
@@ -50,12 +59,22 @@ export class ProjectsListItemComponent implements OnInit {
 
   imgPath: string;
   randomInt: number;
+  dateFormat: string;
 
   constructor(private ProjectService: ProjectService) { }
 
   ngOnInit(): void {
     //? Der ImgPath erstellt einen RandomAvatar für das Projekt -> Später random durch proj_id ersetzen.
     this.imgPath = 'https://avatars.dicebear.com/api/bottts/' + this.project.id + '.svg'
+    this.dateFormat = this.formatDate(this.project);
+  }
+
+  formatDate(project: ProjectDTO) {
+    let year = project.createdAt?.slice(0,4);
+    let month = project.createdAt?.slice(6,7);
+    let day = project.createdAt?.slice(9,10);
+
+    return "Erstellt am "+ day +"."+ month +"."+ year +" von "+ project.createdBy
   }
 
 }

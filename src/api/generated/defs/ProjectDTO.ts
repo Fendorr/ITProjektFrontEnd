@@ -19,4 +19,7 @@ export interface ProjectDTO {
   note?: string;
   subTitle?: string;
   title?: string;
+  tags?: string[];
+  maxUser?: number;
+  currUser?: number;
 }

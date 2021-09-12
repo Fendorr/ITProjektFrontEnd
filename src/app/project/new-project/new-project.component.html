@@ -11,13 +11,68 @@
         verschieben. Sobald dein Projekt sich in Phase 2 befindet, ist
         es öffentlich und jeder kann sich auf dein Projekt bewerben!
     </p>
-    <div class="form-container">
-        <form action="">
-            <label for="projTitel">Projekttitel:</label>
-            <input type="text" id="projTitel">
 
-            <label for="projDesc">Beschreibung:</label>
-            <input type="text-area" id="projDesc">
-        </form>
+    <div class="formdiv">
+        <mat-form-field appearance="legacy">
+            <mat-label>Projekttitel</mat-label>
+            <input 
+                type="text"
+                matInput 
+                required
+                [(ngModel)]="project.title" [ngModelOptions]="{standalone: true}"
+                >
+            <mat-hint>Wähle einen aussagekräftigen Titel für dein Projekt</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="example-chip-list" appearance="legacy">
+            <mat-label>Lege mindestens 1 Keyword fest, das dein Projekt beschreibt</mat-label>
+            <mat-chip-list #chipList aria-label="Tag selection">
+              <mat-chip *ngFor="let tag of tags" [selectable]="selectable"
+                       [removable]="removable" (removed)="remove(tag)">
+                {{tag.name}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input placeholder="Neues Keyword hinzufügen..."
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+        </mat-form-field>
+
+        <mat-form-field hintLabel="Wähle eine Zahl zwischen 2 und 10!" appearance="legacy">
+            <mat-label>Maximale Anzahl Projektmitglieder</mat-label>
+            <mat-select
+            [(ngModel)]="project.maxUser" [ngModelOptions]="{standalone: true}"
+            >
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="4">4</mat-option>
+                <mat-option value="5">5</mat-option>
+                <mat-option value="6">6</mat-option>
+                <mat-option value="7">7</mat-option>
+                <mat-option value="8">8</mat-option>
+                <mat-option value="9">9</mat-option>
+                <mat-option value="10">10</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+            <mat-label>Projektbeschreibung</mat-label>
+            <textarea 
+                matInput 
+                required 
+                placeholder="Beschreibe dein Projekt (min. 150 Zeichen)"
+                [(ngModel)]="project.comment" [ngModelOptions]="{standalone: true}"
+            ></textarea>
+        </mat-form-field>
+
+        <button
+            mat-raised-button 
+            color="accent" 
+            type="submit"
+            (click)="createProject()"
+            >Projekt jetzt erstellen</button>
     </div>
+
 </div>
