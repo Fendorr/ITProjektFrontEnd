@@ -11,11 +11,11 @@ export class RegisterComponent implements OnInit {
 
   user : UserDTO = {};
   constructor(private userService : UserService) { }
-  ngOnInit() {
+  ngOnInit(): void {
   
   }
 
-  createUser() {
+  createUser(): void {
     console.log(this.user);
     this.userService.postUserUsingPOST({userDto:this.user}).subscribe(user => console.log(user))
   }
