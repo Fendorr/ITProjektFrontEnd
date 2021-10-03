@@ -1,20 +1,30 @@
 <div class="container">
-<form>
-  <div class="form-group">
-    <label for="formGroupExampleInput">Vorname:</label>
-    <input 
-    [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}"
-    type="text" class="form-control" id="formGroupExampleInput" placeholder="Vorname">
+  <h1>Neues Konto anlegen</h1>
+  <div class="default-flex-container">
+    <mat-form-field appearance="legacy">
+      <mat-label>E-Mail</mat-label>
+      <input type="email" matInput required [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Vorname</mat-label>
+      <input type="text" matInput required [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Nachname</mat-label>
+      <input type="text" matInput required [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Passwort</mat-label>
+      <input type="password" matInput required [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}">
+      <!--TODO: Hier passwort einbinden!-->
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Profilart</mat-label>
+      <mat-select [(ngModel)]="user.type" [ngModelOptions]="{standalone: true}" required>
+        <mat-option *ngFor="let type of keys" [value]="type">{{type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit" (click)="createUser()">Registrieren</button>
   </div>
-  <div class="form-group">
-    <label for="formGroupExampleInput2">Nachname:</label>
-    <input
-    [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}"
-    type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nachname">
-  </div>
-  <button type="submit" class="btn btn-primary"
-    (click)="createUser()">
-    Registrieren
-  </button>
-</form>
 </div>
