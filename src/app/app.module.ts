@@ -21,9 +21,11 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './landing/login/login.component';
 import { RegisterComponent } from './landing/register/register.component';
 import { UserService } from 'src/api/generated/controllers/User';
-
+import { ProfileComponent } from './profile/profile.component';
+import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
+import { MyProfileComponent } from'./profile/my-profile/my-profile.component';
 @NgModule({
-  declarations: [ //? Wenn man hier einen Componentnamen reinschreibt, passiert der Import meist von selbst.
+  declarations: [		 //? Wenn man hier einen Componentnamen reinschreibt, passiert der Import meist von selbst.
     AppComponent,
     ExampleComponent,
     ProjectComponent,
@@ -34,7 +36,10 @@ import { UserService } from 'src/api/generated/controllers/User';
     LandingComponent,
     LoginComponent,
     RegisterComponent,
-  ],
+    ProfileComponent,
+    MyProfileComponent,
+    UpdateProfileComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
