@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from 'src/api/generated/controllers/Project';
-
+import { UserDTO } from 'src/api/generated/defs/UserDTO';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
   title = 'bootstrapSwaggerGenExample';
   opened = false;
   userName = "Rainer" //Später dynamisch eingeloggten Nutzernamen 
-
+  user : UserDTO = {};
   //TODO diese methode ist nur ein dummy
   logoutUser() {
     alert("Hier sollte der Nutzer eigentlich ausgeloggt werden und ein redirect zur Homepage muss stattfinden -> leider bin ich SEEEHR faul ;^)")
