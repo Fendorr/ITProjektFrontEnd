@@ -1,0 +1,51 @@
+.mat-card {
+    width: 250px;
+    height: 300px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgb(240, 240, 240);
+    border-radius: 20px;
+    padding: 5px;
+    margin: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    h3 {
+        margin: 0;
+    }
+
+    .buttonbox {
+
+        width: 94%;
+
+        button {
+            width: 100%;
+            margin-bottom: 6px;
+        }
+
+        .accept {
+            margin-right: 3px;
+            background-color: rgb(115, 192, 0);
+        }
+
+        .decline {
+            margin-left: 3px;
+            background-color: rgb(201, 0, 0);
+        }
+
+        .choosebox {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+}
+
+
+.mat-card-avatar {
+    height: 80px;
+    width: 80px;
+}
+

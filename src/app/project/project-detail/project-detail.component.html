@@ -1,28 +1,67 @@
 <div class="container">
+    <h1>Projekt</h1>
     <div class="row">
-        <div class="col-9">
-            <h1>Projekt</h1>
-            <h2>{{ project?.title }}</h2>
-            <p>Erstellt: {{project?.createdAt?.slice(0,10)}} von {{ project?.createdBy }} </p>
+        <div class="col-9 p-2">
+            <div class="content">
+                <h2>{{ project?.title }}</h2>
+                <p>Erstellt: {{project?.createdAt?.slice(0,10)}} von {{ project?.createdBy }} </p>
+            </div>
         </div>
-        <div class="col-3">
-            <p>Members:</p>
-            <mat-progress-spinner
-                mode ="determinate"
-                color ="accent"
-                [value] = "spinnerValue"
-            >
-            </mat-progress-spinner>
-            <p>{{project?.currUser}}/{{project?.maxUser}}</p>
+        <div class="col-3 p-2">
+            <div class="content members">
+                <p>Members:</p>
+                <div class="spinnerbox">
+                    <mat-spinner
+                        class="track" 
+                        mode="determinate"
+                        value="100"
+                        color ="accent"
+                        strokeWidth="13"
+                        >
+                    </mat-spinner>
+                    <mat-progress-spinner
+                        mode ="determinate"
+                        color ="accent"
+                        [value] = "spinnerValue"
+                        strokeWidth="13"
+                    >
+                    </mat-progress-spinner> 
+                </div>
+                <p class="member-count">{{project?.currUser}}/{{project?.maxUser}}</p>
+            </div>
         </div>
     </div>
     <div class="row">
-        <mat-chip-list aria-label="tags">
-            <mat-chip
-                *ngFor="let tag of project?.tags"
-                >{{ tag }}</mat-chip>
-        </mat-chip-list>
-        <h2>Beschreibung</h2>
-        <p>{{ project?.comment }}</p>
+        <div class="col-12 p-2">
+            <div class="content">
+                <mat-chip-list aria-label="tags">
+                    <mat-chip
+                        *ngFor="let tag of project?.tags"
+                        >{{ tag }}</mat-chip>
+                </mat-chip-list>
+                <h2>Beschreibung</h2>
+                <p>{{ project?.comment }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 p-2">
+            <div class="content">
+                <h2>Bewerber für dieses Projekt:</h2>
+                <div class="applicants">
+                    <app-carousel-item
+                    *ngFor="let applicant of applicants"
+                    >
+                    </app-carousel-item>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 p-2">
+            <div class="content">
+                Hier kommt eine Liste der Leute hin, die das Projekt immerhin geliked haben (Normaler Like)
+            </div>
+        </div>
     </div>
 </div>
