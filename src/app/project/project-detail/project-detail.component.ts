@@ -1,5 +1,4 @@
-import { NumberFormatStyle } from '@angular/common';
-import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ProjectService } from 'src/api/generated/controllers/Project';
 import { ProjectDTO } from 'src/api/generated/model';
@@ -9,12 +8,14 @@ import { ProjectDTO } from 'src/api/generated/model';
   templateUrl: './project-detail.component.html',
   styleUrls: ['./project-detail.component.scss']
 })
-export class ProjectDetailComponent implements OnInit,OnDestroy{
+export class ProjectDetailComponent implements OnInit,OnDestroy,DoCheck{
 
   project: ProjectDTO
-  current?: number | undefined;
-  max?: number | undefined;
   spinnerValue: number;
+
+  applicants: Number[] = [
+    1,2,3,4,5
+  ]
 
   constructor(
     private route: ActivatedRoute,
@@ -29,16 +30,17 @@ export class ProjectDetailComponent implements OnInit,OnDestroy{
     });
   }
 
-  ngOnDestroy():void{
-    console.log(this.project);
+  ngDoCheck(): void {
+    if(this.project){
+      if(this.project.currUser && this.project.maxUser){
+        this.spinnerValue = ( this.project.currUser * 100 / this.project.maxUser);
+      }
+      else { this.spinnerValue = 0; }
+    }
   }
 
-  // this.current = this.project.currUser;
-  // this.max = this.project.maxUser;
-
-  // if(this.current && this.max && this.project){
-  //   this.spinnerValue = ( this.current * 100 / this.max);
-  // }
-  // else { this.spinnerValue = 50; }
+  ngOnDestroy():void{
+    //console.log(this.project);
+  }
 
 }
