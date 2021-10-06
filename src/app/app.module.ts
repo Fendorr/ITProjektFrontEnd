@@ -24,6 +24,7 @@ import { UserService } from 'src/api/generated/controllers/User';
 import { ProfileComponent } from './profile/profile.component';
 import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
 import { MyProfileComponent } from'./profile/my-profile/my-profile.component';
+import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 @NgModule({
   declarations: [		 //? Wenn man hier einen Componentnamen reinschreibt, passiert der Import meist von selbst.
     AppComponent,
@@ -38,7 +39,8 @@ import { MyProfileComponent } from'./profile/my-profile/my-profile.component';
     RegisterComponent,
     ProfileComponent,
     MyProfileComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    ProjectDetailComponent
    ],
   imports: [
     BrowserModule,
