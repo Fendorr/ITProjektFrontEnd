@@ -1,5 +1,5 @@
 import { NumberFormatStyle } from '@angular/common';
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ProjectService } from 'src/api/generated/controllers/Project';
 import { ProjectDTO } from 'src/api/generated/model';
@@ -9,12 +9,12 @@ import { ProjectDTO } from 'src/api/generated/model';
   templateUrl: './project-detail.component.html',
   styleUrls: ['./project-detail.component.scss']
 })
-export class ProjectDetailComponent implements OnInit{
+export class ProjectDetailComponent implements OnInit,OnDestroy{
 
-  project: ProjectDTO;
-  // current: number;
-  // max: number;
-  // spinnerValue: number;
+  project: ProjectDTO
+  current?: number | undefined;
+  max?: number | undefined;
+  spinnerValue: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,18 +27,18 @@ export class ProjectDetailComponent implements OnInit{
       let id = +params['id'];
       this.projectService.getProjectByIdUsingGET({id}).subscribe(response => this.project = response);
     });
-
-    // this.current = this.project.currUser?
-    // this.max = this.project.maxUser?
-
-    // this.spinnerValue = (this.current / this.max * 100)
-
-
-    // if(this.project.currUser && this.project.maxUser){
-    //   this.spinnerValue = ( this.project.currUser / this.project.maxUser * 100)
-    // }
-    // else { this.spinnerValue = 100; }
-
   }
+
+  ngOnDestroy():void{
+    console.log(this.project);
+  }
+
+  // this.current = this.project.currUser;
+  // this.max = this.project.maxUser;
+
+  // if(this.current && this.max && this.project){
+  //   this.spinnerValue = ( this.current * 100 / this.max);
+  // }
+  // else { this.spinnerValue = 50; }
 
 }
