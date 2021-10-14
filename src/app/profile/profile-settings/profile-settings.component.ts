@@ -4,26 +4,25 @@ import { UserService } from 'src/api/generated/controllers/User';
 import { UserDTO } from 'src/api/generated/defs/UserDTO';
 
 @Component({
-  selector: 'app-update-profile',
-  templateUrl: './update-profile.component.html',
-  styleUrls: ['./update-profile.component.scss']
+  selector: 'app-profile-settings',
+  templateUrl: './profile-settings.component.html',
+  styleUrls: ['./profile-settings.component.scss']
 })
-export class UpdateProfileComponent implements OnInit {
+export class ProfileSettingsComponent implements OnInit {
 
-  user: UserDTO = {}
+  user : UserDTO = {};
+  show : boolean;
 
   constructor(
-    private userService: UserService,
+    private userService : UserService,
     private route: ActivatedRoute
-  ) { }
+    ) {}
 
   ngOnInit(): void {
+    this.show = true;
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
-      this.userService.getUserByIdUsingGET({ id }).subscribe(response => {
-        this.user = response;
-        console.log(this.user);
-      });
+    this.userService.getUserByIdUsingGET({id}).subscribe(response => this.user = response);
     });
   }
 
@@ -33,4 +32,5 @@ export class UpdateProfileComponent implements OnInit {
       this.userService.updateUserUsingPUT({ id: id, user: newUser }).subscribe(response => console.log(response))
     }
   }
+
 }

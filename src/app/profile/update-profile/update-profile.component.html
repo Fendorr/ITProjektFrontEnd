@@ -15,9 +15,8 @@
     </mat-form-field>
     <mat-form-field appearance="legacy">
       <mat-label>Passwort</mat-label>
-      <input type="password" matInput [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}">
-      <!--TODO: Hier passwort einbinden!-->
+      <input type="password" name="password" matInput [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
-    <button mat-raised-button color="accent" type="submit" (click)="updateUser(this.user.id, this.user)">Update</button>
+    <button mat-raised-button color="accent" type="submit" (click)="updateUser(this.user.id, this.user)">Änderungen übernehmen</button>
   </div>
 </div>

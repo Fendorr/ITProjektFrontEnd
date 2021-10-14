@@ -10,13 +10,17 @@
  */
 
 export interface UserDTO {
+  /** format: int64 */
+  activeProject?: number;
   /** format: date-time */
   createdAt?: string;
   email?: string;
+  faculty?: string;
   firstName?: string;
   /** format: int64 */
   id?: number;
   lastName?: string;
+  password?: string;
   type?: TypeUserDTOEnum;
 }
 

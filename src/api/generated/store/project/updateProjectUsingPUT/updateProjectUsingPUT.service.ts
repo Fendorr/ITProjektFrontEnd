@@ -11,6 +11,7 @@
 
 import {Injectable} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArrayExtended} from '../../../common/formArrayExtended';
 import {ProjectService} from '../../../controllers/Project';
 
 @Injectable()
@@ -25,9 +26,13 @@ export class UpdateProjectUsingPUTFormService {
         comment: new FormControl(undefined, []),
         createdAt: new FormControl(undefined, []),
         createdBy: new FormControl(undefined, []),
+        currUser: new FormControl(undefined, []),
         id: new FormControl(undefined, []),
+        maxUser: new FormControl(undefined, []),
         note: new FormControl(undefined, []),
         subTitle: new FormControl(undefined, []),
+        tags: new FormArrayExtended(() => (
+          new FormControl(undefined, [])), [], []),
         title: new FormControl(undefined, []),
       }, [Validators.required]),
     });

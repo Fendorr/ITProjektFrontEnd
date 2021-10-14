@@ -26,6 +26,7 @@ import { UpdateProfileComponent } from './profile/update-profile/update-profile.
 import { MyProfileComponent } from'./profile/my-profile/my-profile.component';
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 import { CarouselItemComponent } from './project/project-detail/carousel-item/carousel-item.component';
+import { ProfileSettingsComponent } from './profile/profile-settings/profile-settings.component';
 @NgModule({
   declarations: [		 //? Wenn man hier einen Componentnamen reinschreibt, passiert der Import meist von selbst.
     AppComponent,
@@ -40,6 +41,7 @@ import { CarouselItemComponent } from './project/project-detail/carousel-item/ca
     RegisterComponent,
     ProfileComponent,
     MyProfileComponent,
+    ProfileSettingsComponent,
     UpdateProfileComponent,
     ProjectDetailComponent,
     CarouselItemComponent
