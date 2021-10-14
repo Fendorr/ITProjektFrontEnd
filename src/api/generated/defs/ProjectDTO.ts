@@ -14,12 +14,14 @@ export interface ProjectDTO {
   /** format: date-time */
   createdAt?: string;
   createdBy?: string;
+  /** format: int32 */
+  currUser?: number;
   /** format: int64 */
   id?: number;
+  /** format: int32 */
+  maxUser?: number;
   note?: string;
   subTitle?: string;
-  title?: string;
   tags?: string[];
-  maxUser?: number;
-  currUser?: number;
+  title?: string;
 }

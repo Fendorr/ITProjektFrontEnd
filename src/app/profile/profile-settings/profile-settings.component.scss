@@ -1,0 +1,16 @@
+.mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+    input{color: black;}
+    textarea {
+        height: 80px;
+    }
+}
+
+.mat-form-field:last-of-type {
+    margin-bottom: 10px;
+}
+
+.mat-raised-button{
+    min-width: 190.04px;
+}

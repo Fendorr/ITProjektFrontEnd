@@ -5,6 +5,7 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './landing/login/login.component';
 import { RegisterComponent } from './landing/register/register.component';
 import { MyProfileComponent } from './profile/my-profile/my-profile.component';
+import { ProfileSettingsComponent } from './profile/profile-settings/profile-settings.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
 import { NewProjectComponent } from './project/new-project/new-project.component';
@@ -21,11 +22,11 @@ const routes: Routes = [
 
   { path: 'profile', component: ProfileComponent,
     children: [
-      { path: 'update', component: UpdateProfileComponent},
       { path: ':id', component: MyProfileComponent},
+      { path: ':id/update', component: UpdateProfileComponent},
     ]
   },
-
+  { path: 'profilesettings/:id', component: ProfileSettingsComponent},
   { path: 'projects', component: ProjectsListComponent},
   { path: 'project', component: ProjectComponent,
     children: [

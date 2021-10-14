@@ -1,24 +1,25 @@
 <div class="container">
   <h1>Mein Profil</h1>
-  <h2>Hallo, {{user.firstName}}</h2>
+  <h2>Hallo, {{user.firstName}} mit der ID: {{user.id}}</h2>
   <div class="default-flex-container">
     <mat-form-field appearance="legacy">
       <mat-label>E-Mail</mat-label>
-      <input type="email" matInput [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
+      <input type="email" disabled matInput [(ngModel)]="this.user.email" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
     <mat-form-field appearance="legacy">
       <mat-label>Vorname</mat-label>
-      <input type="text" matInput [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}">
+      <input type="text" disabled matInput [(ngModel)]="this.user.firstName" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
     <mat-form-field appearance="legacy">
       <mat-label>Nachname</mat-label>
-      <input type="text" matInput [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}">
+      <input type="text" disabled matInput [(ngModel)]="this.user.lastName" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
     <mat-form-field appearance="legacy">
       <mat-label>Passwort</mat-label>
-      <input type="password" matInput [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}">
+      <input type="password" disabled matInput [(ngModel)]="this.user.password" [ngModelOptions]="{standalone: true}">
       <!--TODO: Hier passwort einbinden!-->
     </mat-form-field>
-    <button mat-raised-button color="accent" type="submit" [routerLink]="['/profile/update']">Update</button>
+    <button mat-raised-button color="accent" type="submit" [routerLink]="['/profile/', user.id || 1, 'update']">Profil bearbeiten</button>
   </div>
 </div>
+
