@@ -13,12 +13,12 @@
         <li routerLinkActive="active" [routerLink]="['/projects']"><a>Projekte finden</a></li> <!-- /projects -->
         <li routerLinkActive="active" [routerLink]="['/project']"><a>Mein Projekt</a></li>  <!-- /project?project_id=...-->
         <li routerLinkActive="active" [routerLink]="['']"><a>Meine Favoriten</a></li> <!-- /user/favorites-->
-        <li routerLinkActive="active" [routerLink]="['/profile/', user.id || 1]"><a>Mein Profil ("HOME")</a></li> <!-- /user/profile -->
-        <li routerLinkActive="active" [routerLink]="['profilesettings/', user.id || 1]"><a>Einstellungen (TBI)</a></li> <!-- /user/settings-->
+        <li routerLinkActive="active" [routerLink]="['/profile']"><a>Mein Profil ("HOME")</a></li> <!-- /user/profile -->
+        <li routerLinkActive="active" [routerLink]="['/profilesettings']"><a>Einstellungen (TBI)</a></li> <!-- /user/settings-->
       </ul>
     </nav>
     <hr>
-    <button mat-raised-button color="primary" (click)="logoutUser()">
+    <button mat-raised-button color="primary" (click)="logout()">
       {{ userName }} ausloggen
     </button>
   </mat-sidenav>

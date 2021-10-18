@@ -11,22 +11,22 @@
 
 import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
-import * as __model from '../../../../model';
+import {LoginParams} from '../../../../controllers/Public';
 
 export enum Actions {
-  START = '[Project getAllProjectsUsingGET] Start',
-  SUCCESS = '[Project getAllProjectsUsingGET] Success',
-  ERROR = '[Project getAllProjectsUsingGET] Error',
+  START = '[Public login] Start',
+  SUCCESS = '[Public login] Success',
+  ERROR = '[Public login] Error',
 }
 
 export class Start implements Action {
   readonly type = Actions.START;
-  constructor() {}
+  constructor(public payload: LoginParams) {}
 }
 
 export class Success implements Action {
   readonly type = Actions.SUCCESS;
-  constructor(public payload: __model.ProjectDTO[]) {}
+  constructor(public payload: string) {}
 }
 
 export class Error implements Action {
@@ -34,4 +34,4 @@ export class Error implements Action {
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type GetAllProjectsUsingGETAction = Start | Success | Error;
+export type LoginAction = Start | Success | Error;

@@ -12,27 +12,26 @@
 import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
-import * as __model from '../../../../model';
 import * as actions from './actions';
 
-export interface GetAllProjectsUsingGETState {
-  data: __model.ProjectDTO[] | null;
+export interface LoginState {
+  data: string | null;
   loading: boolean;
   error: HttpErrorResponse | null;
 }
 
-export const initialGetAllProjectsUsingGETState: GetAllProjectsUsingGETState = {
+export const initialLoginState: LoginState = {
   data: null,
   loading: false,
   error: null,
 };
 
-export const selectorName = 'Project_GetAllProjectsUsingGET';
-export const getGetAllProjectsUsingGETStateSelector = createFeatureSelector<GetAllProjectsUsingGETState>(selectorName);
+export const selectorName = 'Public_Login';
+export const getLoginStateSelector = createFeatureSelector<LoginState>(selectorName);
 
-export function GetAllProjectsUsingGETReducer(
-  state: GetAllProjectsUsingGETState = initialGetAllProjectsUsingGETState,
-  action: actions.GetAllProjectsUsingGETAction): GetAllProjectsUsingGETState {
+export function LoginReducer(
+  state: LoginState = initialLoginState,
+  action: actions.LoginAction): LoginState {
   switch (action.type) {
     case actions.Actions.START: return {...state, loading: true, error: null};
     case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};

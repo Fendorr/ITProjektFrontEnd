@@ -1,4 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { PublicService } from 'src/api/generated/controllers/Public';
+import { LoginDTO } from 'src/api/generated/defs/LoginDTO';
+import { UserDTO } from 'src/api/generated/defs/UserDTO';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +13,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  loginDto : LoginDTO = {};
 
+  constructor(private authService : AuthenticationService) {
+  }
+
+  login() {
+    this.authService.login(this.loginDto.email!, this.loginDto.password!);
+  }
+
+  error(){
+  
+  }
+  
   ngOnInit() {
   }
 
