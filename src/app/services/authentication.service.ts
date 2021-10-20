@@ -40,7 +40,7 @@ export class AuthenticationService {
   }
 
   getCurrentUser() {
-    return this.user;
+    return this.user; //TODO Implement 
   }
 
 
