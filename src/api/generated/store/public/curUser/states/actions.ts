@@ -11,22 +11,22 @@
 
 import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
-import {LoginParams} from '../../../../controllers/Public';
+import * as __model from '../../../../model';
 
 export enum Actions {
-  START = '[Public login] Start',
-  SUCCESS = '[Public login] Success',
-  ERROR = '[Public login] Error',
+  START = '[Public curUser] Start',
+  SUCCESS = '[Public curUser] Success',
+  ERROR = '[Public curUser] Error',
 }
 
 export class Start implements Action {
   readonly type = Actions.START;
-  constructor(public payload: LoginParams) {}
+  constructor() {}
 }
 
 export class Success implements Action {
   readonly type = Actions.SUCCESS;
-  constructor(public payload: boolean) {}
+  constructor(public payload: __model.Principal) {}
 }
 
 export class Error implements Action {
@@ -34,4 +34,4 @@ export class Error implements Action {
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type LoginAction = Start | Success | Error;
+export type CurUserAction = Start | Success | Error;

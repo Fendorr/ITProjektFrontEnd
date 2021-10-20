@@ -32,13 +32,21 @@ export class PublicService {
   constructor(private http: HttpClient) {}
 
   /**
+   * user
+   * http://localhost:8080/swagger/swagger-ui.html#!/public-controller/userUsingGET
+   */
+  curUser(): Observable<__model.Principal> {
+    return this.http.get<__model.Principal>(`/api/curUser/`);
+  }
+
+  /**
    * login
    * http://localhost:8080/swagger/swagger-ui.html#!/public-controller/loginUsingPOST
    */
-  login(params: LoginParams): Observable<string> {
+  login(params: LoginParams): Observable<boolean> {
     const bodyParams = params.loginDto;
 
-    return this.http.post<string>(`/api/login/`, bodyParams || {});
+    return this.http.post<boolean>(`/api/login/`, bodyParams || {});
   }
 
   /**

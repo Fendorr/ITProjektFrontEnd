@@ -12,26 +12,27 @@
 import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
+import * as __model from '../../../../model';
 import * as actions from './actions';
 
-export interface LoginState {
-  data: boolean | null;
+export interface CurUserState {
+  data: __model.Principal | null;
   loading: boolean;
   error: HttpErrorResponse | null;
 }
 
-export const initialLoginState: LoginState = {
+export const initialCurUserState: CurUserState = {
   data: null,
   loading: false,
   error: null,
 };
 
-export const selectorName = 'Public_Login';
-export const getLoginStateSelector = createFeatureSelector<LoginState>(selectorName);
+export const selectorName = 'Public_CurUser';
+export const getCurUserStateSelector = createFeatureSelector<CurUserState>(selectorName);
 
-export function LoginReducer(
-  state: LoginState = initialLoginState,
-  action: actions.LoginAction): LoginState {
+export function CurUserReducer(
+  state: CurUserState = initialCurUserState,
+  action: actions.CurUserAction): CurUserState {
   switch (action.type) {
     case actions.Actions.START: return {...state, loading: true, error: null};
     case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};

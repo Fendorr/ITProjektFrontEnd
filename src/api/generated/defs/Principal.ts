@@ -9,7 +9,6 @@
  * localhost:8080
  */
 
-export * from './defs/LoginDTO';
-export * from './defs/Principal';
-export * from './defs/ProjectDTO';
-export * from './defs/UserDTO';
+export interface Principal {
+  name?: string;
+}

@@ -14,19 +14,31 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 export class LoginComponent implements OnInit {
 
   loginDto : LoginDTO = {};
-
-  constructor(private authService : AuthenticationService) {
-  }
-
-  login() {
-    this.authService.login(this.loginDto.email!, this.loginDto.password!);
-  }
-
-  error(){
   
+
+  constructor(private authService: AuthenticationService) {
   }
-  
+
   ngOnInit() {
+    sessionStorage.setItem('token', '');
   }
 
+  login(){
+    this.authService.login(this.loginDto.email!, this.loginDto.password!)
+  }
+
+  // login() {
+  //   this.publicService.login({loginDto:{email: this.loginDto.email, password:this.loginDto.password}}).subscribe
+  //     (isValid => {
+  //       if (isValid) {
+  //         sessionStorage.setItem(
+  //           'token',
+  //           btoa(this.loginDto.email + ':' + this.loginDto.password)
+  //         );
+  //         this.router.navigate(['/']);
+  //       } else {
+  //         alert("Authentication failed.")
+  //       }
+  //     });
+  // }
 }

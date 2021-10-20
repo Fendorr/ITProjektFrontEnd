@@ -15,8 +15,8 @@ export class APIInterceptor implements HttpInterceptor {
 
     //Header für Basic HTTP Authentication
     const headers = new HttpHeaders(this.user ? {
-      authorization: 'Basic ' + this.authenticationService.getAuthenticationHeader(),
-      'X-Requested-With': 'XMLHttpRequest'
+       authorization: 'Basic ' + this.authenticationService.getAuthenticationHeader(),
+       'X-Requested-With': 'XMLHttpRequest'
     } : {});
 
     const apiReq = req.clone({ url: `http://localhost:8080${req.url}`, headers: headers });
