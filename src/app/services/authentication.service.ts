@@ -13,8 +13,6 @@ export class AuthenticationService {
 
   private user: UserDTO = {};
   authenticated = false;
-  private emailForHeader: string;
-  private passwordForHeader: string;
 
   constructor(private publicService: PublicService, private router: Router, private userService: UserService) { }
 
@@ -26,11 +24,7 @@ export class AuthenticationService {
             'token',
             btoa(email + ':' + password)
           );
-        
           this.authenticated = true;
-          this.emailForHeader = email;
-          this.passwordForHeader = password;
-
           this.router.navigate(['/project']);
         } 
         else {
@@ -49,7 +43,5 @@ export class AuthenticationService {
     return this.user;
   }
 
-  getAuthenticationHeader(){
-    return btoa(this.emailForHeader + ':' + this.passwordForHeader);
-  }
+
 }
