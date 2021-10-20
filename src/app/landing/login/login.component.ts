@@ -24,21 +24,6 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.authService.login(this.loginDto.email!, this.loginDto.password!)
+    this.authService.login(this.loginDto.email!, this.loginDto.password!);
   }
-
-  // login() {
-  //   this.publicService.login({loginDto:{email: this.loginDto.email, password:this.loginDto.password}}).subscribe
-  //     (isValid => {
-  //       if (isValid) {
-  //         sessionStorage.setItem(
-  //           'token',
-  //           btoa(this.loginDto.email + ':' + this.loginDto.password)
-  //         );
-  //         this.router.navigate(['/']);
-  //       } else {
-  //         alert("Authentication failed.")
-  //       }
-  //     });
-  // }
 }

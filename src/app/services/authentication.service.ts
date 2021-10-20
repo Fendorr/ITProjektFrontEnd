@@ -22,12 +22,11 @@ export class AuthenticationService {
     this.publicService.login({ loginDto: { email: email, password: password } }).subscribe
       (isValid => {
         if (isValid) {
-          // sessionStorage.setItem(
-          //   'token',
-          //   btoa(email + ':' + password)
-          // );
+          sessionStorage.setItem(
+            'token',
+            btoa(email + ':' + password)
+          );
         
-
           this.authenticated = true;
           this.emailForHeader = email;
           this.passwordForHeader = password;
@@ -50,6 +49,6 @@ export class AuthenticationService {
   }
 
   getAuthenticationHeader(){
-    return btoa(this.emailForHeader + ':' + this.passwordForHeader)
+    return btoa(this.emailForHeader + ':' + this.passwordForHeader);
   }
 }
