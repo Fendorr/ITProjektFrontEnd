@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    sessionStorage.setItem('token', '');
+    
   }
 
   login(){

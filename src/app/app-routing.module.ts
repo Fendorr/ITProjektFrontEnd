@@ -31,11 +31,11 @@ const routes: Routes = [
   { path: 'profilesettings/:id', component: ProfileSettingsComponent, canActivate: [AuthGuard] },
   { path: 'projects', component: ProjectsListComponent },
   {
-    path: 'project', component: ProjectComponent,
+    path: 'project', component: ProjectComponent, 
     children: [
       { path: '', component: StartprojectComponent, canActivate: [AuthGuard] },
       { path: 'new', component: NewProjectComponent, canActivate: [AuthGuard] },
-      { path: ':id', component: ProjectDetailComponent },
+      { path: ':id', component: ProjectDetailComponent, canActivate: [AuthGuard] },
     ]
   },
 ];

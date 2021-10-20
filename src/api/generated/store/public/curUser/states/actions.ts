@@ -11,6 +11,7 @@
 
 import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
+import {CurUserParams} from '../../../../controllers/Public';
 import * as __model from '../../../../model';
 
 export enum Actions {
@@ -21,7 +22,7 @@ export enum Actions {
 
 export class Start implements Action {
   readonly type = Actions.START;
-  constructor() {}
+  constructor(public payload: CurUserParams) {}
 }
 
 export class Success implements Action {

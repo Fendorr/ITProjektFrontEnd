@@ -12,7 +12,7 @@ import { UserDTO } from 'src/api/generated/defs/UserDTO';
 export class AuthenticationService {
 
   private user: UserDTO = {};
-  private authenticated = false;
+  authenticated = false;
   private emailForHeader: string;
   private passwordForHeader: string;
 
@@ -31,10 +31,11 @@ export class AuthenticationService {
           this.emailForHeader = email;
           this.passwordForHeader = password;
 
-          this.router.navigate(['/']);
+          this.router.navigate(['/project']);
         } 
         else {
           this.authenticated = false;
+          this.router.navigate(['/']);
           alert("Authentication failed.")
         }
       });
