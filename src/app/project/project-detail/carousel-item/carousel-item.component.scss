@@ -1,27 +1,32 @@
 .mat-card {
-    width: 250px;
-    height: 300px;
+    width: 160px;
+    height: 220px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-color: rgb(240, 240, 240);
-    border-radius: 20px;
+    background-color: #FAC6D8;
+    border-radius: 8px;
     padding: 5px;
     margin: 7px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    font-size: .8rem;
 
     h3 {
         margin: 0;
+        font-size: .8rem;
+        text-transform: uppercase;
     }
 
     .buttonbox {
-
+        margin-top: 5px;
         width: 94%;
 
         button {
             width: 100%;
             margin-bottom: 6px;
+            font-size: .8rem;
+            padding: 0px !important;
         }
 
         .accept {
@@ -41,11 +46,31 @@
         }
     }
 
+    img {
+        background-color: #FFF;
+        width: 80px;
+        height: 80px;
+        border: 3px solid #F94082;
+        box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+        margin-bottom: 5px;
+    }
+
+    ::ng-deep .mat-standard-chip {
+        padding: 4px 6px;
+        min-height: 20px;
+        border-radius: 12px;
+    }
+
+}
+
+.mat-card:hover {
+    transform: scale(1.05);
 }
 
 
-.mat-card-avatar {
-    height: 80px;
-    width: 80px;
-}
+// .mat-card-avatar {
+//     height: 80px;
+//     width: 80px;
+// }
 

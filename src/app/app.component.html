@@ -1,8 +1,11 @@
-<mat-toolbar color="primary">
+<mat-toolbar>
   <button mat-flat-button id="menu_button" color="primary" (click)="opened=!opened">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>Projekt-Finder</span>
+  <div class="home-button" [routerLink]="['/projects']">
+    <img id="nav-logo" src="../assets/Profi_logo_nav.png" alt="Projektfinder logo">
+    <span>ProFi</span>
+  </div>
   <span class="example-spacer"></span>
 </mat-toolbar>
 

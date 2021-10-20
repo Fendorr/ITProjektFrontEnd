@@ -8,14 +8,14 @@ h1 {
 }
 
 .content {
-    border-radius: 20px;
+    border-radius: 5px;
     padding: 10px;
     height: 100%;
     //background-color: rgb(250, 250, 250);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
-    h2 {
-        margin-top: 10px;
+    .title {
+        text-transform: uppercase;
     }
 }
 
@@ -51,4 +51,125 @@ h1 {
     display: flex;
     flex-direction: row;
     overflow-y: scroll;
+}
+
+.members-array {
+    padding: 0;
+
+    .member-array-flex {
+        display: flex;
+        flex-direction: row;
+        border-right: 3px solid #000;
+    }
+
+    .member-card {
+        background-color: #FAC6D8;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 10px;
+        padding: 5px;
+        width: 100px;
+        height: 130px;
+        font-size: .8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+        img {
+            background-color: #FFF;
+            width: 80px;
+            height: 80px;
+            border: 3px solid #F94082;
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            margin-bottom: 5px;
+        }
+    
+        span {
+            text-align: center;
+            text-transform: uppercase;
+        }
+    }
+
+    .member-card:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+}
+
+.members-array .admin {
+    background-color: rgb(255, 195, 104);
+
+    img {
+        border: 3px solid rgb(253, 164, 30); 
+    }
+}
+
+.members-array .professor {
+    background-color: rgb(129, 207, 109);
+
+    img {
+        border: 3px solid rgb(37, 172, 32); 
+    }
+}
+
+.like-list {
+    padding: 0;
+
+    .like-list-item {
+        background-color: #FAC6D8;
+        position: relative;
+        list-style-type: none;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 5px 10px;
+        margin-bottom: 5px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+        mat-icon {
+            color: #F94082;
+            margin-right: 10px;
+        }
+
+        img {
+            width: 35px;
+            height: 35px;
+            background-color: #FFF;
+            border: 3px solid #F94082;
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        button {
+            position: absolute;
+            right: 10px;
+            background-color: #F94082;
+            color: #FFF;
+        }
+    }
+
+    :hover {
+        transform: scale(1.01);
+
+    }
+}
+
+//Customizing des Material Steppers für die Projektphasen
+mat-stepper {
+    background: none;
+}
+::ng-deep .mat-stepper-horizontal .mat-step-header {
+    padding: 0px 12px;
+    height: auto;
+    border-radius: 5px;
+}
+::ng-deep .mat-horizontal-content-container {
+    padding-bottom: 5px !important;
+}
+::ng-deep .mat-stepper-horizontal-line {
+    margin: 0 -8px !important;
 }
