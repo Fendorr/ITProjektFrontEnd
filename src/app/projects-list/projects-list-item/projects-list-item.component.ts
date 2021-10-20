@@ -8,6 +8,12 @@ import { ProjectDTO } from 'src/api/generated/defs/ProjectDTO';
   styles: [`
     mat-card {
       margin-bottom: 20px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
+    }
+
+    mat-card:hover {
+      cursor: pointer;
+      transform: scale(1.01);
     }
 
     mat-card-subtitle {

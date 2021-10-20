@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-9 p-2">
             <div class="content">
-                <h2>{{ project?.title }}</h2>
+                <h2 class="title">{{ project?.title }}</h2>
                 <p>Erstellt: {{project?.createdAt?.slice(0,10)}} von {{ project?.createdBy }} </p>
             </div>
         </div>
@@ -28,6 +28,65 @@
                     </mat-progress-spinner> 
                 </div>
                 <p class="member-count">{{project?.currUser}}/{{project?.maxUser}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 p2">
+            <div class="content phase">
+                <h2>Projektphase</h2>
+                <mat-stepper linear="isLinear">
+                    <mat-step>
+                        <ng-template matStepLabel>Private Phase</ng-template>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Public Phase</ng-template>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Acceptance Phase</ng-template>
+                    </mat-step>
+                    <mat-step>
+                        <ng-template matStepLabel>Launch Phase</ng-template>
+                    </mat-step>
+                </mat-stepper>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 p-2">
+            <div class="content">
+                <h2>Mitglieder</h2>
+                <div class="container members-array">
+                    <div class="row">
+                        <div class="col-9 member-array-flex">
+                            <div class="member-card admin">
+                                <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/12345.svg'>
+                                <span>Member Name</span>
+                            </div>
+
+                            <div class="member-card">
+                                <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/12384.svg'>
+                                <span>Member Name</span>
+                            </div>
+
+                            <div class="member-card">
+                                <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/19283.svg'>
+                                <span>Member Name</span>
+                            </div>
+
+                            <div class="member-card">
+                                <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/98347.svg'>
+                                <span>Member Name</span>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="member-card professor">
+                                <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/01938.svg'>
+                                <span>Professor Name</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -60,7 +119,27 @@
     <div class="row">
         <div class="col-12 p-2">
             <div class="content">
-                Hier kommt eine Liste der Leute hin, die das Projekt immerhin geliked haben (Normaler Like)
+                <h2>Leute, denen dein Projekt gefällt</h2>
+                <ul class="like-list">
+                    <li class="like-list-item">
+                        <mat-icon>favorite</mat-icon>
+                        <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/asfjlkajfd.svg'>
+                        <span>Member Name</span>
+                        <button mat-button>Einladen</button>
+                    </li>
+                    <li class="like-list-item">
+                        <mat-icon>favorite</mat-icon>
+                        <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/aslkcjle.svg'>
+                        <span>Member Name</span>
+                        <button mat-button>Einladen</button>
+                    </li>
+                    <li class="like-list-item">
+                        <mat-icon>favorite</mat-icon>
+                        <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/asdioe.svg'>
+                        <span>Member Name</span>
+                        <button mat-button>Einladen</button>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

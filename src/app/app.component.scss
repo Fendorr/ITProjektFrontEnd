@@ -2,14 +2,27 @@
 $primary: #3F51B5;
 $accent: #FF4081;
 
+#nav-logo {
+    width: 60px;
+    height: auto;
+    margin-left: 100px;
+}
+
+.home-button:hover {
+    cursor: pointer;
+}
 
 .spacer {
     display: block;
 }
 
 mat-toolbar {
+    background-color: #222;
+
     span {
-        margin-left: 80px;
+        margin-left: 20px;
+        letter-spacing: 4px;
+        color: #fff;
     }
 }
 
@@ -48,7 +61,7 @@ nav ul {
     }
 
     li:hover {
-        background-color: $primary;
+        background-color: #6046A2;
         cursor: pointer;
 
         a {
@@ -60,4 +73,5 @@ nav ul {
 
 #menu_button {
     position: fixed;
+    background-color: #6046A2 !important;
 }
