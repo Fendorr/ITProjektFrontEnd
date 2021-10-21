@@ -9,15 +9,11 @@
  * localhost:8080
  */
 
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 
 import * as __model from '../model';
-
-export interface CurUserParams {
-  name?: string;
-}
 
 export interface LoginParams {
   /** loginDto */
@@ -36,24 +32,11 @@ export class PublicService {
   constructor(private http: HttpClient) {}
 
   /**
-   * user
-   * http://localhost:8080/swagger/swagger-ui.html#!/public-controller/userUsingGET
+   * currentUser
+   * http://localhost:8080/swagger/swagger-ui.html#!/public-controller/currentUserUsingGET
    */
-  curUser(params: CurUserParams): Observable<__model.Principal> {
-    const queryParamBase = {
-      name: params.name,
-    };
-
-    let queryParams = new HttpParams();
-    Object.entries(queryParamBase).forEach(([key, value]: [string, any]) => {
-      if (value !== undefined) {
-        if (typeof value === 'string') queryParams = queryParams.set(key, value);
-        else if (Array.isArray(value)) value.forEach(v => queryParams = queryParams.append(key, v));
-        else queryParams = queryParams.set(key, JSON.stringify(value));
-      }
-    });
-
-    return this.http.get<__model.Principal>(`/api/curUser/`, {params: queryParams});
+  curUser(): Observable<__model.UserDTO> {
+    return this.http.get<__model.UserDTO>(`/api/curUser/`);
   }
 
   /**

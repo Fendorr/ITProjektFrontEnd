@@ -10,6 +10,5 @@
  */
 
 export * from './defs/LoginDTO';
-export * from './defs/Principal';
 export * from './defs/ProjectDTO';
 export * from './defs/UserDTO';

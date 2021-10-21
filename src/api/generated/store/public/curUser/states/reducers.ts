@@ -16,7 +16,7 @@ import * as __model from '../../../../model';
 import * as actions from './actions';
 
 export interface CurUserState {
-  data: __model.Principal | null;
+  data: __model.UserDTO | null;
   loading: boolean;
   error: HttpErrorResponse | null;
 }

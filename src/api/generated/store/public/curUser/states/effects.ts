@@ -24,7 +24,7 @@ export class CurUserEffects {
   @Effect()
   CurUser = this.storeActions.pipe(
     ofType<actions.Start>(actions.Actions.START),
-    switchMap((action: actions.Start) => this.publicService.curUser(action.payload)
+    switchMap(() => this.publicService.curUser()
       .pipe(
         map(result => new actions.Success(result)),
         catchError((error: HttpErrorResponse) => of(new actions.Error(error))),

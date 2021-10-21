@@ -45,8 +45,6 @@ export class AuthenticationService {
   }
 
   getLoggedInUser() {
-    //this.publicService.curUser().subscribe(response => this.user = response) //TODO BACKEND BEREITSTELLEN
+    this.publicService.curUser().subscribe(response => this.user = response)
   }
-
-
 }

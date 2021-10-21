@@ -15,7 +15,6 @@ import {StoreModule as NgrxStoreModule} from '@ngrx/store';
 
 import {PublicService} from '../../../controllers/Public';
 import {FormsSharedModule} from '../../forms-shared.module';
-import {CurUserFormService} from './curUser.service';
 
 import {CurUserEffects} from './states/effects';
 import {CurUserReducer} from './states/reducers';
@@ -29,7 +28,6 @@ import {selectorName} from './states/reducers';
   ],
   providers: [
     PublicService,
-    CurUserFormService,
   ],
 })
 export class CurUserModule {}
