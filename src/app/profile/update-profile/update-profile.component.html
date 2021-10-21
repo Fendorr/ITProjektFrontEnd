@@ -1,22 +1,11 @@
 <div class="container">
-  <h1>Profil bearbeiten</h1>
+  <h1>ProfilUpdateComponent</h1>
   <div class="default-flex-container">
+    
     <mat-form-field appearance="legacy">
-      <mat-label>E-Mail</mat-label>
-      <input type="email" matInput [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
-    <mat-form-field appearance="legacy">
-      <mat-label>Vorname</mat-label>
-      <input type="text" matInput [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
-    <mat-form-field appearance="legacy">
-      <mat-label>Nachname</mat-label>
+      <mat-label>updateprofilecomponent</mat-label>
       <input type="text" matInput [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
-    <mat-form-field appearance="legacy">
-      <mat-label>Passwort</mat-label>
-      <input type="password" name="password" matInput [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
-    <button mat-raised-button color="accent" type="submit" (click)="updateUser(this.user.id, this.user)">Änderungen übernehmen</button>
+
   </div>
 </div>
