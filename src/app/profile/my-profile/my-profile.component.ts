@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { UserService } from 'src/api/generated/controllers/User';
+import { LoginDTO } from 'src/api/generated/defs/LoginDTO';
 import { UserDTO } from 'src/api/generated/defs/UserDTO';
 
 @Component({
@@ -10,6 +11,7 @@ import { UserDTO } from 'src/api/generated/defs/UserDTO';
 })
 export class MyProfileComponent implements OnInit {
 
+  loginDto: LoginDTO = {}
   user : UserDTO = {};
   
   constructor(

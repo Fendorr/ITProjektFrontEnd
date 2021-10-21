@@ -16,7 +16,7 @@
     </mat-form-field>
     <mat-form-field appearance="legacy">
       <mat-label>Passwort</mat-label>
-      <input type="password" disabled matInput [(ngModel)]="this.user.password" [ngModelOptions]="{standalone: true}">
+      <input type="password" disabled matInput [(ngModel)]="this.loginDto.password" [ngModelOptions]="{standalone: true}">
       <!--TODO: Hier passwort einbinden!-->
     </mat-form-field>
     <button mat-raised-button color="accent" type="submit" [routerLink]="['/profile/', user.id || 1, 'update']">Profil bearbeiten</button>

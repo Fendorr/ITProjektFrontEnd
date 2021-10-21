@@ -51,14 +51,6 @@ export class ProjectService {
   constructor(private http: HttpClient) {}
 
   /**
-   * getAllProjects
-   * http://localhost:8080/swagger/swagger-ui.html#!/project-controller/getAllProjectsUsingGET
-   */
-  getAllProjectsUsingGET(): Observable<__model.ProjectDTO[]> {
-    return this.http.get<__model.ProjectDTO[]>(`/api/project/`);
-  }
-
-  /**
    * postProject
    * http://localhost:8080/swagger/swagger-ui.html#!/project-controller/postProjectUsingPOST
    */

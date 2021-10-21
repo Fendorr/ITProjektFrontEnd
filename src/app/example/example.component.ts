@@ -16,7 +16,7 @@ export class ExampleComponent implements OnInit {
    this.exampleGetAll();
   }
   exampleGetAll(){
-    this._projectService.getAllProjectsUsingGET().subscribe(response => this.projects = response)
+    //this._projectService.getAllProjectsUsingGET().subscribe(response => this.projects = response)
   }
   exampleDelete(id : number){
     this._projectService.deleteProjectUsingDELETE({id: id}).subscribe(response => console.log(response))

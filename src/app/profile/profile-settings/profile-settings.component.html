@@ -20,7 +20,7 @@
       </mat-form-field>
       <mat-form-field appearance="legacy">
         <mat-label>Passwort</mat-label>
-        <input type="password" disabled matInput [(ngModel)]="this.user.password" [ngModelOptions]="{standalone: true}">
+        <input type="password" disabled matInput [(ngModel)]="this.loginDto.password" [ngModelOptions]="{standalone: true}">
         <!--TODO: Hier passwort einbinden!-->
       </mat-form-field>
       <button mat-raised-button color="accent" type="submit" (click)="show=false">Profilfelder bearbeiten</button>
@@ -42,7 +42,7 @@
       </mat-form-field>
       <mat-form-field appearance="legacy">
         <mat-label>Passwort bearbeitein</mat-label>
-        <input type="password" matInput [(ngModel)]="this.user.password" [ngModelOptions]="{standalone: true}">
+        <input type="password" matInput [(ngModel)]="this.loginDto.password" [ngModelOptions]="{standalone: true}">
         <!--TODO: Hier passwort einbinden!-->
       </mat-form-field>
       <button mat-raised-button color="accent" type="submit" (click)="show=true">Abbrechen</button>

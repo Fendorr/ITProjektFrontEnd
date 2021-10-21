@@ -14,9 +14,9 @@ import {Action} from '@ngrx/store';
 import * as __model from '../../../../model';
 
 export enum Actions {
-  START = '[Project getAllProjectsUsingGET] Start',
-  SUCCESS = '[Project getAllProjectsUsingGET] Success',
-  ERROR = '[Project getAllProjectsUsingGET] Error',
+  START = '[Public curUser] Start',
+  SUCCESS = '[Public curUser] Success',
+  ERROR = '[Public curUser] Error',
 }
 
 export class Start implements Action {
@@ -26,7 +26,7 @@ export class Start implements Action {
 
 export class Success implements Action {
   readonly type = Actions.SUCCESS;
-  constructor(public payload: __model.ProjectDTO[]) {}
+  constructor(public payload: __model.UserDTO) {}
 }
 
 export class Error implements Action {
@@ -34,4 +34,4 @@ export class Error implements Action {
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type GetAllProjectsUsingGETAction = Start | Success | Error;
+export type CurUserAction = Start | Success | Error;

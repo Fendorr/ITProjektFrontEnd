@@ -15,11 +15,6 @@ import {Observable} from 'rxjs';
 
 import * as __model from '../model';
 
-export interface PostUserUsingPOSTParams {
-  /** userDto */
-  userDto: __model.UserDTO;
-}
-
 export interface GetUserByIdUsingGETParams {
   /**
    * id
@@ -34,8 +29,8 @@ export interface UpdateUserUsingPUTParams {
    * format: int64
    */
   id: number;
-  /** user */
-  user: __model.UserDTO;
+  /** userDto */
+  userDto: __model.UserDTO;
 }
 
 export interface DeleteUserUsingDELETEParams {
@@ -59,16 +54,6 @@ export class UserService {
   }
 
   /**
-   * postUser
-   * http://localhost:8080/swagger/swagger-ui.html#!/user-controller/postUserUsingPOST
-   */
-  postUserUsingPOST(params: PostUserUsingPOSTParams): Observable<string> {
-    const bodyParams = params.userDto;
-
-    return this.http.post<string>(`/api/user/`, bodyParams || {});
-  }
-
-  /**
    * getUserById
    * http://localhost:8080/swagger/swagger-ui.html#!/user-controller/getUserByIdUsingGET
    */
@@ -87,7 +72,7 @@ export class UserService {
     const pathParams = {
       id: params.id,
     };
-    const bodyParams = params.user;
+    const bodyParams = params.userDto;
 
     return this.http.put<void>(`/api/user/${pathParams.id}`, bodyParams || {});
   }
