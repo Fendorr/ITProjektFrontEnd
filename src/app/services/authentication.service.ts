@@ -35,12 +35,17 @@ export class AuthenticationService {
       });
   }
 
+  logout(){
+    sessionStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
+
   isLoggedIn() {
     return this.authenticated;
   }
 
-  getCurrentUser() {
-    return this.user; //TODO Implement 
+  getLoggedInUser() {
+    //this.publicService.curUser().subscribe(response => this.user = response) //TODO BACKEND BEREITSTELLEN
   }
 
 

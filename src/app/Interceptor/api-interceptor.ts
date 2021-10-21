@@ -13,13 +13,25 @@ export class APIInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    //Header für Basic HTTP Authentication
-    const headers = new HttpHeaders(this.user ? {
-       authorization: 'Basic ' + sessionStorage.getItem('token'),
-       'X-Requested-With': 'XMLHttpRequest'
-    } : {});
+    if (this.authenticationService.isLoggedIn()) {
+      //Header für Basic HTTP Authentication
+      const headers = new HttpHeaders(this.user ? {
+        authorization: 'Basic ' + sessionStorage.getItem('token'),
+        'X-Requested-With': 'XMLHttpRequest'
+      } : {});
 
-    const apiReq = req.clone({ url: `http://localhost:8080${req.url}`, headers: headers });
-    return next.handle(apiReq);
+      const loggedInReq = req.clone({ url: `http://localhost:8080${req.url}`, headers: headers });
+      return next.handle(loggedInReq);
+    }
+
+    else{
+      const headers = new HttpHeaders(this.user ? {
+        'X-Requested-With': 'XMLHttpRequest'
+      } : {});
+
+      const apiReq = req.clone({ url: `http://localhost:8080${req.url}`, headers: headers });
+      return next.handle(apiReq);
+    }
+
   }
 }

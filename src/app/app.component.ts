@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -10,23 +11,18 @@ import { finalize } from 'rxjs/operators';
 })
 
 export class AppComponent implements OnInit {
-  title = 'bootstrapSwaggerGenExample';
   opened = false;
-  userName = "Rainer" //Später dynamisch eingeloggten Nutzernamen 
+  isLoggedIn: Boolean;
 
-  // constructor(private app: AppService, private http: HttpClient, private router: Router) {
-  //   this.app.authenticate(undefined, undefined);
-  // }
-  // logout() {
-  //   this.http.post('logout', {}).pipe(finalize(() => {
-  //       this.app.authenticated = false;
-  //       this.router.navigateByUrl('/login');
-  //   })).subscribe();
-  // }
-
-  logout() { }
-
-  ngOnInit() {
-    //TODO ich bin mir nicht ganz sicher aber ich denke der Nutzername (userName) sollte hier gefetched werden...
+  constructor(private authService: AuthenticationService, private router: Router) {
   }
+
+  ngOnInit(): void {
+    
+  }
+
+  logout() {
+    this.authService.logout();
+   }
 }
+
