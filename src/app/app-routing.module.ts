@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './landing/login/login.component';
 import { RegisterComponent } from './landing/register/register.component';
+import { LikedProjectsListComponent } from './liked-projects-list/liked-projects-list.component';
 import { MyProfileComponent } from './profile/my-profile/my-profile.component';
 import { ProfileSettingsComponent } from './profile/profile-settings/profile-settings.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -17,12 +18,15 @@ import { ProjectsListComponent } from './projects-list/projects-list.component';
 
 
 const routes: Routes = [
-  { path: '', component: LandingComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
 
+  { path: '', component: LandingComponent},
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
+  { path: 'likes', component: LikedProjectsListComponent, canActivate: [AuthGuard] },
+  
   {
     path: 'profile', component: ProfileComponent, canActivate: [AuthGuard],
+
     children: [
       { path: ':id', component: MyProfileComponent, canActivate: [AuthGuard] },
       { path: ':id/update', component: UpdateProfileComponent, canActivate: [AuthGuard] },

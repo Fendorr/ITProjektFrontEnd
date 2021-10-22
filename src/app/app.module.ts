@@ -27,8 +27,20 @@ import { MyProfileComponent } from'./profile/my-profile/my-profile.component';
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 import { CarouselItemComponent } from './project/project-detail/carousel-item/carousel-item.component';
 import { ProfileSettingsComponent } from './profile/profile-settings/profile-settings.component';
+
+import { LikedProjectsListComponent } from './liked-projects-list/liked-projects-list.component';
+import { LikedProjectsItemComponent } from './liked-projects-list/liked-projects-item/liked-projects-item.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MainNavComponent } from './main-nav/main-nav.component';
+
 import { AuthGuard } from './services/auth.guard';
 import { PublicService } from 'src/api/generated/controllers/Public';
+
 @NgModule({
   declarations: [		 
     AppComponent,
@@ -46,7 +58,10 @@ import { PublicService } from 'src/api/generated/controllers/Public';
     ProfileSettingsComponent,
     UpdateProfileComponent,
     ProjectDetailComponent,
-    CarouselItemComponent
+    CarouselItemComponent,
+    LikedProjectsListComponent,
+    LikedProjectsItemComponent,
+    MainNavComponent,
    ],
   imports: [
     BrowserModule,
@@ -54,7 +69,13 @@ import { PublicService } from 'src/api/generated/controllers/Public';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [
     {
