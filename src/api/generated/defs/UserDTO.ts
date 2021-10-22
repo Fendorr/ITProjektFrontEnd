@@ -20,8 +20,8 @@ export interface UserDTO {
   /** format: int64 */
   id?: number;
   lastName?: string;
-  password?: string;
   type?: TypeUserDTOEnum;
+  likedProjects?: number[];
 }
 
 export type TypeUserDTOEnum =

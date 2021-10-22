@@ -1,0 +1,47 @@
+<mat-toolbar>
+  <button class="menu-button" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <div class="home-button" [routerLink]="['/projects']">
+    <img id="nav-logo" src="../assets/Profi_logo_nav.png" alt="Projektfinder logo">
+    <span>ProFi</span>
+  </div>
+  <div class="login" *ngIf="!this.authService.isLoggedIn" [routerLink]="['/login']">
+    <mat-icon>account_circle</mat-icon>
+    Login
+  </div>
+  <div class="login" *ngIf="this.authService.isLoggedIn" (click)="logout()">
+    <mat-icon>account_circle</mat-icon>
+    Logout
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-nav-list>
+      <nav>
+        <ul>
+          <li routerLinkActive="active" [routerLink]="['/projects']">
+            <mat-icon>supervisor_account</mat-icon>Projekte finden
+          </li>
+          <li routerLinkActive="active" [routerLink]="['/project']">
+            <mat-icon>work</mat-icon>Mein Projekt
+          </li>
+          <li routerLinkActive="active" [routerLink]="['/likes']">
+            <mat-icon>favorite</mat-icon>Meine Favoriten
+          </li>
+          <li routerLinkActive="active" [routerLink]="['/profile/']">
+            <mat-icon>face</mat-icon>Mein Profil
+          </li>
+          <li routerLinkActive="active" [routerLink]="['profilesettings/']">
+            <mat-icon>settings</mat-icon>Einstellungen
+          </li>
+        </ul>
+      </nav>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

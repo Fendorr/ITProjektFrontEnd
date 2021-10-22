@@ -1,13 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 /* Hier alle styles einbringen die global im gesamten Projekt genutzt werden sollen */
-
-
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .default-flex-container{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+  
+.container {
+    margin-top: 30px;
+}
+
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { UserService } from 'src/api/generated/controllers/User';
 import { UserDTO } from 'src/api/generated/defs/UserDTO';
+import { LoginDTO } from 'src/api/generated/model';
 
 @Component({
   selector: 'app-profile-settings',
@@ -10,8 +11,9 @@ import { UserDTO } from 'src/api/generated/defs/UserDTO';
 })
 export class ProfileSettingsComponent implements OnInit {
 
-  user: UserDTO = {};
-  show: boolean;
+  loginDto: LoginDTO = {}
+  user : UserDTO = {};
+  show : boolean;
 
   constructor(
     private userService: UserService,

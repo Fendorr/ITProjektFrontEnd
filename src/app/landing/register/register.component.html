@@ -6,22 +6,13 @@
       <input type="email" matInput required [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
     <mat-form-field appearance="legacy">
-      <mat-label>Vorname</mat-label>
-      <input type="text" matInput required [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
-    <mat-form-field appearance="legacy">
-      <mat-label>Nachname</mat-label>
-      <input type="text" matInput required [(ngModel)]="user.lastName" [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
-    <mat-form-field appearance="legacy">
       <mat-label>Passwort</mat-label>
-      <input type="password" matInput required [(ngModel)]="user.firstName" [ngModelOptions]="{standalone: true}">
-      <!--TODO: Hier passwort einbinden!-->
+      <input type="password" matInput required [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
     <mat-form-field appearance="legacy">
       <mat-label>Profilart</mat-label>
-      <mat-select [(ngModel)]="user.type" [ngModelOptions]="{standalone: true}" required>
-        <mat-option *ngFor="let type of keys" [value]="type">{{type}}
+      <mat-select [(ngModel)]="types" [ngModelOptions]="{standalone: true}" required>
+        <mat-option *ngFor="let type of types" [value]="type">{{type}}
         </mat-option>
       </mat-select>
     </mat-form-field>

@@ -12,26 +12,27 @@
 import {createFeatureSelector} from '@ngrx/store';
 
 import {HttpErrorResponse} from '@angular/common/http';
+import * as __model from '../../../../model';
 import * as actions from './actions';
 
-export interface PostUserUsingPOSTState {
-  data: string | null;
+export interface ProjectState {
+  data: __model.ProjectDTO[] | null;
   loading: boolean;
   error: HttpErrorResponse | null;
 }
 
-export const initialPostUserUsingPOSTState: PostUserUsingPOSTState = {
+export const initialProjectState: ProjectState = {
   data: null,
   loading: false,
   error: null,
 };
 
-export const selectorName = 'User_PostUserUsingPOST';
-export const getPostUserUsingPOSTStateSelector = createFeatureSelector<PostUserUsingPOSTState>(selectorName);
+export const selectorName = 'Public_Project';
+export const getProjectStateSelector = createFeatureSelector<ProjectState>(selectorName);
 
-export function PostUserUsingPOSTReducer(
-  state: PostUserUsingPOSTState = initialPostUserUsingPOSTState,
-  action: actions.PostUserUsingPOSTAction): PostUserUsingPOSTState {
+export function ProjectReducer(
+  state: ProjectState = initialProjectState,
+  action: actions.ProjectAction): ProjectState {
   switch (action.type) {
     case actions.Actions.START: return {...state, loading: true, error: null};
     case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};

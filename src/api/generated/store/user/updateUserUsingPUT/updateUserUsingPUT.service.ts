@@ -21,7 +21,7 @@ export class UpdateUserUsingPUTFormService {
   ) {
     this.form = new FormGroup({
       id: new FormControl(undefined, [Validators.required]),
-      user: new FormGroup({
+      userDto: new FormGroup({
         activeProject: new FormControl(undefined, []),
         createdAt: new FormControl(undefined, []),
         email: new FormControl(undefined, []),
@@ -29,7 +29,6 @@ export class UpdateUserUsingPUTFormService {
         firstName: new FormControl(undefined, []),
         id: new FormControl(undefined, []),
         lastName: new FormControl(undefined, []),
-        password: new FormControl(undefined, []),
         type: new FormControl(undefined, []),
       }, [Validators.required]),
     });

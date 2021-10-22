@@ -13,23 +13,21 @@ import {NgModule} from '@angular/core';
 import {EffectsModule as NgrxEffectsModule} from '@ngrx/effects';
 import {StoreModule as NgrxStoreModule} from '@ngrx/store';
 
-import {UserService} from '../../../controllers/User';
+import {PublicService} from '../../../controllers/Public';
 import {FormsSharedModule} from '../../forms-shared.module';
-import {PostUserUsingPOSTFormService} from './postUserUsingPOST.service';
 
-import {PostUserUsingPOSTEffects} from './states/effects';
-import {PostUserUsingPOSTReducer} from './states/reducers';
+import {ProjectEffects} from './states/effects';
+import {ProjectReducer} from './states/reducers';
 import {selectorName} from './states/reducers';
 
 @NgModule({
   imports: [
     FormsSharedModule,
-    NgrxStoreModule.forFeature(selectorName, PostUserUsingPOSTReducer),
-    NgrxEffectsModule.forFeature([PostUserUsingPOSTEffects]),
+    NgrxStoreModule.forFeature(selectorName, ProjectReducer),
+    NgrxEffectsModule.forFeature([ProjectEffects]),
   ],
   providers: [
-    UserService,
-    PostUserUsingPOSTFormService,
+    PublicService,
   ],
 })
-export class PostUserUsingPOSTModule {}
+export class ProjectModule {}
