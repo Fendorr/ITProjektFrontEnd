@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PublicService } from 'src/api/generated/controllers/Public';
 import { UserService } from 'src/api/generated/controllers/User';
 import { TypeUserDTOEnum, UserDTO } from 'src/api/generated/defs/UserDTO';
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
   types: TypeUserDTOEnum
   public password: string
 
-  constructor(private publicService : PublicService) { 
+  constructor(private publicService : PublicService, private router: Router) { 
   }
 
   ngOnInit(): void {
@@ -27,7 +28,10 @@ export class RegisterComponent implements OnInit {
 
   createUser(): void {
     console.log(this.user);
-    this.publicService.user({userDto:this.user, pw: this.password}).subscribe(user => console.log(user))
+    this.publicService.user({userDto:this.user, pw: this.password}).subscribe(user => {
+      this.router.navigate(['/login']),
+      console.log(user)
+    })
   }
 
 }

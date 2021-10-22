@@ -19,7 +19,7 @@ import { ProjectsListComponent } from './projects-list/projects-list.component';
 
 const routes: Routes = [
 
-  { path: '', component: LandingComponent},
+  { path: '', component: ProjectsListComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'likes', component: LikedProjectsListComponent, canActivate: [AuthGuard] },

@@ -10,6 +10,8 @@
  */
 
 export interface ProjectDTO {
+  /** format: int64 */
+  adminId?: number;
   comment?: string;
   /** format: date-time */
   createdAt?: string;
@@ -20,7 +22,12 @@ export interface ProjectDTO {
   id?: number;
   /** format: int32 */
   maxUser?: number;
+  members?: number[];
   note?: string;
+  /** format: int64 */
+  professorId?: number;
+  projectApplicants?: number[];
+  projectLikes?: number[];
   subTitle?: string;
   tags?: string[];
   title?: string;

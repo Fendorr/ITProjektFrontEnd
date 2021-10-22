@@ -13,7 +13,7 @@ export class APIInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (this.authenticationService.isLoggedIn()) {
+    if (this.authenticationService.isLoggedIn) {
       //Header für Basic HTTP Authentication
       const headers = new HttpHeaders(this.user ? {
         authorization: 'Basic ' + sessionStorage.getItem('token'),

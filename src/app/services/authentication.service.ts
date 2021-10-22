@@ -5,16 +5,17 @@ import { PublicService } from 'src/api/generated/controllers/Public';
 import { UserService } from 'src/api/generated/controllers/User';
 import { LoginDTO } from 'src/api/generated/defs/LoginDTO';
 import { UserDTO } from 'src/api/generated/defs/UserDTO';
+import { MainNavComponent } from '../main-nav/main-nav.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  private user: UserDTO = {};
-  authenticated = false;
+  user: UserDTO = {};
+  loggedIn = false;
 
-  constructor(private publicService: PublicService, private router: Router, private userService: UserService) { }
+  constructor(private publicService: PublicService, private router: Router) { }
 
   login(email: string, password: string) {
     this.publicService.login({ loginDto: { email: email, password: password } }).subscribe
@@ -24,11 +25,12 @@ export class AuthenticationService {
             'token',
             btoa(email + ':' + password)
           );
-          this.authenticated = true;
+          
+          this.loggedIn = true;
           this.router.navigate(['/project']);
         } 
         else {
-          this.authenticated = false;
+          this.loggedIn = false;
           this.router.navigate(['/']);
           alert("Authentication failed.")
         }
@@ -37,14 +39,16 @@ export class AuthenticationService {
 
   logout(){
     sessionStorage.removeItem('token');
+    this.loggedIn = false;
     this.router.navigate(['/login']);
   }
 
-  isLoggedIn() {
-    return this.authenticated;
+  get isLoggedIn() {
+    return this.loggedIn;
   }
 
   getLoggedInUser() {
     this.publicService.curUser().subscribe(response => this.user = response)
+    return this.user;
   }
 }

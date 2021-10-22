@@ -22,13 +22,21 @@ export class PostProjectUsingPOSTFormService {
   ) {
     this.form = new FormGroup({
       project: new FormGroup({
+        adminId: new FormControl(undefined, []),
         comment: new FormControl(undefined, []),
         createdAt: new FormControl(undefined, []),
         createdBy: new FormControl(undefined, []),
         currUser: new FormControl(undefined, []),
         id: new FormControl(undefined, []),
         maxUser: new FormControl(undefined, []),
+        members: new FormArrayExtended(() => (
+          new FormControl(undefined, [])), [], []),
         note: new FormControl(undefined, []),
+        professorId: new FormControl(undefined, []),
+        projectApplicants: new FormArrayExtended(() => (
+          new FormControl(undefined, [])), [], []),
+        projectLikes: new FormArrayExtended(() => (
+          new FormControl(undefined, [])), [], []),
         subTitle: new FormControl(undefined, []),
         tags: new FormArrayExtended(() => (
           new FormControl(undefined, [])), [], []),

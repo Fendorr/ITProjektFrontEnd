@@ -5,60 +5,7 @@ import { ProjectDTO } from 'src/api/generated/defs/ProjectDTO';
 @Component({
   selector: 'app-projects-list-item',
   templateUrl: './projects-list-item.component.html',
-  styles: [`
-    mat-card {
-      margin-bottom: 20px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
-    }
-
-    mat-card:hover {
-      cursor: pointer;
-      transform: scale(1.01);
-    }
-
-    mat-card-subtitle {
-      margin-bottom: 5px;
-    }
-
-    .mat-standard-chip {
-      min-height: 26px;
-    }
-
-    mat-chip {
-      font-size: 12px;
-      padding: 2px 10px;
-    }
-
-    mat-card-content {
-      margin: 5px 0 5px;
-    }
-
-    mat-card-actions {
-      padding: 0;
-      display: flex;
-      justify-content: space-between;
-
-      div {
-        display: flex;
-        flex-direction: row;
-        
-        h3 {
-          margin-left: 10px;
-        }
-      }
-    }
-
-    .mat-card-avatar {
-      height: 50px;
-      width: 60px;
-    }
-
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-    }
-
-  `]
+  styleUrls: ['./projects-list-item.component.scss']
 })
 export class ProjectsListItemComponent implements OnInit {
   @Input() project: ProjectDTO;
