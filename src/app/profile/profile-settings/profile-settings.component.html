@@ -26,7 +26,7 @@
       </mat-label>
       <input type="password" [disabled]="show" matInput [(ngModel)]="this.user.password"
         [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
+    </mat-form-field> 
 
     <div *ngIf="show"><button mat-raised-button color="accent" type="submit" (click)="show=!show">Profilfelder
         bearbeiten</button>
