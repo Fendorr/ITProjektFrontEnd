@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Meine Profileinstellungen</h1>
-
+  <h1>hi User mit der {{this.user.id}}</h1>
   <div class="default-flex-container">
 
     <mat-form-field appearance="legacy">
@@ -24,7 +24,7 @@
     <mat-form-field appearance="legacy">
       <mat-label>Passwort<span *ngIf="!show"> bearbeiten</span>
       </mat-label>
-      <input type="password" [disabled]="show" matInput [(ngModel)]="this.user.password"
+      <input type="password" [disabled]="show" matInput [(ngModel)]="this.loginDto.password"
         [ngModelOptions]="{standalone: true}">
     </mat-form-field> 
 
