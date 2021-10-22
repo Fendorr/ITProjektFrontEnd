@@ -16,23 +16,29 @@ export class ProfileSettingsComponent implements OnInit {
   show : boolean;
 
   constructor(
-    private userService : UserService,
+    private userService: UserService,
     private route: ActivatedRoute
-    ) {}
+  ) { }
 
   ngOnInit(): void {
     this.show = true;
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
-    this.userService.getUserByIdUsingGET({id}).subscribe(response => this.user = response);
+      this.userService.getUserByIdUsingGET({ id }).subscribe(response => this.user = response);
     });
   }
-
+  getUserAgain() {
+    this.show = true;
+    this.route.params.forEach((params: Params) => {
+      let id = +params['id'];
+      this.userService.getUserByIdUsingGET({ id }).subscribe(response => this.user = response);
+    });
+  }
   updateUser(id: number | undefined, newUser: UserDTO): void {
-    console.log(newUser);
-    // if (id) { //wenn id undefined --> if = false
-    //   this.userService.updateUserUsingPUT({ id: id, user: newUser }).subscribe(response => console.log(response))
-    // }
+    alert("Änderungen gespeichert");
+    if (id) { //wenn id undefined --> if = false
+      this.userService.updateUserUsingPUT({ id: id, user: newUser }).subscribe(response => console.log(response))
+    }
   }
 
 }
