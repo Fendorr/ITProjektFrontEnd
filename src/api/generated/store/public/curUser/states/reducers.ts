@@ -15,24 +15,24 @@ import {HttpErrorResponse} from '@angular/common/http';
 import * as __model from '../../../../model';
 import * as actions from './actions';
 
-export interface GetAllProjectsUsingGETState {
-  data: __model.ProjectDTO[] | null;
+export interface CurUserState {
+  data: __model.UserDTO | null;
   loading: boolean;
   error: HttpErrorResponse | null;
 }
 
-export const initialGetAllProjectsUsingGETState: GetAllProjectsUsingGETState = {
+export const initialCurUserState: CurUserState = {
   data: null,
   loading: false,
   error: null,
 };
 
-export const selectorName = 'Project_GetAllProjectsUsingGET';
-export const getGetAllProjectsUsingGETStateSelector = createFeatureSelector<GetAllProjectsUsingGETState>(selectorName);
+export const selectorName = 'Public_CurUser';
+export const getCurUserStateSelector = createFeatureSelector<CurUserState>(selectorName);
 
-export function GetAllProjectsUsingGETReducer(
-  state: GetAllProjectsUsingGETState = initialGetAllProjectsUsingGETState,
-  action: actions.GetAllProjectsUsingGETAction): GetAllProjectsUsingGETState {
+export function CurUserReducer(
+  state: CurUserState = initialCurUserState,
+  action: actions.CurUserAction): CurUserState {
   switch (action.type) {
     case actions.Actions.START: return {...state, loading: true, error: null};
     case actions.Actions.SUCCESS: return {...state, data: action.payload, loading: false};

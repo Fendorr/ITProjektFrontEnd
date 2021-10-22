@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './services/auth.guard';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './landing/login/login.component';
@@ -17,29 +18,35 @@ import { ProjectsListComponent } from './projects-list/projects-list.component';
 
 
 const routes: Routes = [
+
   { path: '', component: LandingComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'likes', component: LikedProjectsListComponent },
-  { path: 'profile', component: ProfileComponent,
+  { path: 'likes', component: LikedProjectsListComponent, canActivate: [AuthGuard] },
+  
+  {
+    path: 'profile', component: ProfileComponent, canActivate: [AuthGuard],
+
     children: [
-      { path: ':id', component: MyProfileComponent},
-      { path: ':id/update', component: UpdateProfileComponent},
+      { path: ':id', component: MyProfileComponent, canActivate: [AuthGuard] },
+      { path: ':id/update', component: UpdateProfileComponent, canActivate: [AuthGuard] },
     ]
   },
-  { path: 'profilesettings/:id', component: ProfileSettingsComponent},
-  { path: 'projects', component: ProjectsListComponent},
-  { path: 'project', component: ProjectComponent,
+  { path: 'profilesettings/:id', component: ProfileSettingsComponent, canActivate: [AuthGuard] },
+  { path: 'projects', component: ProjectsListComponent },
+  {
+    path: 'project', component: ProjectComponent, 
     children: [
-      { path: '', component: StartprojectComponent},
-      { path: 'new', component: NewProjectComponent},
-      { path: ':id', component: ProjectDetailComponent},
+      { path: '', component: StartprojectComponent, canActivate: [AuthGuard] },
+      { path: 'new', component: NewProjectComponent, canActivate: [AuthGuard] },
+      { path: ':id', component: ProjectDetailComponent, canActivate: [AuthGuard] },
     ]
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from 'src/api/generated/controllers/Project';
+import { PublicService } from 'src/api/generated/controllers/Public';
 import { ProjectDTO } from 'src/api/generated/defs/ProjectDTO';
 
 
@@ -13,10 +14,10 @@ export class ProjectsListComponent implements OnInit {
 
   projects: ProjectDTO[];
 
-  constructor(private ProjectService: ProjectService) { }
+  constructor(private publicService: PublicService) { }
 
   ngOnInit(): void {
-    this.ProjectService.getAllProjectsUsingGET().subscribe(response => this.projects = response);
+    this.publicService.project().subscribe(response => this.projects = response);
   }
 
 }

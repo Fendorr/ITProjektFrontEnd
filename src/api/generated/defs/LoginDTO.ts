@@ -9,6 +9,7 @@
  * localhost:8080
  */
 
-export * from './defs/LoginDTO';
-export * from './defs/ProjectDTO';
-export * from './defs/UserDTO';
+export interface LoginDTO {
+  email?: string;
+  password?: string;
+}

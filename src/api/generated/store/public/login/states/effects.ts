@@ -16,15 +16,15 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {of} from 'rxjs';
 
 import {catchError, map, switchMap} from 'rxjs/operators';
-import {ProjectService} from '../../../../controllers/Project';
+import {PublicService} from '../../../../controllers/Public';
 import * as actions from './actions';
 
 @Injectable()
-export class GetAllProjectsUsingGETEffects {
+export class LoginEffects {
   @Effect()
-  GetAllProjectsUsingGET = this.storeActions.pipe(
+  Login = this.storeActions.pipe(
     ofType<actions.Start>(actions.Actions.START),
-    switchMap(() => this.projectService.getAllProjectsUsingGET()
+    switchMap((action: actions.Start) => this.publicService.login(action.payload)
       .pipe(
         map(result => new actions.Success(result)),
         catchError((error: HttpErrorResponse) => of(new actions.Error(error))),
@@ -34,6 +34,6 @@ export class GetAllProjectsUsingGETEffects {
 
   constructor(
     private storeActions: Actions,
-    private projectService: ProjectService,
+    private publicService: PublicService,
   ) {}
 }

@@ -11,15 +11,16 @@
 
 import {Injectable} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../../controllers/User';
+import {PublicService} from '../../../controllers/Public';
 
 @Injectable()
-export class PostUserUsingPOSTFormService {
+export class UserFormService {
   form: FormGroup;
   constructor(
-    private userService: UserService,
+    private publicService: PublicService,
   ) {
     this.form = new FormGroup({
+      pw: new FormControl(undefined, [Validators.required]),
       userDto: new FormGroup({
         activeProject: new FormControl(undefined, []),
         createdAt: new FormControl(undefined, []),
@@ -28,7 +29,6 @@ export class PostUserUsingPOSTFormService {
         firstName: new FormControl(undefined, []),
         id: new FormControl(undefined, []),
         lastName: new FormControl(undefined, []),
-        password: new FormControl(undefined, []),
         type: new FormControl(undefined, []),
       }, [Validators.required]),
     });
@@ -38,6 +38,6 @@ export class PostUserUsingPOSTFormService {
     const data = raw ?
       this.form.getRawValue() :
       this.form.value;
-    return this.userService.postUserUsingPOST(data);
+    return this.publicService.user(data);
   }
 }

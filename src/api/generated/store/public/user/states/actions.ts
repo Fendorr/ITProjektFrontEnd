@@ -11,17 +11,17 @@
 
 import {HttpErrorResponse} from '@angular/common/http';
 import {Action} from '@ngrx/store';
-import {PostUserUsingPOSTParams} from '../../../../controllers/User';
+import {UserParams} from '../../../../controllers/Public';
 
 export enum Actions {
-  START = '[User postUserUsingPOST] Start',
-  SUCCESS = '[User postUserUsingPOST] Success',
-  ERROR = '[User postUserUsingPOST] Error',
+  START = '[Public user] Start',
+  SUCCESS = '[Public user] Success',
+  ERROR = '[Public user] Error',
 }
 
 export class Start implements Action {
   readonly type = Actions.START;
-  constructor(public payload: PostUserUsingPOSTParams) {}
+  constructor(public payload: UserParams) {}
 }
 
 export class Success implements Action {
@@ -34,4 +34,4 @@ export class Error implements Action {
   constructor(public payload: HttpErrorResponse) {}
 }
 
-export type PostUserUsingPOSTAction = Start | Success | Error;
+export type UserAction = Start | Success | Error;

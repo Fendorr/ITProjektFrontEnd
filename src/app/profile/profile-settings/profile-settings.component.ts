@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { UserService } from 'src/api/generated/controllers/User';
 import { UserDTO } from 'src/api/generated/defs/UserDTO';
+import { LoginDTO } from 'src/api/generated/model';
 
 @Component({
   selector: 'app-profile-settings',
@@ -10,6 +11,7 @@ import { UserDTO } from 'src/api/generated/defs/UserDTO';
 })
 export class ProfileSettingsComponent implements OnInit {
 
+  loginDto: LoginDTO = {}
   user : UserDTO = {};
   show : boolean;
 
@@ -28,9 +30,9 @@ export class ProfileSettingsComponent implements OnInit {
 
   updateUser(id: number | undefined, newUser: UserDTO): void {
     console.log(newUser);
-    if (id) { //wenn id undefined --> if = false
-      this.userService.updateUserUsingPUT({ id: id, user: newUser }).subscribe(response => console.log(response))
-    }
+    // if (id) { //wenn id undefined --> if = false
+    //   this.userService.updateUserUsingPUT({ id: id, user: newUser }).subscribe(response => console.log(response))
+    // }
   }
 
 }
