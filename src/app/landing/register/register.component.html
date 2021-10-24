@@ -16,6 +16,9 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <button mat-raised-button color="accent" type="submit" (click)="createUser()">Registrieren</button>
+    <span>
+      <button mat-raised-button color="accent" type="submit" (click)="createUser()">Registrieren</button>
+      <button mat-raised-button color="accent" type="submit" [routerLink]="['/login']">=>Einloggen</button>
+    </span>
   </div>
 </div>
