@@ -23,22 +23,24 @@ export interface GetUserByIdUsingGETParams {
   id: number;
 }
 
-export interface UpdateUserUsingPUTParams {
-  /**
-   * id
-   * format: int64
-   */
-  id: number;
-  /** userDto */
-  userDto: __model.UserDTO;
-}
-
 export interface DeleteUserUsingDELETEParams {
   /**
    * id
    * format: int64
    */
   id: number;
+}
+
+export interface UpdateUserUsingPUTParams {
+  /**
+   * id
+   * format: int64
+   */
+  id: number;
+  /** pw */
+  pw: string;
+  /** userDto */
+  userDto: __model.UserDTO;
 }
 
 @Injectable()
@@ -65,19 +67,6 @@ export class UserService {
   }
 
   /**
-   * updateUser
-   * http://localhost:8080/swagger/swagger-ui.html#!/user-controller/updateUserUsingPUT
-   */
-  updateUserUsingPUT(params: UpdateUserUsingPUTParams): Observable<void> {
-    const pathParams = {
-      id: params.id,
-    };
-    const bodyParams = params.userDto;
-
-    return this.http.put<void>(`/api/user/${pathParams.id}`, bodyParams || {});
-  }
-
-  /**
    * deleteUser
    * http://localhost:8080/swagger/swagger-ui.html#!/user-controller/deleteUserUsingDELETE
    */
@@ -86,5 +75,19 @@ export class UserService {
       id: params.id,
     };
     return this.http.delete<void>(`/api/user/${pathParams.id}`);
+  }
+
+  /**
+   * updateUser
+   * http://localhost:8080/swagger/swagger-ui.html#!/user-controller/updateUserUsingPUT
+   */
+  updateUserUsingPUT(params: UpdateUserUsingPUTParams): Observable<void> {
+    const pathParams = {
+      id: params.id,
+      pw: params.pw,
+    };
+    const bodyParams = params.userDto;
+
+    return this.http.put<void>(`/api/user/${pathParams.id}/${pathParams.pw}`, bodyParams || {});
   }
 }

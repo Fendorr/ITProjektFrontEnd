@@ -21,7 +21,6 @@ export interface UserDTO {
   id?: number;
   lastName?: string;
   type?: TypeUserDTOEnum;
-  likedProjects?: number[];
 }
 
 export type TypeUserDTOEnum =
