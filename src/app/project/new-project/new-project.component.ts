@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { ProjectService } from 'src/api/generated/controllers/Project';
-import { ProjectDTO } from 'src/api/generated/model';
+import { ProjectDTO, UserDTO } from 'src/api/generated/model';
+import { PublicService } from 'src/api/generated/controllers/Public';
+import { Router } from '@angular/router';
 
 export interface Tag {
   name: string;
@@ -15,6 +17,7 @@ export interface Tag {
 export class NewProjectComponent implements OnInit {
 
   project: ProjectDTO = {};
+  user: UserDTO;
 
   selectable = true;
   removable = true;
@@ -25,7 +28,11 @@ export class NewProjectComponent implements OnInit {
     {name: 'TypeScript'},
   ];
 
-  constructor(private projectService: ProjectService) { }
+  constructor(
+    private projectService: ProjectService,
+    private publicService: PublicService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
 
@@ -53,13 +60,30 @@ export class NewProjectComponent implements OnInit {
 
   
   createProject(): void {
-    console.log(this.project);
-    this.project.createdBy = "Simon (DEV)" //Hardcode wegen Styling später User_id!
-    this.project.currUser = 1; // Muss Hardcode weil Projekt startet immer mit 1 User.
-
+    this.project.projectLikes = []; //SetEmpty damit nicht NULL
+    this.project.projectApplicants = [];
+    this.project.invitedUsers = [];
+    this.project.members = [];
+    this.project.currUser = 1;
     this.project.tags = this.tags.map(a => a.name); //Tags von Object-Array in String-Array mappen.
+    this.publicService.curUser() //Add current user as admin + as member
+      .subscribe(response => {
+      this.user = response;
+      console.log(response);
+        if(this.user) {
+          this.project.members!.push(this.user.id!);
+          this.project.adminId = this.user.id;
+          this.project.createdBy = this.user.email; //Sollte später wohl First + Lastname sein
 
-    this.projectService.postProjectUsingPOST({project:this.project}).subscribe(project => console.log(project));
-    
+          //Projekt wird hier erstellt, damit die vorherigen Daten auch da sind!
+          this.projectService.postProjectUsingPOST({project:this.project})
+            .subscribe(project => {
+              //localhost:8080/api/project/**
+              this.router.navigate(['/project', project.slice(27)])
+          });
+        }
+    });
+
+    console.log(this.project);
   }
 }

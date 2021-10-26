@@ -20,6 +20,9 @@ export interface UserDTO {
   /** format: int64 */
   id?: number;
   lastName?: string;
+  likedProjects?: number[];
+  projectInvites?: number[];
+  sentApplications?: number[];
   type?: TypeUserDTOEnum;
 }
 

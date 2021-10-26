@@ -11,6 +11,7 @@
 
 import {Injectable} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArrayExtended} from '../../../common/formArrayExtended';
 import {PublicService} from '../../../controllers/Public';
 
 @Injectable()
@@ -29,6 +30,12 @@ export class UserFormService {
         firstName: new FormControl(undefined, []),
         id: new FormControl(undefined, []),
         lastName: new FormControl(undefined, []),
+        likedProjects: new FormArrayExtended(() => (
+          new FormControl(undefined, [])), [], []),
+        projectInvites: new FormArrayExtended(() => (
+          new FormControl(undefined, [])), [], []),
+        sentApplications: new FormArrayExtended(() => (
+          new FormControl(undefined, [])), [], []),
         type: new FormControl(undefined, []),
       }, [Validators.required]),
     });

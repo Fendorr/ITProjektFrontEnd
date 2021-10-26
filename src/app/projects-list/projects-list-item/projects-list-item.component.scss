@@ -49,3 +49,20 @@ mat-card {
     display: flex;
     justify-content: space-between;
   }
+
+  .liked {
+    color: #6046A2;
+  }
+
+  .liked:hover {
+    color: rgb(155, 0, 0);
+  }
+
+  .unliked {
+    color: rgb(61, 61, 61);
+  }
+
+  .unliked:hover {
+    color: #6046A2;
+    transform: scale(1.2);
+  }

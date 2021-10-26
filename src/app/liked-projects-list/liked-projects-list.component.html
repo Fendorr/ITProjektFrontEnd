@@ -6,9 +6,11 @@
     <hr>
     <br>
     <ul class="list-group">
-        <!-- App projects list item durch liked-project-item tauschen -->
-        <app-liked-projects-item>
-            
+        <app-liked-projects-item
+            *ngFor="let project of displayProjects"
+            [project]="project"
+            [routerLink]="['/project', project.id]"
+            >
         </app-liked-projects-item>
     </ul>
 </div>

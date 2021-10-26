@@ -5,6 +5,8 @@
             <div class="content">
                 <h2 class="title">{{ project?.title }}</h2>
                 <p>Erstellt: {{project?.createdAt?.slice(0,10)}} von {{ project?.createdBy }} </p>
+                <button mat-raised-button (click)="addMember()" [ngClass]="{'no-display': !isMember}">Leave Project</button>
+                <button mat-raised-button (click)="apply()" [ngClass]="{'no-display': isMember}">Apply to Project</button>
             </div>
         </div>
         <div class="col-3 p-2">
@@ -52,32 +54,19 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" [ngClass]="{'no-display': !isMember}">
         <div class="col-12 p-2">
             <div class="content">
                 <h2>Mitglieder</h2>
                 <div class="container members-array">
                     <div class="row">
                         <div class="col-9 member-array-flex">
-                            <div class="member-card admin">
-                                <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/12345.svg'>
-                                <span>Member Name</span>
-                            </div>
-
-                            <div class="member-card">
-                                <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/12384.svg'>
-                                <span>Member Name</span>
-                            </div>
-
-                            <div class="member-card">
-                                <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/19283.svg'>
-                                <span>Member Name</span>
-                            </div>
-
-                            <div class="member-card">
-                                <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/98347.svg'>
-                                <span>Member Name</span>
-                            </div>
+                            <app-member-card
+                                *ngFor="let member of displayMembers"
+                                [member]="member"
+                                [routerLink] = "['/profile', member.id]"
+                            >
+                            </app-member-card>
                         </div>
                         <div class="col-3">
                             <div class="member-card professor">
@@ -103,43 +92,29 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" [ngClass]="{'no-display': !isAdmin}">
         <div class="col-12 p-2">
             <div class="content">
                 <h2>Bewerber für dieses Projekt:</h2>
                 <div class="applicants">
                     <app-carousel-item
-                    *ngFor="let applicant of applicants"
+                        *ngFor="let applicant of displayApplicants"
+                        [applicant]="applicant"
                     >
                     </app-carousel-item>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" [ngClass]="{'no-display': !isMember}">
         <div class="col-12 p-2">
             <div class="content">
-                <h2>Leute, denen dein Projekt gefällt</h2>
-                <ul class="like-list">
-                    <li class="like-list-item">
-                        <mat-icon>favorite</mat-icon>
-                        <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/asfjlkajfd.svg'>
-                        <span>Member Name</span>
-                        <button mat-button>Einladen</button>
-                    </li>
-                    <li class="like-list-item">
-                        <mat-icon>favorite</mat-icon>
-                        <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/aslkcjle.svg'>
-                        <span>Member Name</span>
-                        <button mat-button>Einladen</button>
-                    </li>
-                    <li class="like-list-item">
-                        <mat-icon>favorite</mat-icon>
-                        <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/asdioe.svg'>
-                        <span>Member Name</span>
-                        <button mat-button>Einladen</button>
-                    </li>
-                </ul>
+                <h2>Leute, denen dieses Projekt gefällt</h2>
+                <app-like-user
+                    *ngFor="let likeUser of displayLikes"
+                    [likeUser]="likeUser"
+                >
+                </app-like-user>
             </div>
         </div>
     </div>

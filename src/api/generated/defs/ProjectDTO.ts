@@ -20,6 +20,7 @@ export interface ProjectDTO {
   currUser?: number;
   /** format: int64 */
   id?: number;
+  invitedUsers?: number[];
   /** format: int32 */
   maxUser?: number;
   members?: number[];

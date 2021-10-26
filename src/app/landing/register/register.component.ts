@@ -19,6 +19,11 @@ export class RegisterComponent implements OnInit {
   types: TypeUserDTOEnum
   public password: string
 
+  testArray = [
+    1000,
+    2000
+  ]
+
   constructor(private publicService : PublicService, private router: Router) { 
   }
 
@@ -28,6 +33,9 @@ export class RegisterComponent implements OnInit {
 
   createUser(): void {
     console.log(this.user);
+    this.user.likedProjects = [];
+    this.user.projectInvites = [];
+    this.user.sentApplications = [];
     this.publicService.user({userDto:this.user, pw: this.password}).subscribe(user => {
       this.router.navigate(['/login']),
       console.log(user)

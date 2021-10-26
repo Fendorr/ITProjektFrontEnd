@@ -1,0 +1,50 @@
+.member-card {
+    background-color: #FAC6D8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    padding: 5px;
+    width: 100px;
+    height: 130px;
+    font-size: .8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        background-color: #FFF;
+        width: 80px;
+        height: 80px;
+        border: 3px solid #F94082;
+        box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+        margin-bottom: 5px;
+    }
+
+    span {
+        text-align: center;
+        text-transform: uppercase;
+    }
+}
+
+.member-card:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.admin {
+    background-color: rgb(255, 195, 104);
+
+    img {
+        border: 3px solid rgb(253, 164, 30); 
+    }
+}
+
+.professor {
+    background-color: rgb(129, 207, 109);
+
+    img {
+        border: 3px solid rgb(37, 172, 32); 
+    }
+}

@@ -1,0 +1,8 @@
+<div class="like-list-item">
+    <mat-icon>favorite</mat-icon>
+    <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/{{ likeUser.id }}.svg'>
+    <span>{{ likeUser.email }}</span>
+    <button mat-button [routerLink] = "['/profile', likeUser.id]">Show Profile</button>
+    <button class="invite" mat-button (click)="inviteUser()">Einladen</button>
+</div>
+

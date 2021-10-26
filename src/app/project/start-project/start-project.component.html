@@ -15,5 +15,31 @@
             <h3>Einem bestehenden Projekt beitreten</h3>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12 p2">
+            <div class="content">
+                <h2>Bewerbungen</h2>
+                <span>Hier findest alle die Projekte, auf die Du dich beworben hast:</span>
+                <app-application-carousel-item
+                    *ngFor="let application of displayApplications"
+                    [application]="application"
+                >
+                </app-application-carousel-item>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 p2">
+            <div class="content">
+                <h2>Einladungen</h2>
+                <span>Wenn Du von Projekten Einladungen bekommen hast, kannst Du sie hier sehen:</span>
+                <app-invitation-carousel-item
+                    *ngFor="let invite of displayInvitations"
+                    [invite]="invite"
+                >
+                </app-invitation-carousel-item>
+            </div>
+        </div>
+    </div>
     <br>
 </div>

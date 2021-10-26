@@ -1,0 +1,17 @@
+<div class="mat-card">
+    <h3>{{ invite.title }}</h3>
+    <img mat-card-avatar src="https://avatars.dicebear.com/api/bottts/{{ invite.id }}.svg">
+    <mat-chip-list class="tags">
+        <mat-chip
+            *ngFor="let tag of invite.tags"
+        >{{ tag }}</mat-chip>
+    </mat-chip-list>
+    <div class="buttonbox">
+        <button mat-raised-button color="primary" [routerLink]="['/project, invite.id']">Projekt ansehen</button>
+        <span>Members: {{ invite.currUser}}/{{ invite.maxUser}}</span>
+        <div class="choosebox">
+            <button mat-raised-button class="accept" (click)="joinProject()">Annehmen</button>
+            <button mat-raised-button class="decline" (click)="declineInvitation()">Ablehnen</button>
+        </div>
+    </div>
+</div>
