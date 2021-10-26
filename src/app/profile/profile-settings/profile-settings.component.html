@@ -1,57 +1,42 @@
 <div class="container">
   <h1>Meine Profileinstellungen</h1>
-  <h2>Hallo, {{user.firstName}} mit der ID: {{user.id}}</h2>
-
+  <h1>hi User mit der ID: {{this.user.id}}</h1>
   <div class="default-flex-container">
-    <div *ngIf="show; then thenBlock else elseBlock"></div>
 
-    <ng-template #thenBlock>
-      <mat-form-field appearance="legacy">
-        <mat-label>E-Mail</mat-label>
-        <input type="email" disabled matInput [(ngModel)]="this.user.email" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
-      <mat-form-field appearance="legacy">
-        <mat-label>Vorname</mat-label>
-        <input type="text" disabled matInput [(ngModel)]="this.user.firstName" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
-      <mat-form-field appearance="legacy">
-        <mat-label>Nachname</mat-label>
-        <input type="text" disabled matInput [(ngModel)]="this.user.lastName" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
-      <mat-form-field appearance="legacy">
-        <mat-label>Passwort</mat-label>
-        <input type="password" disabled matInput [(ngModel)]="this.loginDto.password" [ngModelOptions]="{standalone: true}">
-        <!--TODO: Hier passwort einbinden!-->
-      </mat-form-field>
-      <button mat-raised-button color="accent" type="submit" (click)="show=false">Profilfelder bearbeiten</button>
-    </ng-template>
+    <mat-form-field appearance="legacy">
+      <mat-label>E-Mail<span *ngIf="!show"> bearbeiten</span>
+      </mat-label>
+      <input type="email" [disabled]="show" matInput [(ngModel)]="this.user.email"
+        [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Vorname<span *ngIf="!show"> bearbeiten</span>
+      </mat-label>
+      <input type="text" [disabled]="show" matInput [(ngModel)]="this.user.firstName"
+        [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Nachname<span *ngIf="!show"> bearbeiten</span>
+      </mat-label>
+      <input type="text" [disabled]="show" matInput [(ngModel)]="this.user.lastName"
+        [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <mat-form-field appearance="legacy">
+      <mat-label>Passwort<span *ngIf="!show"> bearbeiten</span>
+      </mat-label>
+      <input type="password" [disabled]="show" matInput [(ngModel)]="this.password"
+        [ngModelOptions]="{standalone: true}">
+    </mat-form-field> 
 
+    <div *ngIf="show"><button mat-raised-button color="accent" type="submit" (click)="show=!show">Profilfelder
+        bearbeiten</button>
+    </div>
 
-    <ng-template  #elseBlock>
-      <mat-form-field appearance="legacy">
-        <mat-label>E-Mail bearbeitein</mat-label>
-        <input type="email" matInput [(ngModel)]="this.user.email" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
-      <mat-form-field appearance="legacy">
-        <mat-label>Vorname bearbeitein</mat-label>
-        <input type="text" matInput [(ngModel)]="this.user.firstName" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
-      <mat-form-field appearance="legacy">
-        <mat-label>Nachname bearbeitein</mat-label>
-        <input type="text" matInput [(ngModel)]="this.user.lastName" [ngModelOptions]="{standalone: true}">
-      </mat-form-field>
-      <mat-form-field appearance="legacy">
-        <mat-label>Passwort bearbeitein</mat-label>
-        <input type="password" matInput [(ngModel)]="this.loginDto.password" [ngModelOptions]="{standalone: true}">
-        <!--TODO: Hier passwort einbinden!-->
-      </mat-form-field>
-      <button mat-raised-button color="accent" type="submit" (click)="show=true">Abbrechen</button>
+    <div *ngIf="!show"><button mat-raised-button color="accent" type="submit"
+        (click)="getUserAgain()">Abbrechen</button>
       <p></p>
-      <button mat-raised-button color="accent" type="submit" (click)="updateUser(this.user.id, this.user)" (click)="show=true">Änderungen
+      <button mat-raised-button color="accent" type="submit" (click)="updateUser(this.user.id, this.user, this.password)"
+        (click)="show=true">Änderungen
         übernehmen</button>
-    </ng-template>
-
-    
-    
+    </div>
   </div>
-</div>

@@ -1,14 +1,18 @@
 <div class="container">
 	<h1>Login</h1>
 	<div class="default-flex-container">
-	  <mat-form-field appearance="legacy">
-		<mat-label>E-Mail</mat-label>
-		<input type="email" matInput required [(ngModel)]="loginDto.email" [ngModelOptions]="{standalone: true}">
-	  </mat-form-field>
-	  <mat-form-field appearance="legacy">
-		<mat-label>Passwort</mat-label>
-		<input type="password" matInput required [(ngModel)]="loginDto.password" [ngModelOptions]="{standalone: true}">
-	  </mat-form-field>
-	  <button mat-raised-button color="accent" type="submit" (click)="login()">Einloggen</button>
+		<mat-form-field appearance="legacy">
+			<mat-label>E-Mail</mat-label>
+			<input type="email" matInput required [(ngModel)]="loginDto.email" [ngModelOptions]="{standalone: true}">
+		</mat-form-field>
+		<mat-form-field appearance="legacy">
+			<mat-label>Passwort</mat-label>
+			<input type="password" matInput required [(ngModel)]="loginDto.password"
+				[ngModelOptions]="{standalone: true}">
+		</mat-form-field>
+		<span>
+			<button mat-raised-button color="accent" type="submit" (click)="login()">Einloggen</button>
+			<button mat-raised-button color="accent" type="submit" [routerLink]="['/register']">=>Registrieren</button>
+		</span>
 	</div>
-  </div>
+</div>
