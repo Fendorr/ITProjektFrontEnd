@@ -1,0 +1,16 @@
+<div class="mat-card">
+    <h3>{{ application.title }}</h3>
+    <img mat-card-avatar src="https://avatars.dicebear.com/api/bottts/{{ application.id }}.svg">
+    <mat-chip-list class="tags">
+        <mat-chip
+            *ngFor="let tag of application.tags"
+        >{{ tag }}</mat-chip>
+    </mat-chip-list>
+    <div class="buttonbox">
+        <button mat-raised-button color="primary" [routerLink]="['/project, application.id']">Projekt ansehen</button>
+        <span>Members:{{ application.currUser}}/{{ application.maxUser}}</span>
+        <div class="choosebox">
+            <button mat-raised-button class="decline" (click)="popApplication()">Bewerbung zurückziehen</button>
+        </div>
+    </div>
+</div>

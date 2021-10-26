@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card [routerLink]="['/project', project.id]">
     <div class="item-header">
         <div>
             <mat-card-title>{{ project.title }}</mat-card-title>
@@ -19,8 +19,9 @@
             <button mat-raised-button color="primary" [routerLink]="">Jetzt Bewerben</button>
             <h3>{{ project.currUser }}/{{ project.maxUser }}</h3>
         </div>
-        <button mat-icon-button color="warn" aria-label="Like this project">
-            <mat-icon>favorite</mat-icon>
+        <button mat-icon-button aria-label="Like this project" (click)="likeProject()">
+            <mat-icon [ngClass]="(isLiked)? 'liked' : 'unliked'">favorite</mat-icon>
         </button>
     </mat-card-actions>
+    <!-- Add notification to project like -->
 </mat-card>

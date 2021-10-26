@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectService } from 'src/api/generated/controllers/Project';
+import { PublicService } from 'src/api/generated/controllers/Public';
+import { ProjectDTO, UserDTO } from 'src/api/generated/model';
 
 @Component({
   selector: 'app-startproject',
@@ -7,9 +10,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartprojectComponent implements OnInit {
 
-  constructor() { }
+  displayInvitations: ProjectDTO[] = [];
+  displayApplications: ProjectDTO[] = [];
+
+  user: UserDTO;
+
+  constructor(
+    private publicService: PublicService,
+    private projectService: ProjectService,
+  ) { }
 
   ngOnInit(): void {
+    this.publicService.curUser().subscribe(response => {
+      this.user = response;
+      //Get projects that user has been invited to
+      this.user.projectInvites!.forEach(invite => {
+        this.projectService.getProjectByIdUsingGET({id: invite})
+        .subscribe(project => {
+          this.displayInvitations.push(project);
+        })
+      })
+      //Get projects that user has applied to
+      this.user.sentApplications!.forEach(invite => {
+        this.projectService.getProjectByIdUsingGET({id: invite})
+        .subscribe(project => {
+          this.displayApplications.push(project);
+        })
+      })
+    })
   }
 
 }

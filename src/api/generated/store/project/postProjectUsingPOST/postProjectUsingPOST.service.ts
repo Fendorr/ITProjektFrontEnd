@@ -28,6 +28,8 @@ export class PostProjectUsingPOSTFormService {
         createdBy: new FormControl(undefined, []),
         currUser: new FormControl(undefined, []),
         id: new FormControl(undefined, []),
+        invitedUsers: new FormArrayExtended(() => (
+          new FormControl(undefined, [])), [], []),
         maxUser: new FormControl(undefined, []),
         members: new FormArrayExtended(() => (
           new FormControl(undefined, [])), [], []),

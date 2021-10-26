@@ -40,6 +40,12 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 
 import { AuthGuard } from './services/auth.guard';
 import { PublicService } from 'src/api/generated/controllers/Public';
+import { InteractionService } from 'src/api/generated/controllers/Interaction';
+import { MemberCardComponent } from './project/project-detail/member-card/member-card.component';
+import { LikeUserComponent } from './project/project-detail/like-user/like-user.component';
+import { InvitationCarouselItemComponent } from './project/start-project/invitation-carousel-item/invitation-carousel-item.component';
+import { ApplicationCarouselItemComponent } from './project/start-project/application-carousel-item/application-carousel-item.component';
+import { RefreshService } from './services/refreshComponent.service';
 
 @NgModule({
   declarations: [		 
@@ -62,6 +68,10 @@ import { PublicService } from 'src/api/generated/controllers/Public';
     LikedProjectsListComponent,
     LikedProjectsItemComponent,
     MainNavComponent,
+    MemberCardComponent,
+    LikeUserComponent,
+    InvitationCarouselItemComponent,
+    ApplicationCarouselItemComponent,
    ],
   imports: [
     BrowserModule,
@@ -86,6 +96,8 @@ import { PublicService } from 'src/api/generated/controllers/Public';
     ProjectService,
     UserService,
     PublicService,
+    InteractionService,
+    RefreshService,
     AuthGuard
 ],
 
