@@ -46,9 +46,11 @@ import { LikeUserComponent } from './project/project-detail/like-user/like-user.
 import { InvitationCarouselItemComponent } from './project/start-project/invitation-carousel-item/invitation-carousel-item.component';
 import { ApplicationCarouselItemComponent } from './project/start-project/application-carousel-item/application-carousel-item.component';
 import { RefreshService } from './services/refreshComponent.service';
+import { DialogComponent } from './dialog/dialog.component';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [		 
+  declarations: [			 
     AppComponent,
     ExampleComponent,
     ProjectComponent,
@@ -72,6 +74,7 @@ import { RefreshService } from './services/refreshComponent.service';
     LikeUserComponent,
     InvitationCarouselItemComponent,
     ApplicationCarouselItemComponent,
+    DialogComponent,
    ],
   imports: [
     BrowserModule,
@@ -85,7 +88,8 @@ import { RefreshService } from './services/refreshComponent.service';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule,
   ],
   providers: [
     {
@@ -98,7 +102,16 @@ import { RefreshService } from './services/refreshComponent.service';
     PublicService,
     InteractionService,
     RefreshService,
-    AuthGuard
+    AuthGuard,
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
+    {
+      provide: MAT_DIALOG_DATA,
+      useValue:{}
+    }
+    
 ],
 
   bootstrap: [AppComponent]
