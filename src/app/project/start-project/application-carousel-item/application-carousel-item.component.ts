@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { InteractionService } from 'src/api/generated/controllers/Interaction';
 import { PublicService } from 'src/api/generated/controllers/Public';
 import { ProjectDTO, UserDTO } from 'src/api/generated/model';
@@ -12,6 +12,8 @@ import { RefreshService } from 'src/app/services/refreshComponent.service';
 export class ApplicationCarouselItemComponent implements OnInit {
 
   @Input() application: ProjectDTO;
+  @Output() successPop = new EventEmitter();
+  @Output() failPop = new EventEmitter();
 
   user: UserDTO;
 
@@ -30,9 +32,10 @@ export class ApplicationCarouselItemComponent implements OnInit {
       this.user = response;
       this.interService
       .applyToProject({id: this.user.id!, projectId: this.application.id! })
-      .subscribe(response => {
+      .subscribe((response) => {
+        this.successPop.emit("Bewerbung zurückgezogen!")
         this.refreshService.reloadComponent();
-      });
+      }, (error) => this.failPop.emit("Fehler: Bewerbung zurückziehen fehlgeschlagen!"));
     })
   }
 }

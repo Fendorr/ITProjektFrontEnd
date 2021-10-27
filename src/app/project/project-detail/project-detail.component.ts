@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { InteractionService } from 'src/api/generated/controllers/Interaction';
 import { ProjectService } from 'src/api/generated/controllers/Project';
 import { PublicService } from 'src/api/generated/controllers/Public';
 import { UserService } from 'src/api/generated/controllers/User';
 import { ProjectDTO, UserDTO } from 'src/api/generated/model';
 import { RefreshService } from 'src/app/services/refreshComponent.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-project-detail',
@@ -25,11 +26,13 @@ export class ProjectDetailComponent implements OnInit,OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private projectService: ProjectService,
     private interService: InteractionService,
     private publicService: PublicService,
     private userService: UserService,
-    private refreshService: RefreshService
+    private refreshService: RefreshService,
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -90,9 +93,10 @@ export class ProjectDetailComponent implements OnInit,OnDestroy {
       if(this.project.id && this.user.id){
         this.interService
           .addMember({id: this.user.id, projectId: this.project.id })
-          .subscribe(response => {
+          .subscribe((response) => {
+            this.openSnackBar("Projekt verlassen!", "success")
             this.refreshService.reloadComponent();
-          });
+          },(error) => {this.openSnackBar("Fehler: Projekt verlassen fehlgeschlagen", "warn")});
       }
     })
   }
@@ -103,10 +107,19 @@ export class ProjectDetailComponent implements OnInit,OnDestroy {
       this.user = response;
       if(this.project.id && this.user.id){
         this.interService
-          .applyToProject({id: this.user.id, projectId: this.project.id })
-          .subscribe(response => response);
+          .applyToProject({id: this.user.id, projectId: this.project.id})
+          .subscribe((response) => {
+            this.openSnackBar("Bewerbung gesendet!", "success");
+            this.router.navigate(["/project"]);
+          }, (error) => {this.openSnackBar("Fehler: Bewerbung senden fehlgeschlagen", "warn");});
       }
     })
+  }
+
+  openSnackBar(msg: string, clss: string): void {
+    this.snackBar.open(msg, '',{
+      panelClass: [clss]
+    });
   }
 
   ngOnDestroy():void{

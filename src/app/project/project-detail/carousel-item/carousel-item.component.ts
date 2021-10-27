@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output , EventEmitter } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { InteractionService } from 'src/api/generated/controllers/Interaction';
 import { ProjectService } from 'src/api/generated/controllers/Project';
@@ -14,6 +14,10 @@ import { RefreshService } from 'src/app/services/refreshComponent.service';
 export class CarouselItemComponent implements OnInit {
 
   @Input() applicant: UserDTO;
+  @Output() failAdd = new EventEmitter();
+  @Output() successAdd = new EventEmitter();
+  @Output() failApp = new EventEmitter();
+  @Output() successApp = new EventEmitter();
 
   project: ProjectDTO;
 
@@ -39,10 +43,11 @@ export class CarouselItemComponent implements OnInit {
           this.project = response;
           this.interService
             .addMember({id: this.applicant.id!, projectId: this.project.id!})
-            .subscribe(response => {
+            .subscribe((response) => {
+              this.successAdd.emit("Bewerber angenommen!");
               console.log("user "+ this.applicant.id + " added to " + this.project.id)
               this.refreshService.reloadComponent();
-            });
+            }, (error) => this.failAdd.emit("Fehler: Bewerber konnte nicht angenommen werden!"));
         });
     });
   }
@@ -57,10 +62,11 @@ export class CarouselItemComponent implements OnInit {
           this.project = response;
           this.interService
             .applyToProject({id: this.applicant.id!, projectId: this.project.id!})
-            .subscribe(response => {
+            .subscribe((response) => {
+              this.successApp.emit("Bewerbung abgelehnt!")
               console.log("declined user "+ this.applicant.id + "s application to " + this.project.id)
               this.refreshService.reloadComponent();
-            });
+            }, (error) => {this.failApp.emit("Fehler: Bewerber konnte nicht abgelehnt werden!")});
         });
     });
   }

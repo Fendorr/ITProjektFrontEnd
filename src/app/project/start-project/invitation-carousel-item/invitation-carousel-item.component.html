@@ -7,7 +7,7 @@
         >{{ tag }}</mat-chip>
     </mat-chip-list>
     <div class="buttonbox">
-        <button mat-raised-button color="primary" [routerLink]="['/project, invite.id']">Projekt ansehen</button>
+        <button mat-raised-button color="primary" [routerLink]="['/project/', invite.id]">Projekt ansehen</button>
         <span>Members: {{ invite.currUser}}/{{ invite.maxUser}}</span>
         <div class="choosebox">
             <button mat-raised-button class="accept" (click)="joinProject()">Annehmen</button>

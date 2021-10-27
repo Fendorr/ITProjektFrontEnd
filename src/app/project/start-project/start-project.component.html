@@ -23,6 +23,8 @@
                 <app-application-carousel-item
                     *ngFor="let application of displayApplications"
                     [application]="application"
+                    (successPop)="openSnackBar($event, 'success')"
+                    (failPop)="openSnackBar($event, 'warn')"
                 >
                 </app-application-carousel-item>
             </div>
@@ -36,6 +38,10 @@
                 <app-invitation-carousel-item
                     *ngFor="let invite of displayInvitations"
                     [invite]="invite"
+                    (successJoin)="openSnackBar($event, 'success')"
+                    (failJoin)="openSnackBar($event, 'warn')"
+                    (successDecl)="openSnackBar($event, 'success')"
+                    (failDecl)="openSnackBar($event, 'warn')"
                 >
                 </app-invitation-carousel-item>
             </div>

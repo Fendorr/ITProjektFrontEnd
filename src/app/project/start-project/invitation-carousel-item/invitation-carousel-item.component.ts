@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { InteractionService } from 'src/api/generated/controllers/Interaction';
 import { PublicService } from 'src/api/generated/controllers/Public';
@@ -13,6 +13,10 @@ import { RefreshService } from 'src/app/services/refreshComponent.service';
 export class InvitationCarouselItemComponent implements OnInit {
 
   @Input() invite: ProjectDTO;
+  @Output() successJoin = new EventEmitter();
+  @Output() failJoin = new EventEmitter();
+  @Output() successDecl = new EventEmitter();
+  @Output() failDecl = new EventEmitter();
 
   user: UserDTO;
 
@@ -32,9 +36,10 @@ export class InvitationCarouselItemComponent implements OnInit {
       this.user = response;
       this.interService
       .addMember({id: this.user.id!, projectId: this.invite.id! })
-      .subscribe(response => {
+      .subscribe((response) => {
+        this.successJoin.emit("Projekt beigetreten!");
         this.router.navigate(['/project', this.invite.id!]);
-      });
+      }, (error) => {this.failJoin.emit("Fehler: Projekt beitreten fehlgeschlagen!")});
     })
   }
 
@@ -44,9 +49,10 @@ export class InvitationCarouselItemComponent implements OnInit {
       this.user = response;
       this.interService
       .inviteUser({id: this.user.id!, projectId: this.invite.id! })
-      .subscribe(response => {
+      .subscribe((response) => {
+        this.successDecl.emit("Einladung abgelehnt!");
         this.refreshService.reloadComponent();
-      });
+      }, (error) => {this.failDecl.emit("Fehler: Einladung ablehnen fehlgeschlagen!");});
     })
   }
 
