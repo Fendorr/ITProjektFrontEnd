@@ -32,7 +32,7 @@ const routes: Routes = [
       { path: ':id/update', component: UpdateProfileComponent, canActivate: [AuthGuard] },
     ]
   },
-  { path: 'profilesettings/:id', component: ProfileSettingsComponent, canActivate: [AuthGuard] },
+  { path: 'profilesettings', component: ProfileSettingsComponent, canActivate: [AuthGuard] },
   { path: 'projects', component: ProjectsListComponent },
   {
     path: 'project', component: ProjectComponent, 
