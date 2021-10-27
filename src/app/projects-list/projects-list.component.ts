@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProjectService } from 'src/api/generated/controllers/Project';
 import { PublicService } from 'src/api/generated/controllers/Public';
 import { ProjectDTO } from 'src/api/generated/defs/ProjectDTO';
@@ -17,7 +18,10 @@ export class ProjectsListComponent implements OnInit{
   projects: ProjectDTO[];
   user: UserDTO;
 
-  constructor(private publicService: PublicService, private authService: AuthenticationService) { }
+  constructor(
+    private publicService: PublicService,
+    private authService: AuthenticationService,
+  ) { }
 
   ngOnInit(): void {
     this.publicService.project().subscribe(response => this.projects = response);

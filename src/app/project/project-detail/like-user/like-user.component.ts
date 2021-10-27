@@ -12,6 +12,7 @@ import { ProjectDTO, UserDTO } from 'src/api/generated/model';
 })
 export class LikeUserComponent implements OnInit {
 
+  @Input() isAdmin: boolean;
   @Input() likeUser: UserDTO;
   @Output() failEvent = new EventEmitter();
   @Output() successEvent = new EventEmitter();

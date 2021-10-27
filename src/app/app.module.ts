@@ -11,7 +11,6 @@ import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/materi
 
 //* Component Imports
 import { AppComponent } from './app.component';
-import { ExampleComponent } from './example/example.component';
 import { ProjectComponent } from './project/project.component';
 import { NewProjectComponent } from './project/new-project/new-project.component';
 import { StartprojectComponent } from './project/start-project/start-project.component';
@@ -53,7 +52,6 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 @NgModule({
   declarations: [			 
     AppComponent,
-    ExampleComponent,
     ProjectComponent,
     NewProjectComponent,
     StartprojectComponent,

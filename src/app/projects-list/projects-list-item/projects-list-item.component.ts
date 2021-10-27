@@ -51,7 +51,6 @@ export class ProjectsListItemComponent implements OnInit, OnChanges {
           .subscribe(response => response);
       }
     })
-    //Add notification if project liked
   }
 
   checkProjectLike(): void {

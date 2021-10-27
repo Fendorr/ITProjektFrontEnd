@@ -106,3 +106,20 @@ mat-stepper {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     color: #FFF;
 }
+
+.liked {
+    color: #6046A2;
+  }
+
+  .liked:hover {
+    color: rgb(155, 0, 0);
+  }
+
+  .unliked {
+    color: rgb(61, 61, 61);
+  }
+
+  .unliked:hover {
+    color: #6046A2;
+    transform: scale(1.2);
+  }
