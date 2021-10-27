@@ -43,11 +43,22 @@ export class MainNavComponent {
     this.authService.logout();
   }
 
-  getCurrUser(){
+  getCurrProfile(){
     this.publicService.curUser().subscribe(response => {
       this.user = response
       console.log(this.user);
       this.router.navigate(['/profile/', this.user.id])
+    })
+  }
+
+  getCurrProject(){
+    this.publicService.curUser().subscribe(response => {
+      this.user = response
+      console.log(this.user);
+      if(this.user.activeProject===null){
+        this.router.navigate(['/project/'])
+      }
+      this.router.navigate(['/project/', this.user.activeProject])
     })
   }
 
