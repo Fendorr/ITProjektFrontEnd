@@ -90,3 +90,19 @@ mat-stepper {
 ::ng-deep .mat-stepper-horizontal-line {
     margin: 0 -8px !important;
 }
+
+::ng-deep .success {
+    background: rgb(68, 207, 91);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: #000;
+}
+::ng-deep .normal {
+    background-color: rgb(80, 80, 80);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: #FFF;
+}
+::ng-deep .warn {
+    background-color: rgb(175, 0, 38);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: #FFF;
+}

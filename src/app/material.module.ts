@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -27,7 +28,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatSelectModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
-    MatStepperModule
+    MatStepperModule,
+    MatSnackBarModule,
   ],
   exports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatSelectModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
-    MatStepperModule
+    MatStepperModule,
+    MatSnackBarModule,
   ]
 })
 export class MaterialModule { }

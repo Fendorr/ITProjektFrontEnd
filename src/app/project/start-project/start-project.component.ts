@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProjectService } from 'src/api/generated/controllers/Project';
 import { PublicService } from 'src/api/generated/controllers/Public';
 import { ProjectDTO, UserDTO } from 'src/api/generated/model';
@@ -18,6 +19,7 @@ export class StartprojectComponent implements OnInit {
   constructor(
     private publicService: PublicService,
     private projectService: ProjectService,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -38,6 +40,12 @@ export class StartprojectComponent implements OnInit {
         })
       })
     })
+  }
+
+  openSnackBar(msg: string, clss: string): void {
+    this.snackBar.open(msg, '',{
+      panelClass: [clss]
+    });
   }
 
 }

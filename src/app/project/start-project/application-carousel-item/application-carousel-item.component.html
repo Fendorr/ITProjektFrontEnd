@@ -7,7 +7,7 @@
         >{{ tag }}</mat-chip>
     </mat-chip-list>
     <div class="buttonbox">
-        <button mat-raised-button color="primary" [routerLink]="['/project, application.id']">Projekt ansehen</button>
+        <button mat-raised-button color="primary" [routerLink]="['/project/', application.id]">Projekt ansehen</button>
         <span>Members:{{ application.currUser}}/{{ application.maxUser}}</span>
         <div class="choosebox">
             <button mat-raised-button class="decline" (click)="popApplication()">Bewerbung zurückziehen</button>

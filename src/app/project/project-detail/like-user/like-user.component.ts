@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { InteractionService } from 'src/api/generated/controllers/Interaction';
 import { ProjectService } from 'src/api/generated/controllers/Project';
@@ -13,7 +13,8 @@ import { ProjectDTO, UserDTO } from 'src/api/generated/model';
 export class LikeUserComponent implements OnInit {
 
   @Input() likeUser: UserDTO;
-  
+  @Output() failEvent = new EventEmitter();
+  @Output() successEvent = new EventEmitter();
   project: ProjectDTO;
 
   constructor(
@@ -36,7 +37,10 @@ export class LikeUserComponent implements OnInit {
           this.project = response;
           this.interService
             .inviteUser({id: this.likeUser.id!, projectId: this.project.id!})
-            .subscribe(response => {console.log("user "+ this.likeUser.id + " invited to " + this.project.id )});
+            .subscribe(response => {
+              this.successEvent.emit("Nutzer eingeladen!");
+              console.log("user "+ this.likeUser.id + " invited to " + this.project.id )
+            }, (error) => {this.failEvent.emit("Nutzer einladen fehlgeschlagen")});
         });
     });
   }
