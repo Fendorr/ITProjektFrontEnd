@@ -25,16 +25,16 @@
           <li routerLinkActive="active" [routerLink]="['/projects']">
             <mat-icon>supervisor_account</mat-icon>Projekte finden
           </li>
-          <li routerLinkActive="active" [routerLink]="['/project']">
+          <li routerLinkActive="active" (click)="getCurrProject()">
             <mat-icon>work</mat-icon>Mein Projekt
           </li>
           <li routerLinkActive="active" [routerLink]="['/likes']">
             <mat-icon>favorite</mat-icon>Meine Favoriten
           </li>
-          <li routerLinkActive="active" [routerLink]="['/profile/', 1]">
+          <li routerLinkActive="active" (click)="getCurrProfile()">
             <mat-icon>face</mat-icon>Mein Profil
           </li>
-          <li routerLinkActive="active" [routerLink]="['profilesettings/', 1]">
+          <li routerLinkActive="active" [routerLink]="['/profilesettings']">
             <mat-icon>settings</mat-icon>Einstellungen
           </li>
         </ul>

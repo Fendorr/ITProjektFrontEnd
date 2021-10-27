@@ -35,8 +35,7 @@
     <div *ngIf="!show"><button mat-raised-button color="accent" type="submit"
         (click)="getUserAgain()">Abbrechen</button>
       <p></p>
-      <button mat-raised-button color="accent" type="submit" (click)="updateUser(this.user.id, this.user, this.password)"
-        (click)="show=true">Änderungen
+      <button mat-raised-button color="accent" type="submit" (click)="openDialog()">Änderungen
         übernehmen</button>
     </div>
   </div>
