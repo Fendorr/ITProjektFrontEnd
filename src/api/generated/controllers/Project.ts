@@ -15,17 +15,22 @@ import {Observable} from 'rxjs';
 
 import * as __model from '../model';
 
-export interface PostProjectUsingPOSTParams {
-  /** project */
-  project: __model.ProjectDTO;
-}
-
 export interface GetProjectByIdUsingGETParams {
   /**
    * id
    * format: int64
    */
   id: number;
+}
+
+export interface PostProjectUsingPOSTParams {
+  /**
+   * id
+   * format: int64
+   */
+  id: number;
+  /** project */
+  project: __model.ProjectDTO;
 }
 
 export interface UpdateProjectUsingPUTParams {
@@ -51,16 +56,6 @@ export class ProjectService {
   constructor(private http: HttpClient) {}
 
   /**
-   * postProject
-   * http://localhost:8080/swagger/swagger-ui.html#!/project-controller/postProjectUsingPOST
-   */
-  postProjectUsingPOST(params: PostProjectUsingPOSTParams): Observable<string> {
-    const bodyParams = params.project;
-
-    return this.http.post<string>(`/api/project/`, bodyParams || {});
-  }
-
-  /**
    * getProjectById
    * http://localhost:8080/swagger/swagger-ui.html#!/project-controller/getProjectByIdUsingGET
    */
@@ -69,6 +64,19 @@ export class ProjectService {
       id: params.id,
     };
     return this.http.get<__model.ProjectDTO>(`/api/project/${pathParams.id}`);
+  }
+
+  /**
+   * postProject
+   * http://localhost:8080/swagger/swagger-ui.html#!/project-controller/postProjectUsingPOST
+   */
+  postProjectUsingPOST(params: PostProjectUsingPOSTParams): Observable<string> {
+    const pathParams = {
+      id: params.id,
+    };
+    const bodyParams = params.project;
+
+    return this.http.post<string>(`/api/project/${pathParams.id}`, bodyParams || {});
   }
 
   /**

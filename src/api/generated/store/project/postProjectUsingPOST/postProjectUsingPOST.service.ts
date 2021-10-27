@@ -21,6 +21,7 @@ export class PostProjectUsingPOSTFormService {
     private projectService: ProjectService,
   ) {
     this.form = new FormGroup({
+      id: new FormControl(undefined, [Validators.required]),
       project: new FormGroup({
         adminId: new FormControl(undefined, []),
         comment: new FormControl(undefined, []),

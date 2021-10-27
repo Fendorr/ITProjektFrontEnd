@@ -5,6 +5,7 @@ import { ProjectService } from 'src/api/generated/controllers/Project';
 import { ProjectDTO, UserDTO } from 'src/api/generated/model';
 import { PublicService } from 'src/api/generated/controllers/Public';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Tag {
   name: string;
@@ -31,7 +32,8 @@ export class NewProjectComponent implements OnInit {
   constructor(
     private projectService: ProjectService,
     private publicService: PublicService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -58,6 +60,12 @@ export class NewProjectComponent implements OnInit {
     }
   }
 
+  openSnackBar(msg: string, clss: string): void {
+    this.snackBar.open(msg, '',{
+      panelClass: [clss]
+    });
+  }
+
   
   createProject(): void {
     this.project.projectLikes = []; //SetEmpty damit nicht NULL
@@ -69,21 +77,19 @@ export class NewProjectComponent implements OnInit {
     this.publicService.curUser() //Add current user as admin + as member
       .subscribe(response => {
       this.user = response;
-      console.log(response);
         if(this.user) {
           this.project.members!.push(this.user.id!);
           this.project.adminId = this.user.id;
           this.project.createdBy = this.user.email; //Sollte später wohl First + Lastname sein
 
           //Projekt wird hier erstellt, damit die vorherigen Daten auch da sind!
-          this.projectService.postProjectUsingPOST({project:this.project})
-            .subscribe(project => {
+          this.projectService.postProjectUsingPOST({id: this.user.id!, project:this.project})
+            .subscribe((project) => {
+              this.openSnackBar("Projekt erfolgreich erstellt!", 'success');
               //localhost:8080/api/project/**
               this.router.navigate(['/project', project.slice(27)])
-          });
+          }, (error) => {this.openSnackBar("Fehler: Projekt konnte nicht erstellt werden!", 'warn')});
         }
     });
-
-    console.log(this.project);
   }
 }

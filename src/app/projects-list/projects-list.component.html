@@ -9,18 +9,9 @@
     </p>
     <hr>
     <br>
-
-    <!-- <ul class="list-group">
-        <app-projects-list-item
-            *ngFor="let project of projects; let i = index"
-            [project]="project"
-            [routerLink]="['/project', project.id]"
-        ></app-projects-list-item>
-    </ul> -->
-
     <ul class="list-group">
         <app-projects-list-item
-            *ngFor="let project of projects; let i = index"
+            *ngFor="let project of projects"
             [project]="project"
         ></app-projects-list-item>
     </ul>

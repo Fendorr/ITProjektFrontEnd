@@ -5,8 +5,12 @@
             <div class="content">
                 <h2 class="title">{{ project?.title }}</h2>
                 <p>Erstellt: {{project?.createdAt?.slice(0,10)}} von {{ project?.createdBy }} </p>
-                <button mat-raised-button (click)="addMember()" [ngClass]="{'no-display': !isMember}">Leave Project</button>
-                <button mat-raised-button (click)="apply()" [ngClass]="{'no-display': isMember}">Apply to Project</button>
+                <button mat-raised-button (click)="openDialog()" [ngClass]="{'no-display': !isMember}">Leave Project</button>
+                <button mat-raised-button (click)="apply()" [ngClass]="{'no-display': isMember || isApplicant}">Apply to Project</button>
+                <span [ngClass]="{'no-display': !isApplicant}">Du hast dich bereits auf dieses Projekt beworben!</span>
+                <button mat-icon-button aria-label="Like this project" (click)="likeProject()">
+                    <mat-icon [ngClass]="(isLiked)? 'liked' : 'unliked'">favorite</mat-icon>
+                </button>
             </div>
         </div>
         <div class="col-3 p-2">
@@ -117,6 +121,7 @@
                 <app-like-user
                     *ngFor="let likeUser of displayLikes"
                     [likeUser]="likeUser"
+                    [isAdmin]="isAdmin"
                     (successEvent)="openSnackBar($event, 'success')"
                     (failEvent)="openSnackBar($event, 'warn')"
                 >

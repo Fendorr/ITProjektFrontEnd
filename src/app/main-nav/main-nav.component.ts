@@ -46,7 +46,6 @@ export class MainNavComponent {
   getCurrProfile(){
     this.publicService.curUser().subscribe(response => {
       this.user = response
-      console.log(this.user);
       this.router.navigate(['/profile/', this.user.id])
     })
   }
@@ -54,11 +53,11 @@ export class MainNavComponent {
   getCurrProject(){
     this.publicService.curUser().subscribe(response => {
       this.user = response
-      console.log(this.user);
       if(this.user.activeProject===null){
         this.router.navigate(['/project/'])
+      } else {
+        this.router.navigate(['/project/', this.user.activeProject])
       }
-      this.router.navigate(['/project/', this.user.activeProject])
     })
   }
 
