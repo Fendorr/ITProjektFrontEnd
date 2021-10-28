@@ -72,9 +72,13 @@
                             >
                             </app-member-card>
                         </div>
-                        <div class="col-3">
-                            <div class="member-card professor">
+                        <div class="col-3 prof-flex">
+                            <div *ngIf="isProf" class="member-card professor">
                                 <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/01938.svg'>
+                                <span>{{ professor.email }}</span>
+                            </div>
+                            <div *ngIf="!isProf" class="member-card no-prof">
+                                <img mat-card-avatar src='https://avatars.dicebear.com/api/initials/Proffff.svg'>
                                 <span>Professor Name</span>
                             </div>
                         </div>
@@ -110,6 +114,7 @@
                         (successApp)="openSnackBar($event, 'success')"
                     >
                     </app-carousel-item>
+                    <span *ngIf="displayApplicants.length < 1">Wenn sich jemand auf dein Projekt bewirbt, kannst du ihn hier an- beziehungsweise ablehnen.</span>
                 </div>
             </div>
         </div>
@@ -126,6 +131,7 @@
                     (failEvent)="openSnackBar($event, 'warn')"
                 >
                 </app-like-user>
+                <span *ngIf="displayLikes.length < 1">Bisher hat noch niemand dein Projekt geliked!</span>
             </div>
         </div>
     </div>

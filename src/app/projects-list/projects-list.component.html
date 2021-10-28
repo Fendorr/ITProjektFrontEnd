@@ -15,5 +15,8 @@
             [project]="project"
         ></app-projects-list-item>
     </ul>
+    <div *ngIf="this.projects.length < 1">
+        Zur Zeit gibt es keine offenen Projekte!
+    </div>
 
 </div>

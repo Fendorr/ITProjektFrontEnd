@@ -9,6 +9,7 @@ import { RefreshService } from 'src/app/services/refreshComponent.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-project-detail',
@@ -18,9 +19,11 @@ import { DialogComponent } from 'src/app/dialog/dialog.component';
 export class ProjectDetailComponent implements OnInit, OnChanges {
   user: UserDTO;
   project: ProjectDTO;
+  professor: UserDTO;
   spinnerValue: number;
   isMember: boolean = false;
   isAdmin: boolean = false;
+  isProf: boolean = false;
   isApplicant: boolean = false;
   isLiked: boolean = false;
   displayMembers: UserDTO[] = [];
@@ -80,6 +83,13 @@ export class ProjectDetailComponent implements OnInit, OnChanges {
               }
             });
           });
+          //Prof aus der DB fetchen
+          if(this.project.professorId !== null){
+            this.userService.getUserByIdUsingGET({id: this.project.professorId!}).subscribe((prof) => {
+              this.professor = prof;
+              this.isProf = true;
+            }, (error) => {error});
+          }
           //Holen der ProjectLikes als UserDTOs
           this.project.projectLikes!.forEach((like) => {
             if (!this.project.members!.includes(like)) {

@@ -6,7 +6,7 @@
         </div>
         <img mat-card-avatar src={{imgPath}}>
     </div>
-    <mat-chip-list aria-label="Fish selection">
+    <mat-chip-list aria-label="Project tags">
         <mat-chip
             *ngFor="let tag of project.tags"
             >{{ tag }}</mat-chip>
@@ -23,5 +23,4 @@
             <mat-icon [ngClass]="(isLiked)? 'liked' : 'unliked'">favorite</mat-icon>
         </button>
     </mat-card-actions>
-    <!-- Add notification to project like -->
 </mat-card>
