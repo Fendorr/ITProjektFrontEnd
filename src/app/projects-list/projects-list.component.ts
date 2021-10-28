@@ -15,7 +15,7 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class ProjectsListComponent implements OnInit{
 
-  projects: ProjectDTO[];
+  projects: ProjectDTO[] = [];
   user: UserDTO;
 
   constructor(
