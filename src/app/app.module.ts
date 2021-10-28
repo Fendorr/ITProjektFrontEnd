@@ -48,6 +48,7 @@ import { ApplicationCarouselItemComponent } from './project/start-project/applic
 import { RefreshService } from './services/refreshComponent.service';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ProjectDetailEditComponent } from './project/project-detail/project-detail-edit/project-detail-edit.component';
 
 @NgModule({
   declarations: [			 
@@ -74,6 +75,7 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
     InvitationCarouselItemComponent,
     ApplicationCarouselItemComponent,
     DialogComponent,
+    ProjectDetailEditComponent,
    ],
   imports: [
     BrowserModule,

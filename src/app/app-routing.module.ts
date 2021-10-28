@@ -15,6 +15,7 @@ import { ProjectDetailComponent } from './project/project-detail/project-detail.
 import { ProjectComponent } from './project/project.component';
 import { StartprojectComponent } from './project/start-project/start-project.component';
 import { ProjectsListComponent } from './projects-list/projects-list.component';
+import { ProjectDetailEditComponent } from './project/project-detail/project-detail-edit/project-detail-edit.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,7 @@ const routes: Routes = [
     children: [
       { path: '', component: StartprojectComponent, canActivate: [AuthGuard] },
       { path: 'new', component: NewProjectComponent, canActivate: [AuthGuard] },
+      { path: ':id/edit', component: ProjectDetailEditComponent, canActivate: [AuthGuard] },
       { path: ':id', component: ProjectDetailComponent, canActivate: [AuthGuard] },
     ]
   },
