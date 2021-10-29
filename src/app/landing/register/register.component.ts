@@ -2,8 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PublicService } from 'src/api/generated/controllers/Public';
 import { UserService } from 'src/api/generated/controllers/User';
-import { TypeUserDTOEnum, UserDTO } from 'src/api/generated/defs/UserDTO';
+import { UserDTO } from 'src/api/generated/defs/UserDTO';
 import { LoginDTO } from 'src/api/generated/model';
+
+export enum Types{
+  Student = "Student",
+  Professor = "Professor",
+}
 
 @Component({
   selector: 'app-register',
@@ -15,16 +20,14 @@ export class RegisterComponent implements OnInit {
 
   user : UserDTO = {};
   loginDto: LoginDTO = {};
-  keys: any[]
-  types: TypeUserDTOEnum
   public password: string
 
-  testArray = [
-    1000,
-    2000
-  ]
+  keys: any[]
+  types = Types
+  
 
   constructor(private publicService : PublicService, private router: Router) { 
+    this.keys = Object.keys(this.types);
   }
 
   ngOnInit(): void {

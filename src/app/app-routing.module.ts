@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './services/auth.guard';
-import { AppComponent } from './app.component';
-import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './landing/login/login.component';
 import { RegisterComponent } from './landing/register/register.component';
 import { LikedProjectsListComponent } from './liked-projects-list/liked-projects-list.component';

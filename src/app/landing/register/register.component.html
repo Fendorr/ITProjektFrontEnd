@@ -11,8 +11,8 @@
     </mat-form-field>
     <mat-form-field appearance="legacy">
       <mat-label>Profilart</mat-label>
-      <mat-select [(ngModel)]="types" [ngModelOptions]="{standalone: true}" required>
-        <mat-option *ngFor="let type of types" [value]="type">{{type}}
+      <mat-select [(ngModel)]="user.type" [ngModelOptions]="{standalone: true}" required>
+        <mat-option *ngFor="let key of keys" [value]="key">{{key}}
         </mat-option>
       </mat-select>
     </mat-form-field>
