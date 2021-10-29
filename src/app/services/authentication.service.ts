@@ -27,7 +27,14 @@ export class AuthenticationService {
           );
           
           this.loggedIn = true;
-          this.router.navigate(['/project']);
+          this.publicService.curUser().subscribe(response => {
+            this.user = response
+            if(this.user.activeProject===null){
+              this.router.navigate(['/project/'])
+            } else {
+              this.router.navigate(['/project/', this.user.activeProject])
+            }
+          })
         } 
         else {
           this.loggedIn = false;

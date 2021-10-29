@@ -1,6 +1,10 @@
 $primary: #3F51B5;
 $accent: #FF4081;
 
+.container{
+    width: 25%;
+}
+
 .mat-form-field {
     width: 100%;
     margin-bottom: 20px;
@@ -12,4 +16,31 @@ $accent: #FF4081;
 
 .mat-form-field:last-of-type {
     margin-bottom: 10px;
+}
+
+.formdiv {
+    size: 75%;
+    padding: 20px 30px;
+    border: 2px solid #3F51B5;
+    box-shadow: 0px 0px 3px 1px #3F51B5;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+::ng-deep .success {
+    background: rgb(68, 207, 91);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: #000;
+}
+::ng-deep .normal {
+    background-color: rgb(80, 80, 80);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: #FFF;
+}
+::ng-deep .warn {
+    background-color: rgb(175, 0, 38);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: #FFF;
 }
