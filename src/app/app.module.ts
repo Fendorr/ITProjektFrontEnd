@@ -6,7 +6,7 @@ import { ProjectService } from 'src/api/generated/controllers/Project';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { APIInterceptor } from './Interceptor/api-interceptor';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/material/snack-bar';
 
 //* Component Imports
@@ -17,7 +17,6 @@ import { StartprojectComponent } from './project/start-project/start-project.com
 import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { MaterialModule } from './material.module';
 import { ProjectsListItemComponent } from './projects-list/projects-list-item/projects-list-item.component';
-import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './landing/login/login.component';
 import { RegisterComponent } from './landing/register/register.component';
 import { UserService } from 'src/api/generated/controllers/User';
@@ -58,7 +57,6 @@ import { ProjectDetailEditComponent } from './project/project-detail/project-det
     StartprojectComponent,
     ProjectsListComponent,
     ProjectsListItemComponent,
-    LandingComponent,
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
@@ -113,6 +111,7 @@ import { ProjectDetailEditComponent } from './project/project-detail/project-det
     InteractionService,
     RefreshService,
     AuthGuard,
+    FormBuilder,
     {
       provide: MatDialogRef,
       useValue: {}
