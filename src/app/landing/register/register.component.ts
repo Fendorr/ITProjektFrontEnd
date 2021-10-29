@@ -6,8 +6,8 @@ import { UserDTO } from 'src/api/generated/defs/UserDTO';
 import { LoginDTO } from 'src/api/generated/model';
 
 export enum TypeUserDTOEnum{
-  student = "student",
-  professor = "professor",
+  Student = "Student",
+  Professor = "Professor",
 }
 
 @Component({

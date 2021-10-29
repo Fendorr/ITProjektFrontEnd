@@ -27,5 +27,5 @@ export interface UserDTO {
 }
 
 export type TypeUserDTOEnum =
-  'professor' |
-  'student';
+  'Professor' |
+  'Student';
