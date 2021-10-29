@@ -1,6 +1,8 @@
 <div class="container">
-  <h1>Neues Konto anlegen</h1>
-  <div class="default-flex-container">
+  <div class="formdiv">
+    <h1 style="text-align:center">Registrieren</h1>
+    <br>
+    <br>
     <mat-form-field appearance="legacy">
       <mat-label>E-Mail</mat-label>
       <input type="email" matInput required [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
@@ -17,8 +19,12 @@
       </mat-select>
     </mat-form-field>
     <span>
-      <button mat-raised-button color="accent" type="submit" (click)="createUser()">Registrieren</button>
-      <button mat-raised-button color="accent" type="submit" [routerLink]="['/login']">=>Einloggen</button>
+      <button mat-raised-button color="primary" type="submit" (click)="createUser()">Registrieren</button>
+    </span>
+    <br>
+    <span>
+      Bereits registriert?
+      <a href="/login">Zurück zum Login</a>
     </span>
   </div>
 </div>

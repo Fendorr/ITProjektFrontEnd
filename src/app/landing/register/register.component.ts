@@ -5,9 +5,9 @@ import { UserService } from 'src/api/generated/controllers/User';
 import { UserDTO } from 'src/api/generated/defs/UserDTO';
 import { LoginDTO } from 'src/api/generated/model';
 
-export enum Types{
-  Student = "Student",
-  Professor = "Professor",
+export enum TypeUserDTOEnum{
+  student = "student",
+  professor = "professor",
 }
 
 @Component({
@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
   public password: string
 
   keys: any[]
-  types = Types
+  types = TypeUserDTOEnum
   
 
   constructor(private publicService : PublicService, private router: Router) { 
