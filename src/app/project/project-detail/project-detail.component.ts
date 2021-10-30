@@ -9,7 +9,11 @@ import { RefreshService } from 'src/app/services/refreshComponent.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
-import { ThrowStmt } from '@angular/compiler';
+
+export interface Chat {
+  name: string,
+  msg: string
+}
 
 @Component({
   selector: 'app-project-detail',
@@ -29,6 +33,8 @@ export class ProjectDetailComponent implements OnInit, OnChanges {
   displayMembers: UserDTO[] = [];
   displayLikes: UserDTO[] = [];
   displayApplicants: UserDTO[] = [];
+  displayChat: Chat[] = []
+  chatMessage: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -108,6 +114,14 @@ export class ProjectDetailComponent implements OnInit, OnChanges {
                 this.displayApplicants.push(user);
               });
           });
+          //Holen der Chat messages
+          this.project.chat!.forEach((chat) => {
+            let ChatArr = chat.split("%%%");
+            this.userService.getUserByIdUsingGET({id: Number(ChatArr[0])})
+              .subscribe((response) => {
+                this.displayChat.push({name: response.email!, msg: ChatArr[1]})
+              })
+          })
         });
     });
 
@@ -228,5 +242,17 @@ export class ProjectDetailComponent implements OnInit, OnChanges {
           });
       });
     });
+  }
+
+  sendChatMsg():void {
+    this.publicService.curUser().subscribe((response) => {
+      this.user = response;
+      let newMessage = this.user.id! + '%%%' + this.chatMessage;
+      this.project.chat!.push(newMessage);
+      this.projectService.updateProjectUsingPUT({id: this.project.id!, project: this.project})
+        .subscribe(response => {
+          this.refreshService.reloadComponent();
+        });
+    })
   }
 }

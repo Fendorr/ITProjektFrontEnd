@@ -101,6 +101,37 @@
             </div>
         </div>
     </div>
+
+    <div class="row" [ngClass]="{'no-display': !isMember}">
+        <div class="col-12 p-2">
+            <div class="content">
+                <h2>Nachrichten</h2>
+                <div class="chat-window">
+                    <!-- <app-like-user
+                        *ngFor="let likeUser of displayLikes"
+                        [likeUser]="likeUser"
+                        [isAdmin]="isAdmin"
+                        (successEvent)="openSnackBar($event, 'success')"
+                        (failEvent)="openSnackBar($event, 'warn')"
+                    >
+                    </app-like-user> -->
+                    <div *ngFor="let chatMsg of displayChat">
+                        <div class="msg" [ngClass]="{'my-msg': isMember && chatMsg.name === user.email}">
+                            <span class="msg-name">{{ chatMsg.name }}:</span>
+                            <span class="msg-body">{{ chatMsg.msg }}</span>
+                        </div>
+                    </div>
+                    <span *ngIf="displayChat.length < 1">Schreibe eine Nachricht an die anderen Member des Projekts</span>
+                </div>
+                <mat-form-field appearance="legacy">
+                    <input type="text" matInput placeholder="Schreib eine Nachricht..." [(ngModel)]="this.chatMessage"
+                      [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                <button mat-raised-button color="accent" class="submit-msg" type="submit" (click)="sendChatMsg()">Senden</button>
+            </div>
+        </div>
+    </div>
+
     <div class="row" [ngClass]="{'no-display': !isAdmin}">
         <div class="col-12 p-2">
             <div class="content">

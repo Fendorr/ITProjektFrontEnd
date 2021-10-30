@@ -32,4 +32,5 @@ export interface ProjectDTO {
   subTitle?: string;
   tags?: string[];
   title?: string;
+  chat?: string[];
 }

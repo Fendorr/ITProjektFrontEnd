@@ -168,3 +168,63 @@ mat-stepper {
     color: #6046A2;
     transform: scale(1.2);
   }
+
+.chat-window {
+    border-radius: 5px;
+    box-shadow: inset 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 20px 10px;
+    max-height: 300px;
+    overflow-y: scroll;
+
+    .msg {
+        max-width: 65%;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+        background-color: #d0beff;
+
+        .msg-name {
+            display: block;
+            color: #333;
+            margin-bottom: 2px;
+            font-size: .8rem;
+            font-weight: 700;
+        }
+
+        .msg-body {
+            color: #000;
+        }
+    }
+
+    .msg:hover {
+        transform: scale(1.01);
+    }
+
+    .my-msg {
+        background-color: #b6a6df;
+        margin-left: 35%;
+
+        .msg-name {
+            text-align: right;
+            display: block;
+            color: #333;
+            margin-bottom: 2px;
+            font-size: .8rem;
+            font-weight: 700;
+        }
+
+        .msg-body {
+            color: #000;
+        }
+    }
+}
+
+mat-form-field{
+    width: 80%;
+}
+
+.submit-msg {
+    width: 15%;
+    margin-left: 5%;
+}

@@ -71,6 +71,7 @@ export class NewProjectComponent implements OnInit {
     this.project.projectLikes = []; //SetEmpty damit nicht NULL
     this.project.projectApplicants = [];
     this.project.invitedUsers = [];
+    this.project.chat = [];
     this.project.members = [];
     this.project.currUser = 1;
     this.project.tags = this.tags.map(a => a.name); //Tags von Object-Array in String-Array mappen.
