@@ -1,5 +1,6 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PublicService } from 'src/api/generated/controllers/Public';
 import { UserService } from 'src/api/generated/controllers/User';
@@ -15,7 +16,7 @@ export class AuthenticationService {
   user: UserDTO = {};
   loggedIn = false;
 
-  constructor(private publicService: PublicService, private router: Router) { }
+  constructor(private publicService: PublicService, private router: Router, private snackBar: MatSnackBar) { }
 
   login(email: string, password: string) {
     this.publicService.login({ loginDto: { email: email, password: password } }).subscribe
@@ -36,11 +37,9 @@ export class AuthenticationService {
             }
           })
         } 
-        else {
-          this.loggedIn = false;
-          this.router.navigate(['/']);
-          alert("Authentication failed.")
-        }
+      }, (error) => {
+        this.openSnackBar("Fehler: Authentifizierung fehlgeschlagen", 'warn')
+        this.loggedIn = false;
       });
   }
 
@@ -57,5 +56,11 @@ export class AuthenticationService {
   getLoggedInUser() {
     this.publicService.curUser().subscribe(response => this.user = response)
     return this.user;
+  }
+
+  openSnackBar(msg: string, clss: string): void {
+    this.snackBar.open(msg, '',{
+      panelClass: [clss]
+    });
   }
 }

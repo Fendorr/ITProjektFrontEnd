@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { PublicService } from 'src/api/generated/controllers/Public';
 import { UserService } from 'src/api/generated/controllers/User';
@@ -26,12 +27,18 @@ export class RegisterComponent implements OnInit {
   types = TypeUserDTOEnum
   
 
-  constructor(private publicService : PublicService, private router: Router) { 
+  constructor(private publicService : PublicService, private router: Router, private snackBar: MatSnackBar) { 
     this.keys = Object.keys(this.types);
   }
 
   ngOnInit(): void {
   
+  }
+
+  openSnackBar(msg: string, clss: string): void {
+    this.snackBar.open(msg, '',{
+      panelClass: [clss]
+    });
   }
 
   createUser(): void {
@@ -40,9 +47,11 @@ export class RegisterComponent implements OnInit {
     this.user.projectInvites = [];
     this.user.sentApplications = [];
     this.publicService.user({userDto:this.user, pw: this.password}).subscribe(user => {
+      this.openSnackBar("User erfolgreich erstellt", 'success');
       this.router.navigate(['/login']),
       console.log(user)
-    })
+    },
+    (error) => {this.openSnackBar("Fehler: User konnte nicht erstellt werden", 'warn')});
   }
 
 }
