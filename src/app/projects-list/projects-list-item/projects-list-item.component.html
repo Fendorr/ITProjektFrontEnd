@@ -18,7 +18,7 @@
     </div>
     <mat-card-actions>
         <div>
-            <button mat-raised-button color="primary" [routerLink]="['/project', project.id]">Details ansehen</button>
+            <button mat-raised-button [routerLink]="['/project', project.id]">Details ansehen</button>
             <h3>{{ project.currUser }}/{{ project.maxUser }}</h3>
         </div>
         <button mat-icon-button aria-label="Like this project" (click)="likeProject()">

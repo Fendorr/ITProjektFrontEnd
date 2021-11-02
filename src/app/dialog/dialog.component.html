@@ -3,6 +3,6 @@
   <p>{{data.content}}</p>
 </mat-dialog-content>
 <mat-dialog-actions align="center">
-  <div *ngFor="let label of data.buttonLabels, index as i"><button mat-button mat-dialog-close
+  <div *ngFor="let label of data.buttonLabels, index as i"><button color="warn" mat-button mat-dialog-close
       (click)="getResult(i)">{{label}}</button></div>
 </mat-dialog-actions>

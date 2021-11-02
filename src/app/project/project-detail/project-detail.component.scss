@@ -4,7 +4,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 4px;
     color: #fafafa;
-    text-shadow: 0px 1px 8px rgba(0, 0, 0, .3);
+    text-shadow: 0px 1px 6px #7672e1;
 }
 
 .content {
@@ -99,20 +99,20 @@ h1 {
         }
         
         .professor {
-            background-color: rgb(129, 207, 109);
+            background-color: #aaeded;
         
             img {
-                border: 3px solid rgb(37, 172, 32); 
+                border: 3px solid #00c0cd; 
             }
         }
     }
 }
 
 .members-array .professor {
-    background-color: rgb(129, 207, 109);
+    background-color: #aaeded;
 
     img {
-        border: 3px solid rgb(37, 172, 32); 
+        border: 3px solid #00c0cd; 
     }
 }
 
@@ -137,7 +137,7 @@ mat-stepper {
 }
 
 ::ng-deep .success {
-    background: rgb(68, 207, 91);
+    background: #9166e6;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     color: #000;
 }
@@ -147,25 +147,25 @@ mat-stepper {
     color: #FFF;
 }
 ::ng-deep .warn {
-    background-color: rgb(175, 0, 38);
+    background-color: #ad3266;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     color: #FFF;
 }
 
 .liked {
-    color: #6046A2;
+    color: #591dd3;
   }
-
+  
   .liked:hover {
-    color: rgb(155, 0, 0);
+    color: #b193ec;
   }
-
+  
   .unliked {
     color: rgb(61, 61, 61);
   }
-
+  
   .unliked:hover {
-    color: #6046A2;
+    color: #591dd3;
     transform: scale(1.2);
   }
 
@@ -182,7 +182,7 @@ mat-stepper {
         border-radius: 8px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         margin-bottom: 20px;
-        background-color: #d0beff;
+        background-color: #d1bff3;
 
         .msg-name {
             display: block;
@@ -202,20 +202,20 @@ mat-stepper {
     }
 
     .my-msg {
-        background-color: #b6a6df;
+        background-color: #9166e6;
         margin-left: 35%;
 
         .msg-name {
             text-align: right;
             display: block;
-            color: #333;
+            color: #EEE;
             margin-bottom: 2px;
             font-size: .8rem;
             font-weight: 700;
         }
 
         .msg-body {
-            color: #000;
+            color: #FFF;
         }
     }
 }

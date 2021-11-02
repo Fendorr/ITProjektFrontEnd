@@ -30,9 +30,9 @@
             <div class="content members">
                 <p>Members:</p>
                 <div class="spinnerbox">
-                    <mat-spinner class="track" mode="determinate" value="100" color="accent" strokeWidth="13">
+                    <mat-spinner class="track" mode="determinate" value="100" color="primary" strokeWidth="13">
                     </mat-spinner>
-                    <mat-progress-spinner mode="determinate" color="accent" [value]="spinnerValue" strokeWidth="13">
+                    <mat-progress-spinner mode="determinate" color="primary" [value]="spinnerValue" strokeWidth="13">
                     </mat-progress-spinner>
                 </div>
                 <p class="member-count">{{project?.currUser}}/{{project?.maxUser}}</p>
@@ -58,10 +58,10 @@
                         [ngModelOptions]="{standalone: true}"></textarea>
                     <mat-hint>Bearbeite hier deine Projektbeschreibung (min. 150 Zeichen)</mat-hint>
                 </mat-form-field>
-                <button mat-raised-button color="accent" type="submit" (click)="openDialog()">Änderungen
+                <button mat-raised-button color="primary" type="submit" (click)="openDialog()">Änderungen
                     übernehmen</button>
 
-                <button mat-raised-button color="accent" type="submit"
+                <button mat-raised-button color="warn" type="submit"
                     [routerLink]="['/project',this.project.id]">Abbrechen</button>
             </div>
         </div>

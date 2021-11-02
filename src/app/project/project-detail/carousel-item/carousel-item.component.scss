@@ -1,7 +1,7 @@
 .mat-card {
     width: 160px;
     height: 220px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px 0 #7672e1;
     background-color: #FAFAFA;
     border-radius: 8px;
     padding: 5px;
@@ -29,14 +29,16 @@
             padding: 0px !important;
         }
 
+        .profile {
+            background-color: #b193ec;
+        }
+
         .accept {
             margin-right: 3px;
-            background-color: rgb(115, 192, 0);
         }
 
         .decline {
             margin-left: 3px;
-            background-color: rgb(201, 0, 0);
         }
 
         .choosebox {
@@ -50,7 +52,7 @@
         background-color: #FFF;
         width: 80px;
         height: 80px;
-        border: 3px solid #F94082;
+        border: 3px solid #7672e1;
         box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
         border-radius: 50%;
         margin-bottom: 5px;

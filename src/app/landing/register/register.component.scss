@@ -2,7 +2,7 @@ $primary: #3F51B5;
 $accent: #FF4081;
 
 .container{
-    width: 25%;
+    width: 35%;
 }
 
 .mat-form-field {
@@ -21,16 +21,17 @@ $accent: #FF4081;
 .formdiv {
     size: 75%;
     padding: 20px 30px;
-    border: 2px solid #3F51B5;
-    box-shadow: 0px 0px 3px 1px #3F51B5;
+    border: 2px solid #00c0cd;
+    box-shadow: 0px 0px 3px 1px #1ad4e9;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 ::ng-deep .success {
-    background: rgb(68, 207, 91);
+    background: #9166e6;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     color: #000;
 }
@@ -40,7 +41,7 @@ $accent: #FF4081;
     color: #FFF;
 }
 ::ng-deep .warn {
-    background-color: rgb(175, 0, 38);
+    background-color: #ad3266;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     color: #FFF;
 }

@@ -4,7 +4,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 4px;
     color: #fafafa;
-    text-shadow: 0px 1px 8px rgba(0, 0, 0, .3);
+    text-shadow: 0px 1px 6px #7672e1;
 }
 
 .content {
@@ -92,7 +92,7 @@ mat-stepper {
 }
 
 ::ng-deep .success {
-    background: rgb(68, 207, 91);
+    background: #9166e6;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     color: #000;
 }
@@ -102,7 +102,7 @@ mat-stepper {
     color: #FFF;
 }
 ::ng-deep .warn {
-    background-color: rgb(175, 0, 38);
+    background-color: #ad3266;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     color: #FFF;
 }

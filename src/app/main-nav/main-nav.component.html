@@ -7,11 +7,11 @@
     <span>ProFi</span>
   </div>
   <div class="login" *ngIf="!this.authService.isLoggedIn" [routerLink]="['/login']">
-    <mat-icon>account_circle</mat-icon>
+    <mat-icon color="primary">account_circle</mat-icon>
     Login
   </div>
   <div class="login" *ngIf="this.authService.isLoggedIn" (click)="logout()">
-    <mat-icon>arrow_forward</mat-icon>
+    <mat-icon color="primary">arrow_forward</mat-icon>
     Logout
   </div>
 </mat-toolbar>
