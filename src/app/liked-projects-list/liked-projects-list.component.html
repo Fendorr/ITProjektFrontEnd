@@ -12,5 +12,6 @@
             [routerLink]="['/project', project.id]"
             >
         </app-liked-projects-item>
+        <span *ngIf="displayProjects.length < 1">Noch hast du kein Projekt favorisiert! Klicke auf das Herz in der Projektliste, um ein Projekt zu liken!</span>
     </ul>
 </div>

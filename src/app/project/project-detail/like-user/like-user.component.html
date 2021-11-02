@@ -2,7 +2,7 @@
     <mat-icon>favorite</mat-icon>
     <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/{{ likeUser.id }}.svg'>
     <span>{{ likeUser.email }}</span>
-    <button mat-button [routerLink] = "['/profile', likeUser.id]">Show Profile</button>
+    <button mat-button [routerLink] = "['/profile', likeUser.id]" class="profile-button">Profil ansehen</button>
     <button class="invite" mat-button (click)="inviteUser()" [ngClass]="{'no-display' : !isAdmin}">Einladen</button>
 </div>
 

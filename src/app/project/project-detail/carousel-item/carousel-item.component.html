@@ -1,11 +1,11 @@
 <div class="mat-card">
     <h3>{{ applicant.email }}</h3>
     <img mat-card-avatar src="https://avatars.dicebear.com/api/bottts/{{ applicant.id }}.svg">
-    <mat-chip-list class="tags">
+    <!-- <mat-chip-list class="tags">
         <mat-chip>Ich</mat-chip>
         <mat-chip>bin</mat-chip>
         <mat-chip>cool!</mat-chip>
-    </mat-chip-list>
+    </mat-chip-list> -->
     <div class="buttonbox">
         <button mat-raised-button color="primary" [routerLink] = "['/profile', applicant.id]">Profil ansehen</button>
         <div class="choosebox">

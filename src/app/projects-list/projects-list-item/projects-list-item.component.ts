@@ -5,6 +5,8 @@ import { PublicService } from 'src/api/generated/controllers/Public';
 import { UserService } from 'src/api/generated/controllers/User';
 import { ProjectDTO } from 'src/api/generated/defs/ProjectDTO';
 import { UserDTO } from 'src/api/generated/model';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { RefreshService } from 'src/app/services/refreshComponent.service';
 
 @Component({
   selector: 'app-projects-list-item',
@@ -20,11 +22,16 @@ export class ProjectsListItemComponent implements OnInit, OnChanges {
   dateFormat: string;
   isLiked: boolean;
 
-  constructor(private ProjectService: ProjectService, private publicService :PublicService, private userService : UserService, private interService: InteractionService) { }
+  constructor(
+    private ProjectService: ProjectService,
+    private publicService :PublicService,
+    private userService : UserService,
+    private interService: InteractionService,
+    private refreshService: RefreshService,
+    private authService: AuthenticationService) { }
 
   ngOnInit(): void {
-    //? Der ImgPath erstellt einen RandomAvatar für das Projekt -> Später random durch proj_id ersetzen.
-    this.imgPath = 'https://avatars.dicebear.com/api/bottts/' + this.project.id + '.svg'
+    this.imgPath = 'https://avatars.dicebear.com/api/jdenticon/' + this.project.id + '.svg'
     this.dateFormat = this.formatDate(this.project);
     this.checkProjectLike();
   }
@@ -48,18 +55,20 @@ export class ProjectsListItemComponent implements OnInit, OnChanges {
       if(this.project.id && this.user.id){
         this.interService
           .likeProject({id: this.project.id, userId: this.user.id })
-          .subscribe(response => response);
+          .subscribe((response) => {this.refreshService.reloadComponent()});
       }
     })
   }
 
   checkProjectLike(): void {
-    this.publicService.curUser().subscribe(response => {
-      this.user = response;
-      if(this.project.projectLikes?.includes(this.user.id!)){
-        this.isLiked = true;
-      } else { this.isLiked = false; }
-    })
+    if(this.authService.isLoggedIn){
+      this.publicService.curUser().subscribe(response => {
+        this.user = response;
+        if(this.project.projectLikes?.includes(this.user.id!)){
+          this.isLiked = true;
+        } else { this.isLiked = false; }
+      })
+    }
   }
 
 }

@@ -5,9 +5,9 @@
             <div class="content">
                 <h2 class="title">{{ project?.title }}</h2>
                 <p>Erstellt: {{project?.createdAt?.slice(0,10)}} von {{ project?.createdBy }} </p>
-                <button mat-raised-button (click)="openDialog()" *ngIf="isMember">Leave Project</button>
-                <button mat-raised-button (click)="apply()" [ngClass]="{'no-display': isMember || isApplicant}">Apply to Project</button>
-                <button mat-raised-button *ngIf="isAdmin" [routerLink]="['/project',this.project.id,'edit']">Edit</button>
+                <button mat-raised-button (click)="openDialog()" *ngIf="isMember">Projekt verlassen</button>
+                <button mat-raised-button (click)="apply()" [ngClass]="{'no-display': isMember || isApplicant}">Bewerben</button>
+                <button mat-raised-button *ngIf="isAdmin" [routerLink]="['/project',this.project.id,'edit']">Bearbeiten</button>
                 <span [ngClass]="{'no-display': !isApplicant}">Du hast dich bereits auf dieses Projekt beworben!</span>
                 <button mat-icon-button aria-label="Like this project" (click)="likeProject()">
                     <mat-icon [ngClass]="(isLiked)? 'liked' : 'unliked'">favorite</mat-icon>
@@ -107,14 +107,6 @@
             <div class="content">
                 <h2>Nachrichten</h2>
                 <div class="chat-window">
-                    <!-- <app-like-user
-                        *ngFor="let likeUser of displayLikes"
-                        [likeUser]="likeUser"
-                        [isAdmin]="isAdmin"
-                        (successEvent)="openSnackBar($event, 'success')"
-                        (failEvent)="openSnackBar($event, 'warn')"
-                    >
-                    </app-like-user> -->
                     <div *ngFor="let chatMsg of displayChat">
                         <div class="msg" [ngClass]="{'my-msg': isMember && chatMsg.name === user.email}">
                             <span class="msg-name">{{ chatMsg.name }}:</span>
