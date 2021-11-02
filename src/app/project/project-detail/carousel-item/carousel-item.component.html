@@ -7,10 +7,10 @@
         <mat-chip>cool!</mat-chip>
     </mat-chip-list> -->
     <div class="buttonbox">
-        <button mat-raised-button color="primary" [routerLink] = "['/profile', applicant.id]">Profil ansehen</button>
+        <button mat-raised-button class="profile" [routerLink] = "['/profile', applicant.id]">Profil ansehen</button>
         <div class="choosebox">
-            <button mat-raised-button class="accept" (click)="addMember()">Annehmen</button>
-            <button mat-raised-button class="decline" (click)="declineApplication()">Ablehnen</button>
+            <button mat-raised-button color="primary" class="accept" (click)="addMember()">Annehmen</button>
+            <button mat-raised-button color="warn" class="decline" (click)="declineApplication()">Ablehnen</button>
         </div>
     </div>
 </div>

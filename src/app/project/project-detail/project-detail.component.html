@@ -5,8 +5,8 @@
             <div class="content">
                 <h2 class="title">{{ project?.title }}</h2>
                 <p>Erstellt: {{project?.createdAt?.slice(0,10)}} von {{ project?.createdBy }} </p>
-                <button mat-raised-button (click)="openDialog()" *ngIf="isMember">Projekt verlassen</button>
-                <button mat-raised-button (click)="apply()" [ngClass]="{'no-display': isMember || isApplicant}">Bewerben</button>
+                <button mat-raised-button color="warn" (click)="openDialog()" *ngIf="isMember">Projekt verlassen</button>
+                <button mat-raised-button color="primary" (click)="apply()" [ngClass]="{'no-display': isMember || isApplicant}">Bewerben</button>
                 <button mat-raised-button *ngIf="isAdmin" [routerLink]="['/project',this.project.id,'edit']">Bearbeiten</button>
                 <span [ngClass]="{'no-display': !isApplicant}">Du hast dich bereits auf dieses Projekt beworben!</span>
                 <button mat-icon-button aria-label="Like this project" (click)="likeProject()">
@@ -22,13 +22,13 @@
                         class="track" 
                         mode="determinate"
                         value="100"
-                        color ="accent"
+                        color ="primary"
                         strokeWidth="13"
                         >
                     </mat-spinner>
                     <mat-progress-spinner
                         mode ="determinate"
-                        color ="accent"
+                        color ="primary"
                         [value] = "spinnerValue"
                         strokeWidth="13"
                     >
@@ -119,7 +119,7 @@
                     <input type="text" matInput placeholder="Schreib eine Nachricht..." [(ngModel)]="this.chatMessage"
                       [ngModelOptions]="{standalone: true}">
                 </mat-form-field>
-                <button mat-raised-button color="accent" class="submit-msg" type="submit" (click)="sendChatMsg()">Senden</button>
+                <button mat-raised-button color="primary" class="submit-msg" type="submit" (click)="sendChatMsg()">Senden</button>
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 .member-card {
-    background-color: #FAC6D8;
+    background-color: #f6c0d6;
     border-radius: 8px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 8px 0 #ee71a1;
     margin: 10px;
     padding: 5px;
     width: 100px;
@@ -16,7 +16,7 @@
         background-color: #FFF;
         width: 80px;
         height: 80px;
-        border: 3px solid #F94082;
+        border: 3px solid #eb3e77;
         box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
         border-radius: 50%;
         margin-bottom: 5px;
@@ -34,17 +34,18 @@
 }
 
 .admin {
-    background-color: rgb(255, 195, 104);
+    background-color: #b193ec;
+    box-shadow: 0 2px 8px 0 #9166e6;
 
     img {
-        border: 3px solid rgb(253, 164, 30); 
+        border: 3px solid #7672e1; 
     }
 }
 
-.professor {
-    background-color: rgb(129, 207, 109);
+// .professor {
+//     background-color: rgb(129, 207, 109);
 
-    img {
-        border: 3px solid rgb(37, 172, 32); 
-    }
-}
+//     img {
+//         border: 3px solid rgb(37, 172, 32); 
+//     }
+// }

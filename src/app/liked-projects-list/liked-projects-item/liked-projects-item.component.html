@@ -1,22 +1,24 @@
 <mat-card>
-    <div class="item-header">
-        <div>
-            <mat-card-title>{{ project.title }}</mat-card-title>
-            <mat-card-subtitle>{{ dateFormat }}</mat-card-subtitle>
+    <div [routerLink]="['/project', project.id]">
+        <div class="item-header">
+            <div>
+                <mat-card-title>{{ project.title }}</mat-card-title>
+                <mat-card-subtitle>{{ dateFormat }}</mat-card-subtitle>
+            </div>
+            <img mat-card-avatar src={{imgPath}}>
         </div>
-        <img mat-card-avatar src={{imgPath}}>
+        <mat-chip-list aria-label="Project tags">
+            <mat-chip
+                *ngFor="let tag of project.tags"
+                >{{ tag }}</mat-chip>
+        </mat-chip-list>
+        <mat-card-content>
+            {{ project.comment?.slice(0, 120)+"..." }}
+        </mat-card-content>
     </div>
-    <mat-chip-list>
-        <mat-chip
-            *ngFor="let tag of project.tags"
-            >{{ tag }}</mat-chip>
-    </mat-chip-list>
-    <mat-card-content>
-        {{ project.comment?.slice(0, 120)+"..." }}
-    </mat-card-content>
     <mat-card-actions>
         <div>
-            <button mat-raised-button color="primary" [routerLink]="">Jetzt Bewerben</button>
+            <button color="primary" mat-raised-button [routerLink]="['/project', project.id]">Details ansehen</button>
             <h3>{{ project.currUser }}/{{ project.maxUser }}</h3>
         </div>
         <button mat-icon-button aria-label="Like this project" (click)="likeProject()">

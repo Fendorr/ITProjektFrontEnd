@@ -27,14 +27,14 @@
         [ngModelOptions]="{standalone: true}">
     </mat-form-field> 
 
-    <div *ngIf="show"><button mat-raised-button color="accent" type="submit" (click)="show=!show">Profilfelder
+    <div *ngIf="show"><button mat-raised-button color="primary" type="submit" (click)="show=!show">Profilfelder
         bearbeiten</button>
     </div>
 
-    <div *ngIf="!show"><button mat-raised-button color="warn-700" type="submit"
+    <div *ngIf="!show"><button mat-raised-button color="warn" type="submit"
         (click)="getUserAgain()">Abbrechen</button>
       <p></p>
-      <button mat-raised-button color="accent" type="submit" (click)="openDialog()">Änderungen
+      <button mat-raised-button color="primary" type="submit" (click)="openDialog()">Änderungen
         übernehmen</button>
     </div>
   </div>

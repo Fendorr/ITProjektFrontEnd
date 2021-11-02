@@ -1,68 +1,64 @@
 mat-card {
     margin-bottom: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
-  }
-
-  mat-card:hover {
+}
+mat-card:hover {
     cursor: pointer;
     transform: scale(1.01);
-  }
-
-  mat-card-subtitle {
+}
+mat-card-subtitle {
     margin-bottom: 5px;
-  }
-
-  .mat-standard-chip {
+}
+.mat-standard-chip {
     min-height: 26px;
-  }
-
-  mat-chip {
+}
+mat-chip {
     font-size: 12px;
     padding: 2px 10px;
-  }
-
-  mat-card-content {
+}
+mat-card-content {
     margin: 5px 0 5px;
-  }
-
-  mat-card-actions {
+}
+mat-card-actions {
     padding: 0;
     display: flex;
     justify-content: space-between;
 
-    div {
+  div {
       display: flex;
       flex-direction: row;
       
-      h3 {
+    h3 {
         margin-left: 10px;
-      }
     }
   }
-
-  .mat-card-avatar {
-    height: 50px;
+}
+.mat-card-avatar {
+    height: 60px;
     width: 60px;
-  }
-
-  .item-header {
+}
+.item-header {
     display: flex;
     justify-content: space-between;
-  }
+}
+.mat-raised-button {
+  background-color: #7672e1;
+  color: white;
+}
 
-  .liked {
-    color: #6046A2;
-  }
+.liked {
+    color: #591dd3;
+}
 
-  .liked:hover {
-    color: rgb(155, 0, 0);
-  }
+.liked:hover {
+    color: #b193ec;
+}
 
-  .unliked {
+.unliked {
     color: rgb(61, 61, 61);
-  }
+}
 
-  .unliked:hover {
-    color: #6046A2;
+.unliked:hover {
+    color: #591dd3;
     transform: scale(1.2);
-  }
+}
