@@ -97,3 +97,40 @@ nav ul {
   color: #6731d3;
   background-color: #fff;
 }
+
+.searchbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .search-field {
+    width: 50%;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFF;
+    border-radius: 4px;
+
+    #search {
+      width: 80%;
+      border-radius: 4px 0 0 4px;
+      padding: 0;
+      border: none;
+    }
+  
+    button#search-submit{
+      width: 20%;
+      background-color: #7672e1;
+      color: #FFF;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      
+      mat-icon{
+        height: 100%;
+      }
+    }
+
+  }
+}

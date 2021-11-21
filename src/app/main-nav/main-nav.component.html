@@ -6,6 +6,14 @@
     <img id="nav-logo" src="../assets/Profi_logo_nav.png" alt="Projektfinder logo">
     <span>ProFi</span>
   </div>
+  <div class="searchbar">
+      <div class="search-field">
+        <input id="search" type="text" placeholder="Projekt suchen..." matInput required>
+        <button mat-flat-button color="primary" id="search-submit" type="submit">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+  </div>
   <div class="login" *ngIf="!this.authService.isLoggedIn" [routerLink]="['/login']">
     <mat-icon color="primary">account_circle</mat-icon>
     Login

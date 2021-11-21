@@ -43,17 +43,119 @@
             <div class="content phase">
                 <h2>Projektphase</h2>
                 <mat-stepper linear="isLinear">
+                    <!-- change default 'edit' icon -->
+                    <ng-template matStepperIcon="edit">
+                        <mat-icon>done_outline</mat-icon>
+                    </ng-template>
                     <mat-step>
                         <ng-template matStepLabel>Private Phase</ng-template>
+                        <div class="phase-container container">
+                            <div class="phase-row row">
+                                <div class="col-6">
+                                    <p>Zurzeit befindet sich das Projekt in der <i>Private</i> Phase. 
+                                        Noch ist das Projekt nicht öffentlich. Du hast bereits die Möglichkeit, 
+                                        Teilnehmer zu deinem Projekt einzuladen!
+                                    </p>
+                                </div>
+                                <div class="col-6">
+                                    <button mat-raised-button color="warn" *ngIf="isAdmin">In Phase 2 wechseln!</button>
+                                </div>
+                            </div>
+                        </div>
                     </mat-step>
                     <mat-step>
                         <ng-template matStepLabel>Public Phase</ng-template>
+                        <div class="phase-container container">
+                            <div class="phase-row row">
+                                <div class="col-6">
+                                    <p>Dein Projekt ist in der <i>Public</i> Phase. 
+                                        Damit ist das Projekt öffentlich und jeder kann das Projekt liken, 
+                                        oder sich auf das Projekt bewerben!
+                                    </p>
+                                </div>
+                                <div class="col-6">
+                                    <div class="acceptance-box">
+                                        <div class="acc-circle">
+                                            <div class="acc-spinnerbox">
+                                                <mat-spinner
+                                                    class="track" 
+                                                    mode="determinate"
+                                                    value="100"
+                                                    color ="primary"
+                                                    strokeWidth="8"
+                                                    [diameter]="40"
+                                                    >
+                                                </mat-spinner>
+                                                <mat-progress-spinner
+                                                    mode ="determinate"
+                                                    color ="primary"
+                                                    [value] = "spinnerValue"
+                                                    strokeWidth="8"
+                                                    [diameter]="40"
+                                                >
+                                                </mat-progress-spinner> 
+                                            </div>
+                                            <p class="acc-member-count">{{project?.currUser}}/{{project?.maxUser}} Member haben akzeptiert</p>
+                                        </div>
+                                    </div>
+                                    <button mat-raised-button color="warn" *ngIf="isAdmin">In Phase 3 wechseln!</button>
+                                    <button mat-raised-button color="warn" *ngIf="isMember && !isAdmin">Wechsel zustimmen!</button>
+                                </div>
+                            </div>
+                        </div>
                     </mat-step>
                     <mat-step>
                         <ng-template matStepLabel>Acceptance Phase</ng-template>
+                        <div class="phase-container container">
+                            <div class="phase-row row">
+                                <div class="col-6">
+                                    <p>Dein Projekt hat die <i>Acceptance</i> Phase erreicht. 
+                                        Nun liegt es an den Mitgliedern und dem Professor. Alle müssen bestätigen,  
+                                        dass sie das Projekt umsetzen wollen!
+                                    </p>
+                                </div>
+                                <div class="col-6">
+                                    <div class="acceptance-box">
+                                        <div class="acc-circle">
+                                            <div class="acc-spinnerbox">
+                                                <mat-spinner
+                                                    class="track" 
+                                                    mode="determinate"
+                                                    value="100"
+                                                    color ="primary"
+                                                    strokeWidth="8"
+                                                    [diameter]="40"
+                                                    >
+                                                </mat-spinner>
+                                                <mat-progress-spinner
+                                                    mode ="determinate"
+                                                    color ="primary"
+                                                    [value] = "spinnerValue"
+                                                    strokeWidth="8"
+                                                    [diameter]="40"
+                                                >
+                                                </mat-progress-spinner> 
+                                            </div>
+                                            <p class="acc-member-count">{{project?.currUser}}/{{project?.maxUser}} Member haben akzeptiert</p>
+                                        </div>
+                                    </div>
+                                    <button mat-raised-button color="warn" *ngIf="isAdmin">In Phase 4 wechseln!</button>
+                                    <button mat-raised-button color="warn" *ngIf="isMember && !isAdmin">Wechsel zustimmen!</button>
+                                </div>
+                            </div>
+                        </div>
                     </mat-step>
                     <mat-step>
                         <ng-template matStepLabel>Launch Phase</ng-template>
+                        <div class="phase-container container">
+                            <div class="phase-row row">
+                                <div class="col-12">
+                                    <p>Dein Projekt hat die <i>Launch</i> Phase erreicht. 
+                                       Viel Spaß bei der Umsetzung des Projekts!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </mat-step>
                 </mat-stepper>
             </div>
