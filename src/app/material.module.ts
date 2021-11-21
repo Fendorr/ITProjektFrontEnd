@@ -13,7 +13,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [],
@@ -32,6 +34,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatStepperModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatRadioModule,
+    MatCheckboxModule,
   ],
   exports: [
     CommonModule,
@@ -48,6 +52,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatStepperModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatRadioModule,
+    MatCheckboxModule,
   ]
 })
 export class MaterialModule { }
