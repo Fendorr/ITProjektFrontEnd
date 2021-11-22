@@ -9,7 +9,7 @@
  * localhost:8080
  */
 
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 
@@ -49,6 +49,16 @@ export interface DeleteProjectUsingDELETEParams {
    * format: int64
    */
   id: number;
+}
+
+export interface PushPhaseParams {
+  /**
+   * id
+   * format: int64
+   */
+  id: number;
+  /** pushToNext */
+  pushToNext: boolean;
 }
 
 @Injectable()
@@ -101,5 +111,29 @@ export class ProjectService {
       id: params.id,
     };
     return this.http.delete<void>(`/api/project/${pathParams.id}`);
+  }
+
+  /**
+   * changeProjectPhase
+   * http://localhost:8080/swagger/swagger-ui.html#!/project-controller/changeProjectPhaseUsingPUT
+   */
+  pushPhase(params: PushPhaseParams): Observable<void> {
+    const pathParams = {
+      id: params.id,
+    };
+    const queryParamBase = {
+      pushToNext: params.pushToNext,
+    };
+
+    let queryParams = new HttpParams();
+    Object.entries(queryParamBase).forEach(([key, value]: [string, any]) => {
+      if (value !== undefined) {
+        if (typeof value === 'string') queryParams = queryParams.set(key, value);
+        else if (Array.isArray(value)) value.forEach(v => queryParams = queryParams.append(key, v));
+        else queryParams = queryParams.set(key, JSON.stringify(value));
+      }
+    });
+
+    return this.http.put<void>(`/api/project/${pathParams.id}/pushPhase`, {}, {params: queryParams});
   }
 }

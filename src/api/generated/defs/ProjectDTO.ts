@@ -10,8 +10,10 @@
  */
 
 export interface ProjectDTO {
+  acceptedMembers?: number[];
   /** format: int64 */
   adminId?: number;
+  chat?: string[];
   comment?: string;
   /** format: date-time */
   createdAt?: string;
@@ -25,6 +27,7 @@ export interface ProjectDTO {
   maxUser?: number;
   members?: number[];
   note?: string;
+  phase?: PhaseProjectDTOEnum;
   /** format: int64 */
   professorId?: number;
   projectApplicants?: number[];
@@ -32,5 +35,10 @@ export interface ProjectDTO {
   subTitle?: string;
   tags?: string[];
   title?: string;
-  chat?: string[];
 }
+
+export type PhaseProjectDTOEnum =
+  'Acceptance' |
+  'Active' |
+  'Private' |
+  'Public';

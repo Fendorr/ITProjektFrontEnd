@@ -19,6 +19,7 @@ export interface UserDTO {
   firstName?: string;
   /** format: int64 */
   id?: number;
+  isCurrentProjectAccepted?: boolean;
   lastName?: string;
   likedProjects?: number[];
   projectInvites?: number[];
