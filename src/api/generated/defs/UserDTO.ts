@@ -24,6 +24,7 @@ export interface UserDTO {
   likedProjects?: number[];
   projectInvites?: number[];
   sentApplications?: number[];
+  tags?: string[];
   type?: TypeUserDTOEnum;
 }
 

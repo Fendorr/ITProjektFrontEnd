@@ -37,6 +37,8 @@ export class UserFormService {
           new FormControl(undefined, [])), [], []),
         sentApplications: new FormArrayExtended(() => (
           new FormControl(undefined, [])), [], []),
+        tags: new FormArrayExtended(() => (
+          new FormControl(undefined, [])), [], []),
         type: new FormControl(undefined, []),
       }, [Validators.required]),
     });

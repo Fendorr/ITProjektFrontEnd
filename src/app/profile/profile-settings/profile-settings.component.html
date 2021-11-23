@@ -27,6 +27,25 @@
         [ngModelOptions]="{standalone: true}">
     </mat-form-field> 
 
+    <mat-chip-list *ngIf="show" aria-label="tags">
+      <mat-chip
+          *ngFor="let tag of this.user.tags"
+          >{{ tag }}</mat-chip>
+  </mat-chip-list>
+
+    <mat-chip-list *ngIf="!show" #chipList aria-label="Tag selection">
+      <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
+          (removed)="remove(tag)">
+          {{tag.name}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input placeholder="Neues Keyword hinzufügen..." [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+
+  <p></p>
+
     <div *ngIf="show"><button mat-raised-button color="primary" type="submit" (click)="show=!show">Profilfelder
         bearbeiten</button>
     </div>

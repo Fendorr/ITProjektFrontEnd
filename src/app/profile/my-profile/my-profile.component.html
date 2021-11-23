@@ -13,6 +13,13 @@
       <mat-label>Nachname</mat-label>
       <input type="text" disabled matInput [(ngModel)]="this.user.lastName" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
+    <div class="content">
+      <mat-chip-list aria-label="tags">
+          <mat-chip
+              *ngFor="let tag of this.user.tags"
+              >{{ tag }}</mat-chip>
+      </mat-chip-list>
+  </div>
   </div>
 </div>
 

@@ -5,6 +5,7 @@ import { PublicService } from 'src/api/generated/controllers/Public';
 import { UserService } from 'src/api/generated/controllers/User';
 import { UserDTO } from 'src/api/generated/defs/UserDTO';
 import { LoginDTO } from 'src/api/generated/model';
+import { Tag } from 'src/app/project/new-project/new-project.component';
 
 export enum TypeUserDTOEnum{
   Student = "Student",
@@ -22,7 +23,9 @@ export class RegisterComponent implements OnInit {
   user : UserDTO = {};
   loginDto: LoginDTO = {};
   public password: string
-
+  tags: Tag[] = [
+    {name: 'Beispielkeyword'}
+  ];
   keys: any[]
   types = TypeUserDTOEnum
   
@@ -43,6 +46,8 @@ export class RegisterComponent implements OnInit {
 
   createUser(): void {
     console.log(this.user);
+    this.user.tags = []
+    this.user.tags = this.tags.map(a => a.name); //Tags von Object-Array in String-Array mappen.
     this.user.likedProjects = [];
     this.user.projectInvites = [];
     this.user.sentApplications = [];

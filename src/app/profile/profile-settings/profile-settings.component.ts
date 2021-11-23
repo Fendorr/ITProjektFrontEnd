@@ -1,4 +1,6 @@
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -7,6 +9,7 @@ import { UserService } from 'src/api/generated/controllers/User';
 import { UserDTO } from 'src/api/generated/defs/UserDTO';
 import { LoginDTO } from 'src/api/generated/model';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
+import { Tag } from 'src/app/project/new-project/new-project.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -19,6 +22,11 @@ export class ProfileSettingsComponent implements OnInit {
   user: UserDTO;
   show: boolean;
   password: string;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  tags: Tag[] = [];
 
   constructor(
     private userService: UserService,
@@ -33,7 +41,9 @@ export class ProfileSettingsComponent implements OnInit {
   ngOnInit(): void {
     this.publicService
       .curUser()
-      .subscribe((response) => (this.user = response));
+      .subscribe((response) => {(this.user = response)
+        this.user.tags!.map(a => this.tags.push({ name: a }));
+      });
     console.log('hallo' + this.user);
     this.show = true;
 
@@ -74,6 +84,7 @@ export class ProfileSettingsComponent implements OnInit {
 
   updateUser(id: number | undefined, newUser: UserDTO, password: string): void {
     if (id) {
+      newUser.tags = this.tags.map(a => a.name);
       this.userService
         .updateUserUsingPUT({ id: id, userDto: newUser, pw: this.password })
         .subscribe(
@@ -87,6 +98,26 @@ export class ProfileSettingsComponent implements OnInit {
             );
           }
         );
+    }
+  }
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.tags.push({ name: value });
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  remove(tag: Tag): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
     }
   }
 }
