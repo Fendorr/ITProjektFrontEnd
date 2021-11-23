@@ -7,6 +7,36 @@
         bewerben. Wenn du mehr Information zu einem Projekt suchst,
         klicke einfach auf die Kachel des Projektes!
     </p>
+    <b>Projekte filtern:</b>
+    <div class="filters">
+        <button mat-raised-button color="primary">
+            Mitglieder
+            <mat-icon>keyboard_arrow_up</mat-icon>
+            <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+        <button mat-raised-button color="primary">
+            Erstelldatum
+            <mat-icon>keyboard_arrow_up</mat-icon>
+            <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+        <button mat-raised-button color="primary">
+            Beliebtheit
+            <mat-icon>keyboard_arrow_up</mat-icon>
+            <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+    </div>
+    <div class="checks">
+        <mat-checkbox class="example-margin">Volle Projekte Ausblenden</mat-checkbox>
+        <mat-checkbox class="example-margin">Projekt hat Professor</mat-checkbox>
+    </div>
+    <button id="filter-submit" type="submit" mat-raised-button color="primary">
+        Filter anwenden
+        <mat-icon>autorenew</mat-icon>
+    </button>
+    <button id="filter-reset" type="submit" mat-raised-button color="accent">
+        Filter verwerfen
+        <mat-icon>block</mat-icon>
+    </button>
     <hr>
     <br>
     <ul class="list-group">
