@@ -13,6 +13,19 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 
+export interface UserIdParams {
+  /**
+   * projectId
+   * format: int64
+   */
+  projectId: number;
+  /**
+   * userId
+   * format: int64
+   */
+  userId: number;
+}
+
 export interface AddMemberParams {
   /**
    * id
@@ -68,6 +81,18 @@ export interface LikeProjectParams {
 @Injectable()
 export class InteractionService {
   constructor(private http: HttpClient) {}
+
+  /**
+   * acceptProjectAndUpdateAcceptedMembers
+   * http://localhost:8080/swagger/swagger-ui.html#!/interaction-controller/acceptProjectAndUpdateAcceptedMembersUsingPUT
+   */
+  userId(params: UserIdParams): Observable<void> {
+    const pathParams = {
+      projectId: params.projectId,
+      userId: params.userId,
+    };
+    return this.http.put<void>(`/api/acceptProjectAndUpdateAcceptedMembers/projectId/${pathParams.projectId}/userId/${pathParams.userId}`, {});
+  }
 
   /**
    * addMember

@@ -23,7 +23,11 @@ export class UpdateProjectUsingPUTFormService {
     this.form = new FormGroup({
       id: new FormControl(undefined, [Validators.required]),
       project: new FormGroup({
+        acceptedMembers: new FormArrayExtended(() => (
+          new FormControl(undefined, [])), [], []),
         adminId: new FormControl(undefined, []),
+        chat: new FormArrayExtended(() => (
+          new FormControl(undefined, [])), [], []),
         comment: new FormControl(undefined, []),
         createdAt: new FormControl(undefined, []),
         createdBy: new FormControl(undefined, []),
@@ -35,6 +39,7 @@ export class UpdateProjectUsingPUTFormService {
         members: new FormArrayExtended(() => (
           new FormControl(undefined, [])), [], []),
         note: new FormControl(undefined, []),
+        phase: new FormControl(undefined, []),
         professorId: new FormControl(undefined, []),
         projectApplicants: new FormArrayExtended(() => (
           new FormControl(undefined, [])), [], []),
