@@ -14,7 +14,9 @@ export class MyProfileComponent implements OnInit {
 
   loginDto: LoginDTO = {}
   user : UserDTO = {};
-  
+  loggedinUser: UserDTO = {};
+  public isLoggedinUser: boolean;
+
   constructor(
     private userService : UserService,
     private route: ActivatedRoute,
@@ -22,11 +24,17 @@ export class MyProfileComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.publicService.curUser().subscribe(response => this.user = response)
-    // this.route.params.forEach((params: Params) => {
-    //   let id = +params['id'];
-    // this.userService.getUserByIdUsingGET({id}).subscribe(response => this.user = response);
-    // });
+    this.publicService.curUser().subscribe(response => {this.loggedinUser = response;
+      this.route.params.forEach((params: Params) => {
+        let id = +params['id'];
+        this.userService.getUserByIdUsingGET({id}).subscribe(response =>{
+          this.user = response;
+          this.isLoggedinUser = this.loggedinUser.id===this.user.id;
+          console.log(this.isLoggedinUser);
+        });
+       })
+       console.log(this.isLoggedinUser);
+    })
   }
 
 }

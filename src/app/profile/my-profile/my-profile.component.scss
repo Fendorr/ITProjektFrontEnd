@@ -10,3 +10,32 @@
 .mat-form-field:last-of-type {
     margin-bottom: 10px;
 }
+
+.content {
+    border-radius: 5px;
+    padding: 10px;
+    height: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+    .title {
+        text-transform: uppercase;
+    }
+}
+
+.profile-edit{
+    margin-left: 20px;
+    display: inline;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.container{
+    min-width: 300px;
+    max-width: 70%;
+    align-self:flex-start;
+}

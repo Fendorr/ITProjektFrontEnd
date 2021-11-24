@@ -15,6 +15,8 @@ export class AuthenticationService {
 
   user: UserDTO = {};
   loggedIn = false;
+  userId: number;
+  currProjId?: number;
 
   constructor(private publicService: PublicService, private router: Router, private snackBar: MatSnackBar) { }
 
@@ -30,6 +32,8 @@ export class AuthenticationService {
           this.loggedIn = true;
           this.publicService.curUser().subscribe(response => {
             this.user = response
+            this.userId=this.user.id!;
+            this.currProjId=this.user.activeProject;
             if(this.user.activeProject===null){
               this.router.navigate(['/project/'])
             } else {
