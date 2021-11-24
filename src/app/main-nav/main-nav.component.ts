@@ -43,22 +43,22 @@ export class MainNavComponent {
     this.authService.logout();
   }
 
-  getCurrProfile(){
-    this.publicService.curUser().subscribe(response => {
-      this.user = response
-      this.router.navigate(['/profile/', this.user.id])
-    })
-  }
+  // getCurrProfile(){
+  //   this.publicService.curUser().subscribe(response => {
+  //     this.user = response
+  //     this.router.navigate(['/profile/', this.user.id])
+  //   })
+  // }
 
-  getCurrProject(){
-    this.publicService.curUser().subscribe(response => {
-      this.user = response
-      if(this.user.activeProject===null){
-        this.router.navigate(['/project/'])
-      } else {
-        this.router.navigate(['/project/', this.user.activeProject])
-      }
-    })
-  }
+  // getCurrProject(){
+  //   this.publicService.curUser().subscribe(response => {
+  //     this.user = response
+  //     if(this.user.activeProject===null){
+  //       this.router.navigate(['/project/'])
+  //     } else {
+  //       this.router.navigate(['/project/', this.user.activeProject])
+  //     }
+  //   })
+  // }
 
 }

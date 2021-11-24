@@ -33,13 +33,13 @@
           <li routerLinkActive="active" [routerLink]="['/projects']">
             <mat-icon>supervisor_account</mat-icon>Projekte finden
           </li>
-          <li routerLinkActive="active" (click)="getCurrProject()">
+          <li routerLinkActive="active" [routerLink]="['/project/', this.authService.currProjId]">
             <mat-icon>work</mat-icon>Mein Projekt
           </li>
           <li routerLinkActive="active" [routerLink]="['/likes']">
             <mat-icon>favorite</mat-icon>Meine Favoriten
           </li>
-          <li routerLinkActive="active" (click)="getCurrProfile()">
+          <li routerLinkActive="active" [routerLink]="['/profile/', this.authService.userId]">
             <mat-icon>face</mat-icon>Mein Profil
           </li>
           <li routerLinkActive="active" [routerLink]="['/profilesettings']">
