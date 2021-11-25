@@ -25,6 +25,7 @@ export class UserFormService {
       userDto: new FormGroup({
         activeProject: new FormControl(undefined, []),
         createdAt: new FormControl(undefined, []),
+        description: new FormControl(undefined, []),
         email: new FormControl(undefined, []),
         faculty: new FormControl(undefined, []),
         firstName: new FormControl(undefined, []),
