@@ -14,6 +14,7 @@ export interface UserDTO {
   activeProject?: number;
   /** format: date-time */
   createdAt?: string;
+  description?: string;
   email?: string;
   faculty?: string;
   firstName?: string;

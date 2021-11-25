@@ -1,8 +1,89 @@
 <div class="container">
-  <h1>Meine Profileinstellungen</h1>
-  <div class="default-flex-container">
+  <div class="row">
+    <div class="header">
+      <h1 display="inline">Meine Profileinstellungen</h1>
+      <div *ngIf="show"><button mat-raised-button color="primary" class="profile-edit" type="submit" (click)="show=!show">Profilfelder
+        bearbeiten</button>
+    </div>
+      </div>
+    </div>
+<!-- <div class="default-flex-container"> -->
+    <div class="row">
+      <div class="col-8 p-2">
+        <div class="content">
+          <mat-form-field appearance="legacy">
+            <mat-label>E-Mail<span *ngIf="!show"> bearbeiten</span>
+            </mat-label>
+            <input type="email" [disabled]="show" matInput [(ngModel)]="this.user.email"
+              [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field appearance="legacy">
+            <mat-label>Vorname<span *ngIf="!show"> bearbeiten</span>
+            </mat-label>
+            <input type="text" [disabled]="show" matInput [(ngModel)]="this.user.firstName"
+              [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field appearance="legacy">
+            <mat-label>Nachname<span *ngIf="!show"> bearbeiten</span>
+            </mat-label>
+            <input type="text" [disabled]="show" matInput [(ngModel)]="this.user.lastName"
+              [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+          <mat-form-field appearance="legacy">
+            <mat-label>Passwort<span *ngIf="!show"> bearbeiten</span>
+            </mat-label>
+            <input type="password" [disabled]="show" matInput [(ngModel)]="this.password"
+              [ngModelOptions]="{standalone: true}">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-4 p-2">
+        <div class="row">
+          <div class="col-12">
+            <div class="content"><img src="https://avatars.dicebear.com/api/bottts/{{this.user.id}}.svg" alt=""></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="content">
+              <h2>Beschreibung</h2>
+              <mat-form-field appearance="legacy">
+                <mat-label>Beschreibung<span *ngIf="!show"> bearbeiten</span>
+                </mat-label>
+                <textarea [disabled]="show" matInput [(ngModel)]="this.user.description"
+                  [ngModelOptions]="{standalone: true}"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <mat-form-field appearance="legacy">
+
+
+    <div class="row">
+      <div class="col-12 p-2">
+        <div class="content">
+          <mat-chip-list *ngIf="show" aria-label="tags">
+            <mat-chip *ngFor="let tag of this.user.tags">{{ tag }}</mat-chip>
+          </mat-chip-list>
+
+          <mat-chip-list *ngIf="!show" #chipList aria-label="Tag selection">
+            <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
+              (removed)="remove(tag)">
+              {{tag.name}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Neues Keyword hinzufügen..." [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- <mat-form-field appearance="legacy">
       <mat-label>E-Mail<span *ngIf="!show"> bearbeiten</span>
       </mat-label>
       <input type="email" [disabled]="show" matInput [(ngModel)]="this.user.email"
@@ -25,35 +106,39 @@
       </mat-label>
       <input type="password" [disabled]="show" matInput [(ngModel)]="this.password"
         [ngModelOptions]="{standalone: true}">
-    </mat-form-field> 
+    </mat-form-field> -->
+    <!-- <mat-form-field appearance="legacy">
+      <mat-label>Beschreibung<span *ngIf="!show"> bearbeiten</span>
+      </mat-label>
+      <textarea [disabled]="show" matInput [(ngModel)]="this.user.description"
+        [ngModelOptions]="{standalone: true}"></textarea>
+    </mat-form-field> -->
 
-    <mat-chip-list *ngIf="show" aria-label="tags">
-      <mat-chip
-          *ngFor="let tag of this.user.tags"
-          >{{ tag }}</mat-chip>
-  </mat-chip-list>
+
+    <!-- <mat-chip-list *ngIf="show" aria-label="tags">
+      <mat-chip *ngFor="let tag of this.user.tags">{{ tag }}</mat-chip>
+    </mat-chip-list>
 
     <mat-chip-list *ngIf="!show" #chipList aria-label="Tag selection">
-      <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable"
-          (removed)="remove(tag)">
-          {{tag.name}}
-          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      <mat-chip *ngFor="let tag of tags" [selectable]="selectable" [removable]="removable" (removed)="remove(tag)">
+        {{tag.name}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
       </mat-chip>
       <input placeholder="Neues Keyword hinzufügen..." [matChipInputFor]="chipList"
-          [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-          (matChipInputTokenEnd)="add($event)">
-  </mat-chip-list>
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list> -->
 
-  <p></p>
 
-    <div *ngIf="show"><button mat-raised-button color="primary" type="submit" (click)="show=!show">Profilfelder
+    <p></p>
+
+    <!-- <div *ngIf="show"><button mat-raised-button color="primary" type="submit" (click)="show=!show">Profilfelder
         bearbeiten</button>
-    </div>
+    </div> -->
 
-    <div *ngIf="!show"><button mat-raised-button color="warn" type="submit"
-        (click)="getUserAgain()">Abbrechen</button>
+    <div *ngIf="!show"><button mat-raised-button color="warn" type="submit" (click)="getUserAgain()">Abbrechen</button>
       <p></p>
       <button mat-raised-button color="primary" type="submit" (click)="openDialog()">Änderungen
         übernehmen</button>
     </div>
-  </div>
+  <!-- </div> -->
