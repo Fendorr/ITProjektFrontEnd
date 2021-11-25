@@ -255,4 +255,27 @@ export class ProjectDetailComponent implements OnInit, OnChanges {
         });
     })
   }
+
+  changeProjectPhase(isPushToNext: boolean):void {
+    this.route.params.forEach((params: Params) => {
+      let id = +params['id'];
+      this.projectService.pushPhase({id:id, pushToNext: isPushToNext}).subscribe(response => {
+        this.openSnackBar('Projektphase erfolgreich geändert', 'success');
+      },
+      (error) => {this.openSnackBar("Projektphase konnte nicht geändert werden", 'warn')});
+    });
+  }
+  
+  acceptAcceptancePhase():void{
+    this.publicService.curUser().subscribe(response => {
+      this.user = response;
+      this.route.params.forEach((params: Params) => {
+        let id = +params['id'];
+        this.interService.userId({projectId: id, userId: this.user.id!}).subscribe(response => {
+          this.openSnackBar('Acceptance-Phase wurde bestätigt', 'success');
+        },
+        (error) => {this.openSnackBar("Phase konnte nicht bestätigt werden", 'warn')})
+      })
+    })
+  }
 }

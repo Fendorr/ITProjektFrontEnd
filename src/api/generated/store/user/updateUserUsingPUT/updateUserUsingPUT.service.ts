@@ -30,7 +30,6 @@ export class UpdateUserUsingPUTFormService {
         faculty: new FormControl(undefined, []),
         firstName: new FormControl(undefined, []),
         id: new FormControl(undefined, []),
-        isCurrentProjectAccepted: new FormControl(undefined, []),
         lastName: new FormControl(undefined, []),
         likedProjects: new FormArrayExtended(() => (
           new FormControl(undefined, [])), [], []),
