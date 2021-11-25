@@ -35,8 +35,12 @@
       <div class="row">
         <div class="col-12">
           <div class="content">
-            <h2>Beschreibung</h2>
-                <p>{{ this.user.description }}</p>
+            <mat-form-field appearance="legacy">
+              <mat-label>Beschreibung
+              </mat-label>
+              <textarea [disabled]="true" matInput [(ngModel)]="this.user.description"
+                [ngModelOptions]="{standalone: true}"></textarea>
+            </mat-form-field>
           </div>
         </div>
       </div>
@@ -48,6 +52,7 @@
   <div class="row">
     <div class="col-12 p-2">
       <div class="content">
+        <p>Tags</p>
         <mat-chip-list aria-label="tags">
           <mat-chip *ngFor="let tag of this.user.tags">{{ tag }}</mat-chip>
         </mat-chip-list>

@@ -46,7 +46,6 @@
         <div class="row">
           <div class="col-12">
             <div class="content">
-              <h2>Beschreibung</h2>
               <mat-form-field appearance="legacy">
                 <mat-label>Beschreibung<span *ngIf="!show"> bearbeiten</span>
                 </mat-label>
@@ -64,6 +63,7 @@
     <div class="row">
       <div class="col-12 p-2">
         <div class="content">
+          <p>Tags</p>
           <mat-chip-list *ngIf="show" aria-label="tags">
             <mat-chip *ngFor="let tag of this.user.tags">{{ tag }}</mat-chip>
           </mat-chip-list>
@@ -136,9 +136,10 @@
         bearbeiten</button>
     </div> -->
 
-    <div *ngIf="!show"><button mat-raised-button color="warn" type="submit" (click)="getUserAgain()">Abbrechen</button>
-      <p></p>
+    <div *ngIf="!show">
       <button mat-raised-button color="primary" type="submit" (click)="openDialog()">Änderungen
         übernehmen</button>
+      <button mat-raised-button color="warn" type="submit" (click)="getUserAgain()">Abbrechen</button>
+      
     </div>
   <!-- </div> -->
