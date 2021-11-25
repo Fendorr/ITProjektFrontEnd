@@ -3,7 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthenticationService } from '../services/authentication.service';
-import { UserDTO } from 'src/api/generated/model';
+import { ProjectDTO, UserDTO } from 'src/api/generated/model';
 import { PublicService } from 'src/api/generated/controllers/Public';
 import { Router } from '@angular/router';
 
@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 })
 export class MainNavComponent {
 
+  projects: ProjectDTO[];
+  searchText: string = '';
   user: UserDTO;
   x: number;
 
@@ -30,14 +32,9 @@ export class MainNavComponent {
     private router: Router
     ) { }
 
-  // ngOnInit(): void {
-  //   this.publicService.curUser().subscribe(response => {
-  //     this.user = response
-  //     this.x = this.user.id!;
-  //     console.log(this.user);
-  //   })
-
-  // }
+  ngOnInit(): void {
+    this.publicService.project().subscribe(response => this.projects = response);
+  }
 
   logout() {
     this.authService.logout();
@@ -50,15 +47,19 @@ export class MainNavComponent {
   //   })
   // }
 
-  // getCurrProject(){
-  //   this.publicService.curUser().subscribe(response => {
-  //     this.user = response
-  //     if(this.user.activeProject===null){
-  //       this.router.navigate(['/project/'])
-  //     } else {
-  //       this.router.navigate(['/project/', this.user.activeProject])
-  //     }
-  //   })
-  // }
+  getCurrProject(){
+    this.publicService.curUser().subscribe(response => {
+      this.user = response
+      if(this.user.activeProject===null){
+        this.router.navigate(['/project/'])
+      } else {
+        this.router.navigate(['/project/', this.user.activeProject])
+      }
+    })
+  }
+
+  clearFilters() {
+    this.searchText = '';
+  }
 
 }

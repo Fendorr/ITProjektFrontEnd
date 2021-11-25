@@ -41,9 +41,9 @@ export class ProjectsListItemComponent implements OnInit, OnChanges {
   }
 
   formatDate(project: ProjectDTO) {
-    let year = project.createdAt?.slice(0,4);
-    let month = project.createdAt?.slice(6,7);
-    let day = project.createdAt?.slice(9,10);
+    let year = project.createdAt!.slice(0,4);
+    let month = project.createdAt!.slice(4,6);
+    let day = project.createdAt!.slice(6);
 
     return "Erstellt am "+ day +"."+ month +"."+ year +" von "+ project.createdBy
   }

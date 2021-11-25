@@ -9,7 +9,7 @@
                             [ngModelOptions]="{standalone: true}"></h2>
                     <mat-hint>Bearbeite hier den Titel deines Projekts</mat-hint>
                 </mat-form-field>
-                <p>Erstellt: {{project?.createdAt?.slice(0,10)}} von {{ project?.createdBy }} </p>
+                <p>Erstellt: {{project?.createdAt!.slice(6)+"."+project?.createdAt!.slice(4,6)+"."+project?.createdAt!.slice(0,4)}} von {{ project?.createdBy }} </p>
                 <mat-form-field hintLabel="Wähle eine Zahl zwischen 2 und 10!" appearance="legacy">
                     <mat-label>Maximale Anzahl Projektmitglieder</mat-label>
                     <mat-select [(ngModel)]="project.maxUser" [ngModelOptions]="{standalone: true}">
