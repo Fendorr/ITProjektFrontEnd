@@ -7,12 +7,24 @@
     <span>ProFi</span>
   </div>
   <div class="searchbar">
-      <div class="search-field">
-        <input id="search" type="text" placeholder="Projekt suchen..." matInput required>
-        <button mat-flat-button color="primary" id="search-submit" type="submit">
-          <mat-icon>search</mat-icon>
-        </button>
-      </div>
+        <input 
+          id="search"
+          type="text" 
+          placeholder="Projekt suchen..." 
+          [(ngModel)]="searchText"
+          autocomplete="off"
+        >
+        <ul class="list-group list-group-flush search-results">
+          <!-- results of ngFor is passed to appFilter with argument searchText -->
+          <li
+            class="list-group-item" 
+            *ngFor="let proj of projects | appSearch: searchText" 
+            [routerLink]="['/project/', proj.id]"
+            (click)="clearFilters()"
+          >
+            {{proj.title}}
+          </li>
+        </ul>
   </div>
   <div class="login" *ngIf="!this.authService.isLoggedIn" [routerLink]="['/login']">
     <mat-icon color="primary">account_circle</mat-icon>
@@ -33,7 +45,7 @@
           <li routerLinkActive="active" [routerLink]="['/projects']">
             <mat-icon>supervisor_account</mat-icon>Projekte finden
           </li>
-          <li routerLinkActive="active" [routerLink]="['/project/', this.authService.currProjId]">
+          <li routerLinkActive="active" [routerLink]="['/project/', this.authService.currProjId != null ? this.authService.currProjId : '']" (click)="getCurrProject()">
             <mat-icon>work</mat-icon>Mein Projekt
           </li>
           <li routerLinkActive="active" [routerLink]="['/likes']">

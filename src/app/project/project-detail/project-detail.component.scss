@@ -26,32 +26,35 @@ h1 {
     padding: 0 12px;
 
     .phase-row {
+        min-height: 140px;
+        position: relative;
 
         div {
+            // background: sandybrown;
             text-align: justify;
-            position: relative;
 
             button {
                 position: absolute;
-                bottom: 0;
-                right: 0;
+                width: calc(50% - 12px);
+                bottom: 1%;
             }
 
             .acceptance-box {
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
                 position: relative;
+                margin-top: 20px;
 
                 .acc-spinnerbox {
-                    width: 42px;
-                    height: 42px;
+                    position: absolute;
+                    top: calc(50% - 30px);
+                    width: 60px;
+                    height: 60px;
                 }
 
                 .acc-member-count {
+                    display: inline;
                     text-align: right;
-                    margin-top: 5px;
+                    vertical-align: baseline;
+                    margin-left: 72px;
                     font-weight: bold;
                 }
             }

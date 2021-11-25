@@ -6,6 +6,7 @@ import { ProjectDTO, UserDTO } from 'src/api/generated/model';
 import { PublicService } from 'src/api/generated/controllers/Public';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 export interface Tag {
   name: string;
@@ -33,7 +34,8 @@ export class NewProjectComponent implements OnInit {
     private projectService: ProjectService,
     private publicService: PublicService,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private authService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -87,8 +89,11 @@ export class NewProjectComponent implements OnInit {
           this.projectService.postProjectUsingPOST({id: this.user.id!, project:this.project})
             .subscribe((project) => {
               this.openSnackBar("Projekt erfolgreich erstellt!", 'success');
-              //localhost:8080/api/project/**
-              this.router.navigate(['/project', project.slice(27)])
+              this.publicService.curUser() //Add current user as admin + as member
+                .subscribe(response => {
+                  this.authService.currProjId = response.activeProject;
+                  this.router.navigate(['/project', response.activeProject]);
+                })
           }, (error) => {this.openSnackBar("Fehler: Projekt konnte nicht erstellt werden!", 'warn')});
         }
     });

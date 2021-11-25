@@ -3,7 +3,7 @@
         <div class="item-header">
             <div>
                 <mat-card-title>{{ project.title }}</mat-card-title>
-                <mat-card-subtitle>{{ dateFormat }}</mat-card-subtitle>
+                <mat-card-subtitle>{{project?.createdAt!.slice(6)+"."+project?.createdAt!.slice(4,6)+"."+project?.createdAt!.slice(0,4)}}</mat-card-subtitle>
             </div>
             <img mat-card-avatar src={{imgPath}}>
         </div>

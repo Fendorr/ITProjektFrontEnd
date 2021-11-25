@@ -4,7 +4,7 @@
         <div class="col-9 p-2">
             <div class="content">
                 <h2 class="title">{{ project?.title }}</h2>
-                <p>Erstellt: {{project?.createdAt?.slice(0,10)}} von {{ project?.createdBy }} </p>
+                <p>Erstellt: {{project?.createdAt!.slice(6)+"."+project?.createdAt!.slice(4,6)+"."+project?.createdAt!.slice(0,4)}} von {{ project?.createdBy }} </p>
                 <button mat-raised-button color="warn" (click)="openDialog()" *ngIf="isMember">Projekt verlassen</button>
                 <button mat-raised-button color="primary" (click)="apply()" [ngClass]="{'no-display': isMember || isApplicant}">Bewerben</button>
                 <button mat-raised-button *ngIf="isAdmin" [routerLink]="['/project',this.project.id,'edit']">Bearbeiten</button>
@@ -74,7 +74,7 @@
                                     </p>
                                 </div>
                                 <div class="col-6">
-                                    <div class="acceptance-box">
+                                    <div class="acceptance-box row">
                                         <div class="acc-circle">
                                             <div class="acc-spinnerbox">
                                                 <mat-spinner
@@ -82,20 +82,22 @@
                                                     mode="determinate"
                                                     value="100"
                                                     color ="primary"
-                                                    strokeWidth="8"
-                                                    [diameter]="40"
+                                                    strokeWidth="9"
+                                                    [diameter]="60"
                                                     >
                                                 </mat-spinner>
                                                 <mat-progress-spinner
                                                     mode ="determinate"
-                                                    color ="primary"
+                                                    [color] ="spinnerValue === 100 ? 'accent' : 'primary'"
                                                     [value] = "spinnerValue"
-                                                    strokeWidth="8"
-                                                    [diameter]="40"
+                                                    strokeWidth="9"
+                                                    [diameter]="60"
                                                 >
                                                 </mat-progress-spinner> 
                                             </div>
-                                            <p class="acc-member-count">{{project?.currUser}}/{{project?.maxUser}} Member haben akzeptiert</p>
+                                            <p class="acc-member-count">{{project?.currUser}}/{{project?.maxUser}} Member haben akzeptiert
+                                                <mat-icon *ngIf="spinnerValue === 100">done</mat-icon>
+                                            </p>
                                         </div>
                                     </div>
                                     <button mat-raised-button color="warn" *ngIf="isAdmin">In Phase 3 wechseln!</button>
@@ -115,7 +117,7 @@
                                     </p>
                                 </div>
                                 <div class="col-6">
-                                    <div class="acceptance-box">
+                                    <div class="acceptance-box row">
                                         <div class="acc-circle">
                                             <div class="acc-spinnerbox">
                                                 <mat-spinner
@@ -123,23 +125,25 @@
                                                     mode="determinate"
                                                     value="100"
                                                     color ="primary"
-                                                    strokeWidth="8"
-                                                    [diameter]="40"
+                                                    strokeWidth="9"
+                                                    [diameter]="60"
                                                     >
                                                 </mat-spinner>
                                                 <mat-progress-spinner
                                                     mode ="determinate"
-                                                    color ="primary"
+                                                    [color] ="spinnerValue === 100 ? 'accent' : 'primary'"
                                                     [value] = "spinnerValue"
-                                                    strokeWidth="8"
-                                                    [diameter]="40"
+                                                    strokeWidth="9"
+                                                    [diameter]="60"
                                                 >
                                                 </mat-progress-spinner> 
                                             </div>
-                                            <p class="acc-member-count">{{project?.currUser}}/{{project?.maxUser}} Member haben akzeptiert</p>
+                                            <p class="acc-member-count">{{project?.currUser}}/{{project?.maxUser}} Member haben akzeptiert
+                                                <mat-icon *ngIf="spinnerValue === 100">done</mat-icon>
+                                            </p>
                                         </div>
                                     </div>
-                                    <button mat-raised-button color="warn" *ngIf="isAdmin">In Phase 4 wechseln!</button>
+                                    <button mat-raised-button color="warn" *ngIf="isAdmin">In Phase 3 wechseln!</button>
                                     <button mat-raised-button color="warn" *ngIf="isMember && !isAdmin">Wechsel zustimmen!</button>
                                 </div>
                             </div>

@@ -48,6 +48,8 @@ import { RefreshService } from './services/refreshComponent.service';
 import { DialogComponent } from './dialog/dialog.component';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProjectDetailEditComponent } from './project/project-detail/project-detail-edit/project-detail-edit.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [			 
@@ -74,6 +76,8 @@ import { ProjectDetailEditComponent } from './project/project-detail/project-det
     ApplicationCarouselItemComponent,
     DialogComponent,
     ProjectDetailEditComponent,
+    FilterPipe,
+    SearchPipe,
    ],
   imports: [
     BrowserModule,
