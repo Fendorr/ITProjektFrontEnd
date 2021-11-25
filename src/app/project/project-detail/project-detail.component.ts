@@ -79,7 +79,7 @@ export class ProjectDetailComponent implements OnInit, OnChanges {
               this.isAdmin = true;
             }
             this.project.members!.forEach((member) => {
-              if (this.user.id === member) {
+              if (this.user.id === member || this.user.id === this.project.professorId) {
                 this.isMember = true;
               }
             });
