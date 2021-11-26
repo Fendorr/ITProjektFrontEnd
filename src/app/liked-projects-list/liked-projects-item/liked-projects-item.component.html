@@ -3,7 +3,7 @@
         <div class="item-header">
             <div>
                 <mat-card-title>{{ project.title }}</mat-card-title>
-                <mat-card-subtitle>{{project?.createdAt!.slice(6)+"."+project?.createdAt!.slice(4,6)+"."+project?.createdAt!.slice(0,4)}}</mat-card-subtitle>
+                <mat-card-subtitle>{{ dateFormat }}</mat-card-subtitle>
             </div>
             <img mat-card-avatar src={{imgPath}}>
         </div>
@@ -21,8 +21,11 @@
             <button color="primary" mat-raised-button [routerLink]="['/project', project.id]">Details ansehen</button>
             <h3>{{ project.currUser }}/{{ project.maxUser }}</h3>
         </div>
-        <button mat-icon-button aria-label="Like this project" (click)="likeProject()">
-            <mat-icon [ngClass]="(isLiked)? 'liked' : 'unliked'">favorite</mat-icon>
-        </button>
+        <div class="likes">
+            <span *ngIf="project.projectLikes?.length != 0">{{project.projectLikes?.length}}</span>
+            <button mat-icon-button aria-label="Like this project" (click)="likeProject()">
+                <mat-icon [ngClass]="(isLiked)? 'liked' : 'unliked'">favorite</mat-icon>
+            </button>
+        </div>
     </mat-card-actions>
 </mat-card>
