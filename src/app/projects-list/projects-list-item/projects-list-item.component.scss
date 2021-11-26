@@ -62,3 +62,10 @@ mat-card-actions {
     color: #591dd3;
     transform: scale(1.2);
 }
+
+.likes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: end;
+}

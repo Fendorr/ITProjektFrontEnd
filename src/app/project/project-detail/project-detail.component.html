@@ -4,7 +4,7 @@
         <div class="col-9 p-2">
             <div class="content">
                 <h2 class="title">{{ project?.title }}</h2>
-                <p>Erstellt: {{project?.createdAt!.slice(6)+"."+project?.createdAt!.slice(4,6)+"."+project?.createdAt!.slice(0,4)}} von {{ project?.createdBy }} </p>
+                <p>Erstellt: {{ date }} von {{ project?.createdBy }} </p>
                 <button mat-raised-button color="warn" (click)="openDialog()" *ngIf="isMember">Projekt verlassen</button>
                 <button mat-raised-button color="primary" (click)="apply()" [ngClass]="{'no-display': isMember || isApplicant}">Bewerben</button>
                 <button mat-raised-button *ngIf="isAdmin" [routerLink]="['/project',this.project.id,'edit']">Bearbeiten</button>
@@ -181,7 +181,7 @@
                         </div>
                         <div class="col-3 prof-flex">
                             <div *ngIf="isProf" class="member-card professor">
-                                <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/01938.svg'>
+                                <img mat-card-avatar src='https://avatars.dicebear.com/api/bottts/{{project.professorId}}.svg'>
                                 <span>{{ professor.email }}</span>
                             </div>
                             <div *ngIf="!isProf" class="member-card no-prof">

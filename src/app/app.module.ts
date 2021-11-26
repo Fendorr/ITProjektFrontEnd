@@ -50,6 +50,7 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 import { ProjectDetailEditComponent } from './project/project-detail/project-detail-edit/project-detail-edit.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SearchPipe } from './pipes/search.pipe';
+import { SortByPipe } from './pipes/sortBy.pipe';
 
 @NgModule({
   declarations: [			 
@@ -78,6 +79,7 @@ import { SearchPipe } from './pipes/search.pipe';
     ProjectDetailEditComponent,
     FilterPipe,
     SearchPipe,
+    SortByPipe,
    ],
   imports: [
     BrowserModule,

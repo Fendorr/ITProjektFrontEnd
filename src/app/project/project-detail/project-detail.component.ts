@@ -25,6 +25,7 @@ export class ProjectDetailComponent implements OnInit, OnChanges {
   project: ProjectDTO;
   professor: UserDTO;
   spinnerValue: number;
+  date: string;
   isMember: boolean = false;
   isAdmin: boolean = false;
   isProf: boolean = false;
@@ -57,6 +58,7 @@ export class ProjectDetailComponent implements OnInit, OnChanges {
         .getProjectByIdUsingGET({ id })
         .subscribe((response) => {
           this.project = response;
+          this.date = this.project.createdAt!.slice(6)+"."+this.project.createdAt!.slice(4,6)+"."+this.project.createdAt!.slice(0,4);
           //Member Kreis laden
           if (this.project.currUser && this.project.maxUser) {
             this.spinnerValue =

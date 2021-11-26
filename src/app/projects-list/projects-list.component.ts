@@ -17,14 +17,11 @@ export class ProjectsListComponent implements OnInit{
 
   projects: ProjectDTO[] = [];
   user: UserDTO;
-  isFiltered: boolean = false;
-  filters = {
-    members: 0,
-    createdAt: 0,
-    popularity: 0,
-    noFullProjects: false,
-    hasProfessor: false,
-  }
+  noFullProjects: boolean = false;
+  hasProfessor: boolean = false;
+  members = 0;
+  createdAt = 0;
+  popularity = 0;
 
   constructor(
     private publicService: PublicService,
@@ -36,37 +33,21 @@ export class ProjectsListComponent implements OnInit{
     this.publicService.project().subscribe(response => this.projects = response);
   }
 
-  OnFilter() : void {
-    //filter our list
-    this.isFiltered = true;
-  }
-
-  SortList() : void {
-    //Sort our projects list
-  }
-
-  OnUnfilter() : void {
-    //Unfilter the list
-    this.isFiltered = false;
-    this.publicService.project().subscribe(response => this.projects = response);
-  }
-
   OnFilterChange(filter :string): void {
     if(filter === "members"){
-      this.filters.members === 2 ? this.filters.members = 0 : this.filters.members++;
-      this.filters.createdAt = 0;
-      this.filters.popularity = 0;
+      this.members === 2 ? this.members = 0 : this.members++;
+      this.createdAt = 0;
+      this.popularity = 0;
     }
     else if(filter === "createdAt"){
-      this.filters.createdAt === 2 ? this.filters.createdAt = 0 : this.filters.createdAt++;
-      this.filters.members = 0;
-      this.filters.popularity = 0;
+      this.createdAt === 2 ? this.createdAt = 0 : this.createdAt++;
+      this.members = 0;
+      this.popularity = 0;
     }
     else if(filter === "popularity"){
-      this.filters.popularity === 2 ? this.filters.popularity = 0 : this.filters.popularity++;
-      this.filters.createdAt = 0;
-      this.filters.members = 0;
+      this.popularity === 2 ? this.popularity = 0 : this.popularity++;
+      this.createdAt = 0;
+      this.members = 0;
     }
-    console.log(this.filters)
   }
 }

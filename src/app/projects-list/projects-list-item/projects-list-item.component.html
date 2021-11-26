@@ -21,8 +21,11 @@
             <button mat-raised-button [routerLink]="['/project', project.id]">Details ansehen</button>
             <h3>{{ project.currUser }}/{{ project.maxUser }}</h3>
         </div>
-        <button mat-icon-button aria-label="Like this project" (click)="likeProject()">
-            <mat-icon [ngClass]="(isLiked)? 'liked' : 'unliked'">favorite</mat-icon>
-        </button>
+        <div class="likes">
+            <span *ngIf="project.projectLikes!.length != 0">{{project.projectLikes!.length}}</span>
+            <button mat-icon-button aria-label="Like this project" (click)="likeProject()">
+                <mat-icon [ngClass]="(isLiked)? 'liked' : 'unliked'">favorite</mat-icon>
+            </button>
+        </div>
     </mat-card-actions>
 </mat-card>
