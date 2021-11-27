@@ -21,7 +21,7 @@ export class ProfileSettingsComponent implements OnInit {
   loginDto: LoginDTO = {};
   user: UserDTO;
   show: boolean;
-  password: string;
+  public password: string;
   selectable = true;
   removable = true;
   addOnBlur = true;
@@ -44,7 +44,6 @@ export class ProfileSettingsComponent implements OnInit {
       .subscribe((response) => {(this.user = response)
         this.user.tags!.map(a => this.tags.push({ name: a }));
       });
-    console.log('hallo' + this.user);
     this.show = true;
 
     // this.route.params.forEach((params: Params) => {
@@ -63,7 +62,7 @@ export class ProfileSettingsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result == 0) {
-        this.updateUser(this.user.id, this.user, this.password);
+        this.updateUser(this.user.id, this.user, this.password!);
         this.show = true;
       }
     });
@@ -86,7 +85,7 @@ export class ProfileSettingsComponent implements OnInit {
     if (id) {
       newUser.tags = this.tags.map(a => a.name);
       this.userService
-        .updateUserUsingPUT({ id: id, userDto: newUser, pw: this.password })
+        .updateUserUsingPUT({ id: id, userDto: newUser, pw: this.password! })
         .subscribe(
           (response) => {
             this.openSnackBar('Daten erfolgreich geändert', 'success');
