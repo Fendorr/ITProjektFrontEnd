@@ -67,6 +67,7 @@
                         [(ngModel)]="project.comment" [ngModelOptions]="{standalone: true}"></textarea>
                     <mat-hint>Bearbeite hier deine Projektbeschreibung (min. 150 Zeichen)</mat-hint>
                 </mat-form-field>
+
                 <div class="alert alert-danger"
                     [hidden]="comment.valid || comment.pristine || comment.errors?.['minlength']"> Bitte Beschreibung
                     eintragen </div>
@@ -77,8 +78,7 @@
                 <br>
                 <button style="margin-right:10px" mat-raised-button color="primary" type="submit"
                     [disabled]="!title.valid || !comment.valid || !maxUser.valid"
-                    (click)="openDialog()">Änderungen
-                    übernehmen</button>
+                    (click)="openDialog()">Änderungen übernehmen</button>
 
                 <button mat-raised-button color="warn" [routerLink]="['/project',this.project.id]">Abbrechen</button>
             </div>

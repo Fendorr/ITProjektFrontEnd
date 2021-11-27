@@ -9,39 +9,31 @@
     </p>
     <b>Projekte filtern:</b>
     <div class="filters">
-        <button mat-raised-button color="primary" (ngModel)="filters.members" (click)="OnFilterChange('members')">
+        <button mat-raised-button color="primary" (ngModel)="members" (click)="OnFilterChange('members')">
             Mitglieder
-            <mat-icon *ngIf="filters.members == 1">keyboard_arrow_up</mat-icon>
-            <mat-icon *ngIf="filters.members == 2">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="members == 1">keyboard_arrow_up</mat-icon>
+            <mat-icon *ngIf="members == 2">keyboard_arrow_down</mat-icon>
         </button>
-        <button mat-raised-button color="primary" (ngModel)="filters.createdAt" (click)="OnFilterChange('createdAt')">
+        <button mat-raised-button color="primary" (ngModel)="createdAt" (click)="OnFilterChange('createdAt')">
             Erstelldatum
-            <mat-icon *ngIf="filters.createdAt == 1">keyboard_arrow_up</mat-icon>
-            <mat-icon *ngIf="filters.createdAt == 2">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="createdAt == 1">keyboard_arrow_up</mat-icon>
+            <mat-icon *ngIf="createdAt == 2">keyboard_arrow_down</mat-icon>
         </button>
-        <button mat-raised-button color="primary" (ngModel)="filters.popularity" (click)="OnFilterChange('popularity')">
+        <button mat-raised-button color="primary" (ngModel)="popularity" (click)="OnFilterChange('popularity')">
             Beliebtheit
-            <mat-icon *ngIf="filters.popularity == 1">keyboard_arrow_up</mat-icon>
-            <mat-icon *ngIf="filters.popularity == 2">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="popularity == 1">keyboard_arrow_up</mat-icon>
+            <mat-icon *ngIf="popularity == 2">keyboard_arrow_down</mat-icon>
         </button>
     </div>
     <div class="checks">
-        <mat-checkbox [(ngModel)]="filters.noFullProjects" class="example-margin">Volle Projekte Ausblenden</mat-checkbox>
-        <mat-checkbox [(ngModel)]="filters.hasProfessor" class="example-margin">Projekt hat Professor</mat-checkbox>
+        <mat-checkbox [(ngModel)]="noFullProjects" class="example-margin">Volle Projekte Ausblenden</mat-checkbox>
+        <mat-checkbox [(ngModel)]="hasProfessor" class="example-margin">Projekt hat Professor</mat-checkbox>
     </div>
-    <button id="filter-submit" type="submit" mat-raised-button color="primary" (click)="OnFilter()">
-        Filter anwenden
-        <mat-icon>autorenew</mat-icon>
-    </button>
-    <button id="filter-reset" type="submit" mat-raised-button color="accent" *ngIf="isFiltered" (click)="OnUnfilter()">
-        Filter verwerfen
-        <mat-icon>block</mat-icon>
-    </button>
     <hr>
     <br>
     <ul class="list-group">
         <app-projects-list-item
-            *ngFor="let project of projects | appFilter: filters.noFullProjects"
+            *ngFor="let project of projects | appFilter: noFullProjects : hasProfessor | sortBy: members : createdAt : popularity"
             [project]="project"
         ></app-projects-list-item>
     </ul>

@@ -3,7 +3,7 @@
     <div class="header">
       <h1 display="inline" *ngIf="!this.isLoggedinUser">Profil von {{user.firstName}}</h1>
       <h1 display="inline" *ngIf="this.isLoggedinUser">Mein Profil</h1>
-      <button mat-raised-button class="profile-edit" color="primary" type="submit"
+      <button mat-raised-button class="profile-edit" *ngIf="this.isLoggedinUser" color="primary" type="submit"
         [routerLink]="['/profilesettings']">bearbeiten</button>
     </div>
   </div>
@@ -35,7 +35,12 @@
       <div class="row">
         <div class="col-12">
           <div class="content">
-            <p>Description</p>
+            <mat-form-field appearance="legacy">
+              <mat-label>Beschreibung
+              </mat-label>
+              <textarea [disabled]="true" matInput [(ngModel)]="this.user.description"
+                [ngModelOptions]="{standalone: true}"></textarea>
+            </mat-form-field>
           </div>
         </div>
       </div>
@@ -47,6 +52,7 @@
   <div class="row">
     <div class="col-12 p-2">
       <div class="content">
+        <p>Tags</p>
         <mat-chip-list aria-label="tags">
           <mat-chip *ngFor="let tag of this.user.tags">{{ tag }}</mat-chip>
         </mat-chip-list>
