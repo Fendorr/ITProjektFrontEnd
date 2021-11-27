@@ -6,7 +6,7 @@ import { ProjectService } from 'src/api/generated/controllers/Project';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { APIInterceptor } from './Interceptor/api-interceptor';
-import { FormBuilder, FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/material/snack-bar';
 
 //* Component Imports
@@ -86,6 +86,7 @@ import { SortByPipe } from './pipes/sortBy.pipe';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MaterialModule,
     LayoutModule,
