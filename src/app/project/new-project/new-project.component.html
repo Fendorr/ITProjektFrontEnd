@@ -76,7 +76,7 @@
             mat-raised-button 
             color="primary" 
             type="submit"
-            [disabled]="(!title.valid || !title.pristine) && (!comment.valid || !comment.pristine) && !maxUser.valid"
+            [disabled]="(!title.valid || !title.pristine) || (!comment.valid || !comment.pristine) || !maxUser.valid"
             (click)="createProject()"
             >Projekt jetzt erstellen</button>
     </div>
