@@ -15,14 +15,14 @@
     <div class="formdiv">
         <mat-form-field appearance="legacy">
             <mat-label>Projekttitel</mat-label>
-            <input 
-                type="text"
+            <input type="title" title="title" #title="ngModel"
                 matInput 
                 required
                 [(ngModel)]="project.title" [ngModelOptions]="{standalone: true}"
                 >
             <mat-hint>Wähle einen aussagekräftigen Titel für dein Projekt</mat-hint>
         </mat-form-field>
+        <div class="alert alert-danger" [hidden]="title.valid"> Bitte Titel eintragen </div>
 
         <mat-form-field class="example-chip-list" appearance="legacy">
             <mat-label>Lege mindestens 1 Keyword fest, das dein Projekt beschreibt</mat-label>
@@ -43,7 +43,7 @@
         <mat-form-field hintLabel="Wähle eine Zahl zwischen 2 und 10!" appearance="legacy">
             <mat-label>Maximale Anzahl Projektmitglieder</mat-label>
             <mat-select
-            [(ngModel)]="project.maxUser" [ngModelOptions]="{standalone: true}"
+            type="maxUser" maxUser="maxUser" #maxUser="ngModel" required [(ngModel)]="project.maxUser" [ngModelOptions]="{standalone: true}"
             >
                 <mat-option value="2">2</mat-option>
                 <mat-option value="3">3</mat-option>
@@ -56,21 +56,27 @@
                 <mat-option value="10">10</mat-option>
             </mat-select>
         </mat-form-field>
+        <div class="alert alert-danger" [hidden]="maxUser.valid"> Bitte Mitgliederzahl auswählen </div>
 
         <mat-form-field appearance="legacy">
             <mat-label>Projektbeschreibung</mat-label>
-            <textarea 
+            <textarea type="comment" comment="comment" #comment="ngModel" minlength="150"
                 matInput 
                 required 
                 placeholder="Beschreibe dein Projekt (min. 150 Zeichen)"
                 [(ngModel)]="project.comment" [ngModelOptions]="{standalone: true}"
             ></textarea>
         </mat-form-field>
+        <div class="alert alert-danger"
+          [hidden]="(comment.valid || comment.pristine || comment.errors?.['minlength']) && comment.dirty"> Bitte Beschreibung
+          eintragen </div>
+        <div class="alert alert-danger" *ngIf="comment.errors?.['minlength']">Die Beschreibung muss mindestens 150 Zeichen besitzen</div>
 
         <button
             mat-raised-button 
             color="primary" 
             type="submit"
+            [disabled]="(!title.valid || !title.pristine) && (!comment.valid || !comment.pristine) && !maxUser.valid"
             (click)="createProject()"
             >Projekt jetzt erstellen</button>
     </div>

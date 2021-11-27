@@ -3,8 +3,8 @@
     <div class="row">
         <div class="col-9 p-2">
             <div class="content">
-                <h2 class="title">{{ project?.title }}</h2>
-                <p>Erstellt: {{project?.createdAt!.slice(6)+"."+project?.createdAt!.slice(4,6)+"."+project?.createdAt!.slice(0,4)}} von {{ project?.createdBy }} </p>
+                <h2 class="title">{{ project.title }}</h2>
+                <p>Erstellt: {{project.createdAt!.slice(6)+"."+project.createdAt!.slice(4,6)+"."+project.createdAt!.slice(0,4)}} von {{ project.createdBy }} </p>
                 <button mat-raised-button color="warn" (click)="openDialog()" *ngIf="isMember">Projekt verlassen</button>
                 <button mat-raised-button color="primary" (click)="apply()" [ngClass]="{'no-display': isMember || isApplicant}">Bewerben</button>
                 <button mat-raised-button *ngIf="isAdmin" [routerLink]="['/project',this.project.id,'edit']">Bearbeiten</button>
@@ -34,7 +34,7 @@
                     >
                     </mat-progress-spinner> 
                 </div>
-                <p class="member-count">{{project?.currUser}}/{{project?.maxUser}}</p>
+                <p class="member-count">{{project.currUser}}/{{project.maxUser}}</p>
             </div>
         </div>
     </div>
@@ -95,7 +95,7 @@
                                                 >
                                                 </mat-progress-spinner> 
                                             </div>
-                                            <p class="acc-member-count">{{project?.currUser}}/{{project?.maxUser}} Member haben akzeptiert
+                                            <p class="acc-member-count">{{project.currUser}}/{{project.maxUser}} Member haben akzeptiert
                                                 <mat-icon *ngIf="spinnerValue === 100">done</mat-icon>
                                             </p>
                                         </div>
@@ -138,7 +138,7 @@
                                                 >
                                                 </mat-progress-spinner> 
                                             </div>
-                                            <p class="acc-member-count">{{project?.currUser}}/{{project?.maxUser}} Member haben akzeptiert
+                                            <p class="acc-member-count">{{project.currUser}}/{{project.maxUser}} Member haben akzeptiert
                                                 <mat-icon *ngIf="spinnerValue === 100">done</mat-icon>
                                             </p>
                                         </div>
@@ -199,11 +199,11 @@
             <div class="content">
                 <mat-chip-list aria-label="tags">
                     <mat-chip
-                        *ngFor="let tag of project?.tags"
+                        *ngFor="let tag of project.tags"
                         >{{ tag }}</mat-chip>
                 </mat-chip-list>
                 <h2>Beschreibung</h2>
-                <p>{{ project?.comment }}</p>
+                <p>{{ project.comment }}</p>
             </div>
         </div>
     </div>

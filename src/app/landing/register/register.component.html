@@ -1,30 +1,51 @@
 <div class="container">
-  <div class="formdiv">
-    <h1 style="text-align:center">Registrieren</h1>
-    <br>
-    <br>
-    <mat-form-field appearance="legacy">
-      <mat-label>E-Mail</mat-label>
-      <input type="email" matInput required [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
-    <mat-form-field appearance="legacy">
-      <mat-label>Passwort</mat-label>
-      <input type="password" matInput required [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
-    </mat-form-field>
-    <mat-form-field appearance="legacy">
-      <mat-label>Profilart</mat-label>
-      <mat-select [(ngModel)]="user.type" [ngModelOptions]="{standalone: true}" required>
-        <mat-option *ngFor="let key of keys" [value]="key">{{key}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <span>
-      <button mat-raised-button color="accent" type="submit" (click)="createUser()">Registrieren</button>
-    </span>
-    <br>
-    <span>
-      Bereits registriert?
-      <a href="/login">Zurück zum Login</a>
-    </span>
-  </div>
+  <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <div class="formdiv">
+      <h1 style="text-align:center">Registrieren</h1>
+      <br>
+      <br>
+      <!-- Email -->
+      <mat-form-field appearance="legacy">
+        <mat-label>E-Mail</mat-label>
+        <input type="email" email="email" #email="ngModel" email="true" matInput required [(ngModel)]="user.email"
+          [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <div [hidden]="email.valid || email.pristine" class="alert alert-danger"> Bitte E-Mail eintragen </div>
+
+      <!-- Passwort -->
+      <mat-form-field appearance="legacy">
+        <mat-label>Passwort</mat-label>
+        <input type="password" passwordHtml="password" minlength="5" #passwordHtml="ngModel" matInput required
+          [(ngModel)]="password" [ngModelOptions]="{standalone: true}" class="form-control">
+      </mat-form-field>
+      <div class="alert alert-danger"
+          [hidden]="passwordHtml.valid || passwordHtml.pristine || passwordHtml.errors?.['minlength']"> Bitte Passwort
+          eintragen </div>
+        <div class="alert alert-danger" *ngIf="passwordHtml.errors?.['minlength']">Das Passwort
+          muss mindestens 5 Zeichen besitzen</div>
+
+      <!-- userType -->
+      <mat-form-field appearance="legacy">
+        <mat-label>Profilart</mat-label>
+        <mat-select type="userType" userType="userType" #userType="ngModel" matInput required [(ngModel)]="user.type"
+          [ngModelOptions]="{standalone: true}">
+          <mat-option *ngFor="let key of keys" [value]="key">{{key}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="alert alert-danger" [hidden]="userType.valid && userType.touched"> Bitte Profilart auswählen </div>
+
+
+      <!-- Button -->
+      <span>
+        <button mat-raised-button color="accent" type="submit" [disabled]="(!email.valid || !email.pristine) && (!passwordHtml.valid || !passwordHtml.pristine) && !userType.valid"
+          (click)="createUser()">Registrieren</button>
+      </span>
+      <br>
+      <span>
+        Bereits registriert?
+        <a href="/login">Zurück zum Login</a>
+      </span>
+    </div>
+  </form>
 </div>

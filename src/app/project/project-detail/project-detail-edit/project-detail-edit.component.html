@@ -5,14 +5,20 @@
             <div class="content">
 
                 <mat-form-field appearance="legacy">
-                    <h2 class="title"> <input type="text" matInput required [(ngModel)]="project.title"
-                            [ngModelOptions]="{standalone: true}"></h2>
+                    <h2 class="title"> <input type="title" title="title" #title="ngModel" matInput required
+                            [(ngModel)]="project.title" [ngModelOptions]="{standalone: true}"></h2>
                     <mat-hint>Bearbeite hier den Titel deines Projekts</mat-hint>
                 </mat-form-field>
-                <p>Erstellt: {{project?.createdAt!.slice(6)+"."+project?.createdAt!.slice(4,6)+"."+project?.createdAt!.slice(0,4)}} von {{ project?.createdBy }} </p>
+                <div class="alert alert-danger" [hidden]="title.valid"> Bitte Titel eintragen </div>
+
+                <p>Erstellt:
+                    {{project.createdAt!.slice(6)+"."+project?.createdAt!.slice(4,6)+"."+project.createdAt!.slice(0,4)}}
+                    von {{ project.createdBy }} </p>
+
                 <mat-form-field hintLabel="Wähle eine Zahl zwischen 2 und 10!" appearance="legacy">
                     <mat-label>Maximale Anzahl Projektmitglieder</mat-label>
-                    <mat-select [(ngModel)]="project.maxUser" [ngModelOptions]="{standalone: true}">
+                    <mat-select type="maxUser" maxUser="maxUser" #maxUser="ngModel" required
+                        [(ngModel)]="project.maxUser" [ngModelOptions]="{standalone: true}">
                         <mat-option value="2">2</mat-option>
                         <mat-option value="3">3</mat-option>
                         <mat-option value="4">4</mat-option>
@@ -24,6 +30,8 @@
                         <mat-option value="10">10</mat-option>
                     </mat-select>
                 </mat-form-field>
+                <div class="alert alert-danger" [hidden]="maxUser.valid"> Bitte Mitgliederzahl auswählen </div>
+
             </div>
         </div>
         <div class="col-3 p-2">
@@ -53,16 +61,26 @@
                         (matChipInputTokenEnd)="add($event)">
                 </mat-chip-list>
                 <h2>Beschreibung</h2>
+
                 <mat-form-field appearance="legacy">
-                    <textarea matInput required [(ngModel)]="project.comment"
-                        [ngModelOptions]="{standalone: true}"></textarea>
+                    <textarea type="comment" comment="comment" #comment="ngModel" minlength="150" matInput required
+                        [(ngModel)]="project.comment" [ngModelOptions]="{standalone: true}"></textarea>
                     <mat-hint>Bearbeite hier deine Projektbeschreibung (min. 150 Zeichen)</mat-hint>
                 </mat-form-field>
-                <button mat-raised-button color="primary" type="submit" (click)="openDialog()">Änderungen
+                <div class="alert alert-danger"
+                    [hidden]="comment.valid || comment.pristine || comment.errors?.['minlength']"> Bitte Beschreibung
+                    eintragen </div>
+                <div class="alert alert-danger" *ngIf="comment.errors?.['minlength'] && comment.touched">Die
+                    Beschreibung muss mindestens 150 Zeichen besitzen
+                </div>
+
+                <br>
+                <button style="margin-right:10px" mat-raised-button color="primary" type="submit"
+                    [disabled]="!title.valid || !comment.valid || !maxUser.valid"
+                    (click)="openDialog()">Änderungen
                     übernehmen</button>
 
-                <button mat-raised-button color="warn" type="submit"
-                    [routerLink]="['/project',this.project.id]">Abbrechen</button>
+                <button mat-raised-button color="warn" [routerLink]="['/project',this.project.id]">Abbrechen</button>
             </div>
         </div>
     </div>
