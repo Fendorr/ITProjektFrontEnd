@@ -40,26 +40,6 @@ export class RegisterComponent implements OnInit {
     
   }
 
-  // ngOnInit(): void {
-  //   this.form = new FormGroup({
-  //     email: new FormControl(this.user.email, [
-  //       Validators.required,
-  //       Validators.email
-  //     ]),
-  //     passwordHtml: new FormControl(this.password, [
-  //       Validators.required,
-  //       Validators.minLength(5)
-  //     ]),
-  //     userType: new FormControl(this.user.type, [
-  //       Validators.required
-  //     ])
-  //   })
-  // }
-
-  // get email() { return this.form.get('email'); }
-  // get passwordHtml() { return this.form.get('password'); }
-  // get userType() { return this.form.get('userType'); }
-
   openSnackBar(msg: string, clss: string): void {
     this.snackBar.open(msg, '', {
       panelClass: [clss]
@@ -73,7 +53,7 @@ export class RegisterComponent implements OnInit {
   createUser(): void {
     console.log(this.user);
     this.user.tags = []
-    this.user.tags = this.tags.map(a => a.name); //Tags von Object-Array in String-Array mappen. (der nicht wirklich ein String-Array ist sondern immer noch ein Tag[] Array)
+    this.user.tags = this.tags.map(a => a.name); //Tags mappen
     this.user.likedProjects = [];
     this.user.projectInvites = [];
     this.user.sentApplications = [];
