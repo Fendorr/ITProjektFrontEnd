@@ -21,15 +21,21 @@ export class AuthenticationService {
   constructor(private publicService: PublicService, private router: Router, private snackBar: MatSnackBar) { }
 
   login(email: string, password: string) {
+
+    //Authentifizierung
     this.publicService.login({ loginDto: { email: email, password: password } }).subscribe
       (isValid => {
         if (isValid) {
+
+          //Setzen des HTTP-Basic Tokens
           sessionStorage.setItem(
             'token',
             btoa(email + ':' + password)
           );
           
           this.loggedIn = true;
+
+          //aktuell eingeloggten User finden
           this.publicService.curUser().subscribe(response => {
             this.user = response
             this.userId=this.user.id!;
