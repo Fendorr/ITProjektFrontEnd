@@ -40,8 +40,6 @@
       <span>
         <button mat-raised-button color="accent" type="submit" [disabled]="(!email.valid || !email.pristine) || (!passwordHtml.valid || !passwordHtml.pristine) || !userType.valid"
           (click)="createUser()">Registrieren</button>
-          <button mat-raised-button color="accent" type="submit" [disabled]="!email.valid || !passwordHtml.valid  || !userType.valid"
-          (click)="createUser()">Registrieren Nr2</button>
       </span>
       <br>
       <span>
