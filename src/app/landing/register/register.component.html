@@ -36,12 +36,12 @@
       <div class="alert alert-danger" [hidden]="userType.valid && userType.touched"> Bitte Profilart auswählen </div>
 
 
-      <!-- Button 2ter Button zum Testen-->
+      <!-- Button -->
       <span>
         <button mat-raised-button color="accent" type="submit" [disabled]="(!email.valid || !email.pristine) || (!passwordHtml.valid || !passwordHtml.pristine) || !userType.valid"
           (click)="createUser()">Registrieren</button>
           <button mat-raised-button color="accent" type="submit" [disabled]="!email.valid || !passwordHtml.valid  || !userType.valid"
-          (click)="createUser()">Registrieren</button>
+          (click)="createUser()">Registrieren Nr2</button>
       </span>
       <br>
       <span>
