@@ -77,5 +77,5 @@
   <button mat-raised-button style="margin-right:10px" color="primary" type="submit" [disabled]="!email.valid || passwordHtml.errors?.['minlength']" (click)="openDialog()">Änderungen
     übernehmen
   </button>
-  <button mat-raised-button color="warn" type="submit" (click)="getUserAgain()">Abbrechen</button>
+  <button mat-raised-button color="warn" type="submit" [routerLink]="['/profile/', this.authService.userId]">Abbrechen</button>
   
