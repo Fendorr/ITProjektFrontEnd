@@ -15,7 +15,6 @@ export interface ProjectDTO {
   adminId?: number;
   chat?: string[];
   comment?: string;
-  /** format: date-time */
   createdAt?: string;
   createdBy?: string;
   /** format: int32 */

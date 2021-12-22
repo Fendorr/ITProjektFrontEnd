@@ -3,7 +3,7 @@ import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PublicService } from 'src/api/generated/controllers/Public';
 import { UserService } from 'src/api/generated/controllers/User';
 import { UserDTO } from 'src/api/generated/defs/UserDTO';
@@ -11,6 +11,7 @@ import { LoginDTO } from 'src/api/generated/model';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { Tag } from 'src/app/project/new-project/new-project.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { RefreshService } from 'src/app/services/refreshComponent.service';
 
 @Component({
   selector: 'app-profile-settings',
@@ -29,9 +30,11 @@ export class ProfileSettingsComponent implements OnInit {
   tags: Tag[] = [];
 
   constructor(
+    private refreshService: RefreshService,
+    private router: Router,
     private userService: UserService,
     private route: ActivatedRoute,
-    private authService: AuthenticationService,
+    public authService: AuthenticationService,
     private publicService: PublicService,
     private dialog: MatDialog,
     public dialogRef: MatDialogRef<ProfileSettingsComponent>,
@@ -75,10 +78,10 @@ export class ProfileSettingsComponent implements OnInit {
   }
 
   getUserAgain() {
-    this.show = true;
-    this.publicService.curUser().subscribe((response) => {
-      this.user = response;
-    });
+     this.show = true;
+     this.publicService.curUser().subscribe((response) => {
+       this.user = response;
+     });
   }
 
   updateUser(id: number | undefined, newUser: UserDTO, password: string): void {
@@ -88,15 +91,16 @@ export class ProfileSettingsComponent implements OnInit {
         .updateUserUsingPUT({ id: id, userDto: newUser, pw: this.password! })
         .subscribe(
           (response) => {
-            this.openSnackBar('Daten erfolgreich geändert', 'success');
+            this.openSnackBar('Daten erfolgreich geändert.', 'success');
           },
           (error) => {
             this.openSnackBar(
-              'Fehler: Daten konnten nicht geändert werden',
+              'Fehler: Daten konnten nicht geändert werden.',
               'warn'
             );
           }
         );
+        
     }
   }
 

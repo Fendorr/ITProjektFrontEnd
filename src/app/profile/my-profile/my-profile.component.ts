@@ -13,28 +13,24 @@ import { UserDTO } from 'src/api/generated/defs/UserDTO';
 export class MyProfileComponent implements OnInit {
 
   loginDto: LoginDTO = {}
-  user : UserDTO = {};
+  user: UserDTO = {};
   loggedinUser: UserDTO = {};
   public isLoggedinUser: boolean;
 
   constructor(
-    private userService : UserService,
+    private userService: UserService,
     private route: ActivatedRoute,
     private publicService: PublicService
-    ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.publicService.curUser().subscribe(response => {this.loggedinUser = response;
-      this.route.params.forEach((params: Params) => {
-        let id = +params['id'];
-        this.userService.getUserByIdUsingGET({id}).subscribe(response =>{
-          this.user = response;
-          this.isLoggedinUser = this.loggedinUser.id===this.user.id;
-          console.log(this.isLoggedinUser);
-        });
-       })
-       console.log(this.isLoggedinUser);
+    this.publicService.curUser().subscribe(response => {
+      this.loggedinUser = response;
+      let id = Number(this.route.snapshot.paramMap.get('id'));
+      this.userService.getUserByIdUsingGET({ id }).subscribe(response => {
+        this.user = response;
+        this.isLoggedinUser = this.loggedinUser.id === id;
+      })
     })
   }
-
 }

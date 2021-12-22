@@ -39,6 +39,7 @@
       <!-- Button -->
       <span>
         <button mat-raised-button color="accent" type="submit" [disabled]="(!email.valid || !email.dirty) || (!passwordHtml.valid || !passwordHtml.dirty) || (!userType.valid || !userType.dirty)"
+
           (click)="createUser()">Registrieren</button>
       </span>
       <br>

@@ -10,10 +10,9 @@
 
         <mat-form-field appearance="legacy">
           <mat-label>E-Mail</mat-label>
-          <input type="email" email="email" #email="ngModel" email="true" matInput required [(ngModel)]="user.email"
+          <input type="email" disabled email="email" #email="ngModel" email="true" matInput required [(ngModel)]="user.email"
             [ngModelOptions]="{standalone: true}">
         </mat-form-field>
-        <div [hidden]="email.valid || email.pristine" class="alert alert-danger"> Bitte E-Mail eintragen </div>
 
         <mat-form-field appearance="legacy">
           <mat-label>Vorname bearbeiten
@@ -74,8 +73,8 @@
     </div>
   </div>
   <br>
-  <button mat-raised-button style="margin-right:10px" color="primary" type="submit" [disabled]="!email.valid || passwordHtml.errors?.['minlength']" (click)="openDialog()">Änderungen
+  <button mat-raised-button style="margin-right:10px" color="primary" type="submit" [disabled]="passwordHtml.errors?.['minlength']" (click)="openDialog()">Änderungen
     übernehmen
   </button>
-  <button mat-raised-button color="warn" type="submit" (click)="getUserAgain()">Abbrechen</button>
+  <button mat-raised-button color="warn" type="submit" [routerLink]="['/profile/', this.authService.userId]">Abbrechen</button>
   
