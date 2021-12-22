@@ -91,15 +91,13 @@ export class ProfileSettingsComponent implements OnInit {
         .updateUserUsingPUT({ id: id, userDto: newUser, pw: this.password! })
         .subscribe(
           (response) => {
-            this.openSnackBar('Daten erfolgreich geändert. Du wurdest aus Sicherheitsgründen ausgeloggt.', 'success');
-            this.authService.logout(); //logout da sonst probleme bei 2mal email aendern
+            this.openSnackBar('Daten erfolgreich geändert.', 'success');
           },
           (error) => {
             this.openSnackBar(
-              'Fehler: Daten konnten nicht geändert werden. Du wurdest aus Sicherheitsgründen ausgeloggt.',
+              'Fehler: Daten konnten nicht geändert werden.',
               'warn'
             );
-            this.authService.logout(); //logout da sonst probleme bei 2mal email aendern
           }
         );
         
