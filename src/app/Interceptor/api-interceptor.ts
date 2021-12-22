@@ -13,6 +13,7 @@ export class APIInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+    //Request-Header nach Login
     if (this.authenticationService.isLoggedIn) {
       //Header für Basic HTTP Authentication
       const headers = new HttpHeaders(this.user ? {
@@ -24,6 +25,7 @@ export class APIInterceptor implements HttpInterceptor {
       return next.handle(loggedInReq);
     }
 
+    //Request-Header vor Login
     else{
       const headers = new HttpHeaders(this.user ? {
         'X-Requested-With': 'XMLHttpRequest'
