@@ -71,7 +71,7 @@
                 <div class="alert alert-danger"
                     [hidden]="comment.valid || comment.pristine || comment.errors?.['minlength']"> Bitte Beschreibung
                     eintragen </div>
-                <div class="alert alert-danger" *ngIf="comment.errors?.['minlength'] && comment.touched">Die
+                <div class="alert alert-danger" *ngIf="(comment.errors?.['minlength'])">Die
                     Beschreibung muss mindestens 150 Zeichen besitzen
                 </div>
 
